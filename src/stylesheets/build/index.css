@@ -66,17 +66,36 @@ body {
   margin: 0 40px;
   min-width: 20%;
 }
+.links-section .links-col h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.links-section .links-col h1 img {
+  height: 35px;
+}
 .links-section a, .links-section .link {
   font-family: "Jersey 10", sans-serif;
   padding: 5px;
   margin: 10px 0;
-  box-shadow: 5px 3px 0 black;
+  box-shadow: 1px 1px 0 black;
   display: block;
   color: black;
   text-decoration: none;
   text-align: center;
   border: 1px solid;
   border-radius: 5px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.links-section a:hover, .links-section .link:hover {
+  background-color: rgba(204, 204, 204, 0.8);
+  box-shadow: 4px 4px 0 black;
+  transform: translate(-2px, -2px);
+}
+.links-section a:focus, .links-section .link:focus {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: none;
+  transform: translate(3px, 3px);
 }
 
 /*# sourceMappingURL=index.css.map */

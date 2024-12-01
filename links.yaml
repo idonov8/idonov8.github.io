@@ -1,11 +1,6 @@
 sections:
-  - title: Filmmaker
-    links:
-      - url: "https://youtu.be/A2M7MZpSt8s?si=KW9usTY-IDHnXKnI"
-        title: "Walking (2022)"
-      - url: "https://youtu.be/m_U3CAksRXA?si=uEtQGDL5gCvDYnjT"
-        title: "The Procrastination Cycle (2022)"
   - title: Programmer
+    icon: "laptop-icon.png"
     links:
       - url: "https://github.com/idonov8"
         title: "GitHub"
@@ -13,7 +8,15 @@ sections:
         title: "LinkeIn"
       - url: "https://file.notion.so/f/f/8ad696a2-5aa0-4a3d-aa66-4061476bb67a/665912c3-1ab7-4b5e-90cd-75e71daf2ca3/Ido_Nov_CV_2024.pdf?table=block&id=30470bec-db1d-4b69-a6d6-3e6a7e3a0424&spaceId=8ad696a2-5aa0-4a3d-aa66-4061476bb67a&expirationTimestamp=1733184000000&signature=3bewZjWWfE10fKaiGqbglXQQkLwtwzMvRz6RqQwVxdY&downloadName=Ido+Nov+CV+2024.pdf"
         title: "CV"
+  - title: Filmmaker
+    icon: "video-icon.png"
+    links:
+      - url: "https://youtu.be/A2M7MZpSt8s?si=KW9usTY-IDHnXKnI"
+        title: "Walking (2022)"
+      - url: "https://youtu.be/m_U3CAksRXA?si=uEtQGDL5gCvDYnjT"
+        title: "The Procrastination Cycle (2022)"
   - title: Photographer
+    icon: "camera-icon.png"
     links:
       - url: "https://www.instagram.com/idonov/"
         title: "Instagram"
