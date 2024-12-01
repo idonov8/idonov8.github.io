@@ -1,5 +1,8 @@
 body {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: "Jersey 25", sans-serif;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
@@ -7,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 25px;
+  padding: 3% 10%;
 }
 .header .profile-pic {
   flex-basis: 20%;
@@ -21,28 +25,51 @@ body {
   border: 2px solid white;
   box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
 }
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+  .header h1 {
+    text-align: center;
+  }
+  .header img {
+    height: 100px;
+    margin: -50px 0;
+  }
+}
 
 .vertical-divider {
   display: inline-block;
   width: 1px;
-  height: 100%;
-  background-color: #ccc; /* Color of the divider */
-  margin: 0 20px; /* Adjust spacing around the divider as needed */
+  height: 60vh;
+  background-color: #ccc;
+}
+@media (max-width: 768px) {
+  .vertical-divider {
+    width: 90%;
+    height: 2px;
+    margin: 5px auto;
+  }
 }
 
 .links-section {
   display: flex;
-  height: 60vh;
-  margin: 5%;
+  justify-content: center;
+  width: 100%;
 }
 @media (max-width: 768px) {
   .links-section {
     flex-direction: column;
   }
 }
+.links-section .links-col {
+  margin: 0 40px;
+  min-width: 20%;
+}
 .links-section a, .links-section .link {
+  font-family: "Jersey 10", sans-serif;
   padding: 5px;
-  margin: 5px;
+  margin: 10px 0;
   box-shadow: 5px 3px 0 black;
   display: block;
   color: black;

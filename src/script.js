@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             data.sections.forEach((section, index) => {
                 const sectionDiv = document.createElement('div');
+				sectionDiv.classList = "links-col"
                 const header = document.createElement('h1');
                 header.textContent = section.title;
                 sectionDiv.appendChild(header);
