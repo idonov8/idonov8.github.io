@@ -1,0 +1,53 @@
+body {
+	font-family: 'Trebuchet MS', sans-serif;
+}
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 25px;
+	.profile-pic {
+		flex-basis:20%;
+	}
+	.desc {
+		flex-basis: 80%;
+	}
+	img {
+		height: 100%;
+		width: 100%;
+		// object-fit: cover;
+		border-radius: 50%;
+		border: 2px solid white;
+    	box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
+		
+	}
+
+}
+
+.vertical-divider {
+	display: inline-block;
+	width: 1px;
+	height: 100%;
+	background-color: #ccc; /* Color of the divider */
+	margin: 0 20px; /* Adjust spacing around the divider as needed */
+}
+
+.links-section {
+	display: flex;
+	height: 60vh;
+	margin: 5%;
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
+	a, .link {
+		padding: 5px;
+		margin: 5px;
+		box-shadow: 5px 3px 0 black;
+		display: block;
+		color: black;
+		text-decoration: none;
+		text-align: center;
+		border: 1px solid;
+		border-radius: 5px;
+	}
+}

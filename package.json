@@ -1,0 +1,16 @@
+{
+  "name": "personal-website",
+  "version": "1.0.0",
+  "description": "- [The project's Notion page](https://ivory-kookaburra-2de.notion.site/Personal-Website-13e460dbb2a180c9909de47ee507db9e?pvs=4)",
+  "main": "index.html",
+  "scripts": {
+    "style-build": "sass src/stylesheets/index.scss:src/stylesheets/build/index.css",
+    "style-dev": "sass src/stylesheets/index.scss:src/stylesheets/build/index.css -w",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.81.0"
+  }
+}
