@@ -19,11 +19,11 @@ body {
   flex-basis: 80%;
 }
 .header img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
+  height: 80%;
+  width: 80%;
+  border-radius: 25%;
   border: 2px solid white;
-  box-shadow: -3px 3px 0 black;
+  box-shadow: -2px 2px 0 black;
 }
 @media (max-width: 768px) {
   .header {
