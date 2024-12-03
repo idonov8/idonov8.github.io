@@ -23,11 +23,12 @@ body {
   width: 100%;
   border-radius: 50%;
   border: 2px solid white;
-  box-shadow: -3px 2px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: -3px 3px 0 black;
 }
 @media (max-width: 768px) {
   .header {
     flex-direction: column;
+    padding-top: 10%;
   }
   .header h1 {
     text-align: center;
