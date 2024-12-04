@@ -61,6 +61,7 @@ $( () => {
             }, 500, linkUrl);
         });
 
+        // Projects dropdown
         $('.projects-button').on('click', function() {
             $(this).toggleClass('clicked')
             $(this).find('.arrow').toggleClass('down up');
@@ -70,4 +71,18 @@ $( () => {
             }
         });
     });
+
+    const NumOfProfilePics = 3;
+    let picIndex = Math.floor(Math.random() * NumOfProfilePics);
+    let profilePicURL = `assets/profile${picIndex}.jpg`;
+    $('.profile-pic').find('img').attr('src', profilePicURL);
+    $('.profile-pic').on('mouseup', function(e) {
+        setTimeout(() => {
+            let $pic = $(this).find("img");
+            picIndex = (picIndex + 1) % NumOfProfilePics
+            let profilePicURL = `assets/profile${picIndex}.jpg`;
+            $pic.attr('src', profilePicURL);
+            $pic.blur();
+        }, 120);
+    })
 });

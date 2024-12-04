@@ -43,10 +43,22 @@ body .header .desc {
 body .header img {
   height: 80%;
   width: 80%;
+  object-fit: cover;
   border-radius: 25%;
   border: 2px solid white;
-  box-shadow: -2px 2px 0 black;
-  -webkit-filter: grayscale(100%);
+  box-shadow: -4px 4px 0 black;
+  -webkit-filter: grayscale(80%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+body .header img:hover {
+  background-color: rgba(204, 204, 204, 0.8);
+  box-shadow: -8px 8px 0 black;
+  transform: translate(2px, -2px);
+}
+body .header img:focus {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: -1px 1px 0 black;
+  transform: translate(-2px, 2px);
 }
 @media (max-width: 768px) {
   body .header {
