@@ -3,38 +3,65 @@ body {
 	font-size: 20px;
 	display: flex;
 	flex-direction: column;
-}
-.header {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 25px;
-	padding: 3% 10%;
-	
-	.profile-pic {
-		flex-basis:20%;
+	a {
+		text-decoration: none;
 	}
-	.desc {
-		flex-basis: 80%;
-	}
-	img {
-		height: 80%;
-		width: 80%;
-		// object-fit: cover;
-		border-radius: 25%;
-		border: 2px solid white;
-    	box-shadow: -2px 2px 0 black;
-	}
-	@media (max-width: 768px) {
-		flex-direction: column;
-		padding-top: 10%;
-		h1 {
-			text-align: center;
+	.header {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 25px;
+		padding: 3% 10%;
+		
+		.profile-pic {
+			flex-basis:20%;
+		}
+		.desc {
+			flex-basis: 80%;
 		}
 		img {
-			height: 100px;
-			width: 100px;
-			margin: -50px 0;
+			height: 80%;
+			width: 80%;
+			// object-fit: cover;
+			border-radius: 25%;
+			border: 2px solid white;
+			box-shadow: -2px 2px 0 black;
+			-webkit-filter: grayscale(100%);
+		}
+		@media (max-width: 768px) {
+			flex-direction: column;
+			padding-top: 10%;
+			h1 {
+				text-align: center;
+			}
+			img {
+				height: 100px;
+				width: 100px;
+				margin: -50px 0;
+			}
+		}
+	}
+	.reach-out {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		p {
+			// color: #3d3c3c;
+			// font-size: 90%;
+			font-family: "Doto", sans-serif;
+			font-optical-sizing: 10;
+			font-weight: 800;
+			letter-spacing: -1px;
+			font-style: bold;
+			font-variation-settings:
+			  "ROND" 0;
+		}
+		img {
+			height: 43px;
+			width: 43px;
+		}
+		@media (max-width: 768px) {
+			flex-direction: column;
 		}
 	}
 }
@@ -77,7 +104,6 @@ body {
 		box-shadow: 1px 1px 0 black;
 		display: block;
 		color: black;
-		text-decoration: none;
 		text-align: center;
 		border: 1px solid;
 		border-radius: 5px;
