@@ -8,16 +8,18 @@ sections:
         title: "LinkeIn"
       - url: "https://idonov8.github.io/assets/cv-2024.pdf"
         title: "CV"
-      - url: "https://ivory-kookaburra-2de.notion.site/Personal-Website-13e460dbb2a180c9909de47ee507db9e?pvs=4"
-        title: "This website (project - ongoing)"
-      - url: "https://ivory-kookaburra-2de.notion.site/Screen-Time-Killer-45c476e150a24d1684a352a47439ccf2?pvs=4"
-        title: "Screen Time Killer (project - 2024)"
       - url: "https://dagshub.com/blog/github-copilot-not-code/"
         title: "How I broke GitHub Copilot (blog - 2022)"
+    projects:
+      - url: "https://ivory-kookaburra-2de.notion.site/Personal-Website-13e460dbb2a180c9909de47ee507db9e?pvs=4"
+        title: "This website (ongoing)"
+      - url: "https://ivory-kookaburra-2de.notion.site/Screen-Time-Killer-45c476e150a24d1684a352a47439ccf2?pvs=4"
+        title: "Screen Time Killer (2024)"
       - url: "https://ivory-kookaburra-2de.notion.site/HospiTrack-2020-14f460dbb2a180b0bccbd32625b18324?pvs=4"
-        title: "HospiTrack (project - 2020)"
+        title: "HospiTrack (2020)"
       - url: "https://ivory-kookaburra-2de.notion.site/RasarBot-2020-14f460dbb2a180a89e5bcb77ba4243c5?pvs=4"
-        title: "RasarBot (project - 2020)"
+        title: "RasarBot (2020)"
+
   - title: Filmmaker
     icon: "video-icon.png"
     links:

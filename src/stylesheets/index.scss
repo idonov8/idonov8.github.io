@@ -1,4 +1,24 @@
+.arrow {
+	border: solid black;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+}
+
+.up {
+	transform: rotate(-135deg);
+	translate: 0 3px;
+	-webkit-transform: rotate(-135deg);
+}
+  
+.down {
+	translate: 0 -1px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+}
+
 body {
+	background-image: url("/assets/002-Watercolor-Paper.png");
 	font-family: "Jersey 25", sans-serif;
 	font-size: 20px;
 	display: flex;
@@ -97,13 +117,19 @@ body {
 			}
 		}
 	}
-	a, .link {
+	.projects-content {
+		display: none;
+	}
+	a, .link, .projects-button{
+		cursor: pointer;
+		user-select: none;
 		font-family: "Jersey 10", sans-serif;
 		padding: 5px;
 		margin: 10px 0;
 		box-shadow: 1px 1px 0 black;
 		display: block;
 		color: black;
+		background-color: white;
 		text-align: center;
 		border: 1px solid;
 		border-radius: 5px;
@@ -113,10 +139,20 @@ body {
 			box-shadow: 4px 4px 0 black;
 			transform: translate(-2px, -2px);
 		}
-		&:focus {
+		&:focus, &--clicked{
 			transition: transform 0.2s ease, box-shadow 0.2s ease; ;
 			box-shadow: none;
 			transform: translate(3px, 3px);
+		}
+	}
+	.projects-button {
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+		align-items: baseline;
+		i {
+			height: 1px;
+			width: 1px;
 		}
 	}
 }
