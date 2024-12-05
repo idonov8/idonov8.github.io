@@ -24,13 +24,6 @@ body {
   display: flex;
   flex-direction: column;
 }
-@media (min-width: 768px) {
-  body {
-    overflow: hidden;
-    margin: 0;
-    height: 100%;
-  }
-}
 body a {
   text-decoration: none;
 }
@@ -104,6 +97,13 @@ body .reach-out img {
   body .reach-out {
     flex-direction: column;
     padding: 0 10%;
+  }
+}
+@media (min-width: 768px) {
+  body .reach-out {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
   }
 }
 
@@ -183,7 +183,7 @@ body .reach-out img {
 }
 
 #cat {
-  position: fixed; /* Or absolute if needed */
+  position: absolute; /* Or absolute if needed */
   top: 0;
   left: 0;
   width: 100%;
