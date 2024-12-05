@@ -65,9 +65,11 @@ $( () => {
         $('.projects-button').on('click', function() {
             $(this).toggleClass('clicked')
             $(this).find('.arrow').toggleClass('down up');
+            mouseDown.play();
             $(this).parent().find('.projects-content').toggle();
             if (!$(this).hasClass('clicked')) {
                 $(this).blur();
+                mouseUp.play();
             }
         });
 
@@ -77,7 +79,7 @@ $( () => {
         mouseDown.src = "/assets/mouse-down.mov";
         mouseUp.src = "/assets/mouse-up.mov";
 
-        const $clickable = $('a, .profile-pic, .projects-button');
+        const $clickable = $('a, .profile-pic');
         $clickable.on('mousedown', function() {
             mouseDown.play();
         })
