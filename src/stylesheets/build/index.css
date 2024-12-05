@@ -24,6 +24,13 @@ body {
   display: flex;
   flex-direction: column;
 }
+@media (min-width: 768px) {
+  body {
+    overflow: hidden;
+    margin: 0;
+    height: 100%;
+  }
+}
 body a {
   text-decoration: none;
 }
@@ -79,6 +86,7 @@ body .reach-out {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  z-index: 2;
 }
 body .reach-out p {
   font-family: "Doto", sans-serif;
@@ -95,6 +103,7 @@ body .reach-out img {
 @media (max-width: 768px) {
   body .reach-out {
     flex-direction: column;
+    padding: 0 10%;
   }
 }
 
@@ -171,6 +180,23 @@ body .reach-out img {
 .links-section .projects-button i {
   height: 1px;
   width: 1px;
+}
+
+#cat {
+  position: fixed; /* Or absolute if needed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+#cat .ground {
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  #cat {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */
