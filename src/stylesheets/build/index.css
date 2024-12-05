@@ -25,6 +25,7 @@ body {
   flex-direction: column;
 }
 body a {
+  cursor: pointer;
   text-decoration: none;
 }
 body .header {
@@ -88,6 +89,9 @@ body .reach-out p {
   letter-spacing: -1px;
   font-style: bold;
   font-variation-settings: "ROND" 0;
+}
+body .reach-out a:hover {
+  text-decoration: none;
 }
 body .reach-out img {
   height: 43px;
