@@ -70,6 +70,20 @@ $( () => {
                 $(this).blur();
             }
         });
+
+        // Add click sound
+        const mouseDown = new Audio();
+        const mouseUp = new Audio();
+        mouseDown.src = "/assets/mouse-down.mov";
+        mouseUp.src = "/assets/mouse-up.mov";
+
+        const $clickable = $('a, .profile-pic, .projects-button');
+        $clickable.on('mousedown', function() {
+            mouseDown.play();
+        })
+        $clickable.on('mouseup', function() {
+            mouseUp.play();
+        })
     });
 
     const NumOfProfilePics = 3;

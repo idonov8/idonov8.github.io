@@ -51,6 +51,7 @@ body .header img {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 body .header img:hover {
+  cursor: pointer;
   background-color: rgba(204, 204, 204, 0.8);
   box-shadow: -8px 8px 0 black;
   transform: translate(2px, -2px);
