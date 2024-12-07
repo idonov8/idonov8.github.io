@@ -23,14 +23,19 @@ sections:
   - title: Filmmaker
     icon: "video-icon.png"
     links:
+      - title: "Professional"
+      - url: "https://www.youtube.com/playlist?list=PLlW1sxGDs8lWMqt3qy6HJDuAvXDnxleW8"
+        title: "Short form content"
+      - url: "https://youtube.com/playlist?list=PLlW1sxGDs8lUEXobbvBBCYFU6LziS1VI-&si=3tAMS95ZsEMGk3ZI"
+        title: "Musicians"
+      - title: "Personal"
       - url: "https://youtu.be/A2M7MZpSt8s?si=KW9usTY-IDHnXKnI"
         title: "Walking (2022)"
       - url: "https://youtu.be/m_U3CAksRXA?si=uEtQGDL5gCvDYnjT"
         title: "The Procrastination Cycle (2022)"
-      - url: "https://www.youtube.com/playlist?list=PLlW1sxGDs8lWMqt3qy6HJDuAvXDnxleW8"
-        title: "Short form content (2024)"
       - url: "https://youtu.be/fuBaZ95Fi18?si=135aN-_m92svFONv"
         title: "Europe Yeah (2020)"
+
   - title: Photographer
     icon: "camera-icon.png"
     links:

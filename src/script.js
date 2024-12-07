@@ -13,6 +13,13 @@ $( () => {
             $sectionDiv.append($header);
 
             section.links.forEach(link => {
+                if (link.url == null) {
+                    const $anchor = $('<h2>', {
+                        text: link.title
+                    });
+                    $sectionDiv.append($anchor);
+                    return;
+                }
                 const $anchor = $('<a>', {
                     href: link.url,
                     target: '_blank',

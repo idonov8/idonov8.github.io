@@ -147,6 +147,10 @@ body .reach-out img {
 .links-section .links-col h1 img {
   height: 35px;
 }
+.links-section .links-col h2 {
+  font-weight: 400;
+  font-size: 22px;
+}
 .links-section .projects-content {
   display: none;
 }
