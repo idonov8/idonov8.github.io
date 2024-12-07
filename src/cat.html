@@ -2,16 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Cat</title> -->
-
     <style>
         .cat_wrapper * {
             box-sizing: border-box;
         }
 
-        .cat_wrapper body {
+        body {
             padding: 0;
             margin: 0;
         }
@@ -50,12 +46,10 @@
             left: 100px;
             height: 30px;
             width: 60px;
-            transition: 1.5s;
+            transition: 3s;
             transform-origin: center;
             background-color: transparent;
         }
-
-        /* body */
 
         .body {
             position: absolute;
@@ -82,7 +76,6 @@
             50% { transform: scale(0.5, 1); }
         }
 
-        /* head */
         .cat_head {
             position: absolute;
             height: 40px;
@@ -98,7 +91,6 @@
             right: 22px;
         }
 
-        /* tail */
         .tail {
             position: absolute;
             top: -25px;
@@ -136,7 +128,6 @@
             }
         }
 
-        /* legs */
         .leg {
             position: absolute;
             height: 20px;
@@ -166,12 +157,9 @@
         }
 
         .face_right .front_legs{ right: 0; }
-
         .first_pose .front_legs,
         .face_left .front_legs{ right: 30px; }
-
         .face_right .back_legs{ left: 0; }
-
         .first_pose .back_legs,
         .face_left .back_legs{ left: 35px; }
 
@@ -207,66 +195,60 @@
             50% {transform: rotate(-10deg);}
         }
 
-        /* Sitting pose */
-		.sit .cat {
-			transform: translateY(20px);
-		}
+        .sit .cat {
+            transform: translateY(20px);
+        }
 
-		.sit .body {
-			transform: perspective(200px) rotateX(15deg) scaleY(1.2);
-			transform-origin: bottom center;
-		}
+        .sit .body {
+            transform: perspective(200px) rotateX(15deg) scaleY(1.2);
+            transform-origin: bottom center;
+        }
 
-		.sit .back_legs,
-		.sit .front_legs {
-			height: 0;
-			overflow: hidden;
-		}
+        .sit .back_legs,
+        .sit .front_legs {
+            height: 0;
+            overflow: hidden;
+        }
 
-		.sit .tail {
-			top: 10px; /* Position tail on the ground */
-			transform: rotate(0deg);
-			transform-origin: top center;
-		}
+        .sit .tail {
+            top: 10px; 
+            transform: rotate(0deg);
+            transform-origin: top center;
+        }
 
-		/* Adjust tail position when facing right in sitting pose */
-		.sit .face_right .tail {
-			left: -15px;
-    		animation: tail_wiggle_right 1s infinite;
-		}
+        .sit .face_right .tail {
+            left: -15px;
+            animation: tail_wiggle_right 1s infinite;
+        }
 
-		/* Adjust tail position when facing left in sitting pose */
-		.sit .face_left .tail {
-			left: 60px;
-    		animation: tail_wiggle_left 1s infinite;
-		}
+        .sit .face_left .tail {
+            left: 60px;
+            animation: tail_wiggle_left 1s infinite;
+        }
 
-		@keyframes tail_wiggle_right {
-			0%, 100% {
-				transform: rotate(15deg);
-			}
-			50% {
-				transform: rotate(-15deg);
-			}
-		}
+        @keyframes tail_wiggle_right {
+            0%, 100% {
+                transform: rotate(15deg);
+            }
+            50% {
+                transform: rotate(-15deg);
+            }
+        }
 
-		@keyframes tail_wiggle_left {
-			0%, 100% {
-				transform: scaleX(-1) rotate(15deg);
-			}
-			50% {
-				transform: scaleX(-1) rotate(-15deg);
-			}
-		}
+        @keyframes tail_wiggle_left {
+            0%, 100% {
+                transform: scaleX(-1) rotate(15deg);
+            }
+            50% {
+                transform: scaleX(-1) rotate(-15deg);
+            }
+        }
 
+        .sit .cat_head {
+            transform: rotate(-5deg);
+            transform-origin: bottom center;
+        }
 
-		.sit .cat_head {
-			transform: rotate(-5deg);
-			transform-origin: bottom center;
-		}
-
-		
-        /* jump */
         .cat_wrapper.jump .one { 
             animation: infinite 0.3s walk;
         }
@@ -351,6 +333,13 @@
         a:hover {
             text-decoration: underline;
         }
+
+        .food {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: black;
+        }
     </style>
 </head>
 <body>
@@ -409,11 +398,11 @@
     </div>
 
     <script>
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', init);
-		} else {
-			init();
-		}
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
 
         function init() { 
             const catWrapper = document.querySelector('.cat_wrapper');
@@ -421,13 +410,19 @@
             const cat = document.querySelector('.cat');
             const head = document.querySelector('.cat_head');
             const legs = document.querySelectorAll('.leg');
+            const groundLevel = window.innerHeight - 110;
+
             const pos = {
                 x: null,
                 y: null
             };
 
-            let mouseTimer; // Timer for mouse inactivity
+            let mouseTimer; 
             let isMouseMoving = false;
+
+            // Food array and state
+            let foodItems = []; // {el, x, y, falling: boolean}
+            let catBusy = false;
 
             const walk = () => {
                 cat.classList.remove('first_pose');
@@ -437,81 +432,116 @@
             const handleMouseMotion = e => {
                 pos.x = e.clientX;
                 pos.y = e.clientY;
-                walk();
-                resetMouseTimer();
-                if (isMouseMoving) return;
-                isMouseMoving = true;
-                catWrapper.classList.remove('sit');
+                if (!catBusy) {
+                    walk();
+                    resetMouseTimer();
+                    if (isMouseMoving) return;
+                    isMouseMoving = true;
+                    catWrapper.classList.remove('sit');
+                }
             };
 
             const handleTouchMotion = e => {
                 if (!e.targetTouches) return;
                 pos.x = e.targetTouches[0].clientX;
                 pos.y = e.targetTouches[0].clientY;
-                walk();
-                resetMouseTimer();
-                if (isMouseMoving) return;
-                isMouseMoving = true;
-                catWrapper.classList.remove('sit');
+                if (!catBusy) {
+                    walk();
+                    resetMouseTimer();
+                    if (isMouseMoving) return;
+                    isMouseMoving = true;
+                    catWrapper.classList.remove('sit');
+                }
             };
 
             const resetMouseTimer = () => {
                 clearTimeout(mouseTimer);
                 mouseTimer = setTimeout(() => {
-					if (catWrapper.classList.contains('jump')) {
-						return;
-					}
+                    if (catWrapper.classList.contains('jump') || catBusy) {
+                        return;
+                    }
                     isMouseMoving = false;
                     legs.forEach(leg => leg.classList.remove('walk'));
                     catWrapper.classList.add('sit');
-                }, 3000); // Cat sits after 3 seconds of inactivity
+                }, 3000); 
             };
 
-            const turnRight = () => {
-                cat.style.left = `${pos.x - 90}px`;
+            const turnRight = (targetX) => {
+                cat.style.left = `${targetX - 90}px`;
                 cat.classList.remove('face_left');
                 cat.classList.add('face_right');
             };
 
-            const turnLeft = () => {
-                cat.style.left = `${pos.x + 10}px`;
+            const turnLeft = (targetX) => {
+                cat.style.left = `${targetX + 10}px`;
                 cat.classList.remove('face_right');
                 cat.classList.add('face_left');
             };
 
-            const decideTurnDirection = () => {
-                cat.getBoundingClientRect().x < pos.x ? turnRight() : turnLeft();
-            };
+            function getNearestFood() {
+                if (foodItems.length === 0) return null;
+                const catRect = cat.getBoundingClientRect();
+                const catX = catRect.left;
+                let nearest = null;
+                let minDist = Infinity;
+                for (let fi of foodItems) {
+                    let dist = Math.abs(fi.x - catX);
+                    if (dist < minDist) {
+                        minDist = dist;
+                        nearest = fi;
+                    }
+                }
+                return nearest;
+            }
 
-            const headMotion = () => {
-                pos.y > (wrapper.clientHeight - 100) ?
-                head.style.top = '-15px' :
-                head.style.top = '-30px';
-            };
+            function headMotion() {
+                if (catBusy) {
+                    // If busy, tilt head down if food is near ground
+                    const nearestFood = getNearestFood();
+                    if (nearestFood) {
+                        // If food near ground, tilt head down
+                        // Let's say if food is within 100px of ground, tilt down
+                        if (nearestFood.y > (wrapper.clientHeight - 100)) {
+                            head.style.top = '-15px';
+                            return;
+                        }
+                    }
+                    // Otherwise, normal head position
+                    head.style.top = '-30px';
+                } else {
+                    // Normal logic based on mouse pos
+                    if (pos.y > (wrapper.clientHeight - 100)) {
+                        head.style.top = '-15px';
+                    } else {
+                        head.style.top = '-30px';
+                    }
+                }
+            }
 
             const jump = () => {
-                if (catWrapper.classList.contains('jump')) return; // Prevent multiple jumps
-                if (pos.y < (wrapper.clientHeight - 250)) {
-					const catIsSitting = catWrapper.classList.contains('sit');
-					const animationDuration = 1000;
-					const extraAnimationTime = catIsSitting ? 260 : 0;
-					if (catIsSitting) {
-						catWrapper.classList.remove('sit');
-						setTimeout(() => {
-							catWrapper.classList.add('sit');
-						}, animationDuration+extraAnimationTime);
-					}
+                if (catWrapper.classList.contains('jump')) return; 
+                if (!catBusy && pos.y && pos.y < (wrapper.clientHeight - 250)) {
+                    const catIsSitting = catWrapper.classList.contains('sit');
+                    const animationDuration = 1000;
+                    const extraAnimationTime = catIsSitting ? 260 : 0;
+                    if (catIsSitting) {
+                        catWrapper.classList.remove('sit');
+                        setTimeout(() => {
+                            catWrapper.classList.add('sit');
+                        }, animationDuration+extraAnimationTime);
+                    }
                     setTimeout(() => {
-						catWrapper.classList.add('jump');
-					}, extraAnimationTime);
+                        catWrapper.classList.add('jump');
+                    }, extraAnimationTime);
 
                     setTimeout(() => {
                         catWrapper.classList.remove('jump');
-                    }, animationDuration + extraAnimationTime / 2); // Remove jump class after animation duration
+                    }, animationDuration + extraAnimationTime / 2); 
                 }
             };
 
             const decideStop = () => {
+                if (catBusy) return;
                 if (
                     (cat.classList.contains('face_right') && pos.x - 90 === cat.offsetLeft) ||
                     (cat.classList.contains('face_left') && pos.x + 10 === cat.offsetLeft)
@@ -520,21 +550,111 @@
                 }
             };
 
+            function createFood(x, y) {
+                const food = document.createElement('div');
+                food.classList.add('food');
+                food.style.left = `${x - 5}px`; 
+                food.style.top = `${y - 5}px`;
+                document.body.appendChild(food);
+
+                const foodObj = { el: food, x: x, y: y, falling: true };
+				
+                foodItems.push(foodObj);
+                catBusy = true;
+                legs.forEach(leg => leg.classList.add('walk')); 
+
+                let fallInterval = setInterval(() => {
+                    let currentTop = parseInt(food.style.top);
+                    if (currentTop < groundLevel) { 
+                        let newTop = currentTop + 5;
+                        food.style.top = newTop + 'px';
+                        foodObj.y = newTop;
+                        if (newTop >= groundLevel) {
+                            foodObj.y = groundLevel;
+                            foodObj.falling = false;
+                        }
+                    } else {
+                        clearInterval(fallInterval);
+                        foodObj.y = groundLevel;
+                        foodObj.falling = false;
+                    }
+                }, 50);
+            }
+
+            function handleClick(e) {
+                createFood(e.clientX, e.clientY);
+            }
+
+            function moveCatTowardsFood() {
+                const target = getNearestFood();
+                if (!target) {
+                    // No food left
+                    catBusy = false;
+                    // stop walking after done
+                    legs.forEach(leg => leg.classList.remove('walk'));
+                    resetMouseTimer();
+                    return;
+                }
+
+                const catRect = cat.getBoundingClientRect();
+                const catX = catRect.left; 
+                const targetX = target.x;
+
+                if (catX < targetX) {
+                    turnRight(targetX);
+                } else {
+                    turnLeft(targetX);
+                }
+
+                // If the cat is horizontally aligned (within 2px), check if we can eat
+                let aligned = false;
+                if (cat.classList.contains('face_right') && Math.abs(targetX - 90 - cat.offsetLeft) < 2) {
+                    aligned = true;
+                } else if (cat.classList.contains('face_left') && Math.abs(targetX + 10 - cat.offsetLeft) < 2) {
+                    aligned = true;
+                }
+
+                // If aligned and food on ground, eat it
+                if (aligned && !target.falling) {
+                    target.el.remove();
+                    const idx = foodItems.indexOf(target);
+                    if (idx > -1) {
+                        foodItems.splice(idx, 1);
+                    }
+                    if (foodItems.length === 0) {
+                        catBusy = false;
+                        legs.forEach(leg => leg.classList.remove('walk'));
+                        resetMouseTimer();
+                    }
+                }
+            }
+
             setInterval(() => {
-                if (!pos.x || !pos.y) return;
-                decideTurnDirection();
                 headMotion();
-                decideStop();
+                if (catBusy) {
+                    moveCatTowardsFood();
+                } else {
+                    if (!pos.x || !pos.y) return;
+                    const catRect = cat.getBoundingClientRect();
+                    const catX = catRect.left; 
+                    if (catX < pos.x) {
+                        turnRight(pos.x);
+                    } else {
+                        turnLeft(pos.x);
+                    }
+                    decideStop();
+                }
             }, 100);
 
-            // Jump interval adjusted to 10 seconds
             setInterval(() => {
-                if (!pos.x || !pos.y) return;
-                jump();
+                if (!catBusy && pos.x && pos.y) {
+                    jump();
+                }
             }, 10000);
 
             document.addEventListener('mousemove', handleMouseMotion);
             document.addEventListener('touchmove', handleTouchMotion);
+            document.addEventListener('click', handleClick);
         }
 
         window.addEventListener('DOMContentLoaded', init);
