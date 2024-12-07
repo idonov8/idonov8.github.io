@@ -28,6 +28,9 @@ sections:
         title: "Short form content"
       - url: "https://youtube.com/playlist?list=PLlW1sxGDs8lUEXobbvBBCYFU6LziS1VI-&si=3tAMS95ZsEMGk3ZI"
         title: "Musicians"
+      - url: "https://youtube.com/playlist?list=PLlW1sxGDs8lUzNCSd-GHL_y8m3hkPhaJU&si=aOZSA0Qg84KRDAa_"
+        title: "Technical videos"
+        relatedSkill: Developer
       - title: "Personal"
       - url: "https://youtu.be/A2M7MZpSt8s?si=KW9usTY-IDHnXKnI"
         title: "Walking (2022)"

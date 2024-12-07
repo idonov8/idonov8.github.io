@@ -2,7 +2,6 @@ $( () => {
     $.get('links.yaml', function(yamlText) {
         const data = jsyaml.load(yamlText);
         const $linksSection = $('#links-section');
-
         data.sections.forEach((section, index) => {
             const $sectionDiv = $('<div>', { class: 'links-col' });
             const $header = $('<h1>');
@@ -25,6 +24,12 @@ $( () => {
                     target: '_blank',
                     text: link.title
                 });
+                if (link.relatedSkill) {
+                    const relatedIcon = data.sections.find(
+                        section => section.title === link.relatedSkill
+                    ).icon;
+                    $anchor.append(`<img src="assets/${relatedIcon}">`);
+                }
                 $sectionDiv.append($anchor);
             });
 

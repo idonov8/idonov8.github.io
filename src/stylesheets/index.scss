@@ -158,13 +158,23 @@ body {
 		padding: 5px;
 		margin: 10px 0;
 		box-shadow: 1px 1px 0 black;
-		display: block;
 		color: black;
 		background-color: white;
-		text-align: center;
 		border: 1px solid;
 		border-radius: 5px;
 		transition: transform 0.2s ease, box-shadow 0.2s ease; ;
+		display: flex;
+		justify-content: center;
+		gap: 5px;
+		align-items: center;
+		i {
+			height: 1px;
+			width: 1px;
+		}
+		img {
+			height: 20px;
+			width: 20px;
+		}
 		&:hover {
 			background-color: #cccc;
 			box-shadow: 4px 4px 0 black;
@@ -174,16 +184,6 @@ body {
 			transition: transform 0.2s ease, box-shadow 0.2s ease; ;
 			box-shadow: none;
 			transform: translate(3px, 3px);
-		}
-	}
-	.projects-button {
-		display: flex;
-		justify-content: center;
-		gap: 5px;
-		align-items: baseline;
-		i {
-			height: 1px;
-			width: 1px;
 		}
 	}
 }
