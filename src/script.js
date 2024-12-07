@@ -2,6 +2,28 @@ $( () => {
     $.get('links.yaml', function(yamlText) {
         const data = jsyaml.load(yamlText);
         const $linksSection = $('#links-section');
+
+        function addLink($sectionDiv, link) {
+            if (link.url == null) {
+                const $anchor = $('<h2>', {
+                    text: link.title
+                });
+                $sectionDiv.append($anchor);
+                return;
+            }
+            const $anchor = $('<a>', {
+                href: link.url,
+                target: '_blank',
+                text: link.title
+            });
+            if (link.relatedSkill) {
+                const relatedIcon = data.sections.find(
+                    section => section.title === link.relatedSkill
+                ).icon;
+                $anchor.append(`<img src="assets/${relatedIcon}">`);
+            }
+            $sectionDiv.append($anchor);
+        }
         data.sections.forEach((section, index) => {
             const $sectionDiv = $('<div>', { class: 'links-col' });
             const $header = $('<h1>');
@@ -11,27 +33,7 @@ $( () => {
             $header.append(section.title);
             $sectionDiv.append($header);
 
-            section.links.forEach(link => {
-                if (link.url == null) {
-                    const $anchor = $('<h2>', {
-                        text: link.title
-                    });
-                    $sectionDiv.append($anchor);
-                    return;
-                }
-                const $anchor = $('<a>', {
-                    href: link.url,
-                    target: '_blank',
-                    text: link.title
-                });
-                if (link.relatedSkill) {
-                    const relatedIcon = data.sections.find(
-                        section => section.title === link.relatedSkill
-                    ).icon;
-                    $anchor.append(`<img src="assets/${relatedIcon}">`);
-                }
-                $sectionDiv.append($anchor);
-            });
+            section.links.forEach(link => addLink($sectionDiv, link));
 
             // Add projects dropdown
             if (section.projects && section.projects.length > 0) {
@@ -40,14 +42,7 @@ $( () => {
                 $dropdownButton.append(`<i class="arrow down"></i>`)
                 const $dropdownContent = $('<div>', { class: 'projects-content' });
                 
-                section.projects.forEach(project => {
-                    const $projectLink = $('<a>', {
-                        href: project.url,
-                        target: '_blank',
-                        text: project.title
-                    });
-                    $dropdownContent.append($projectLink);
-                });
+                section.projects.forEach(project => addLink($dropdownContent, project));
 
                 $dropdown.append($dropdownButton);
                 $dropdown.append($dropdownContent);
