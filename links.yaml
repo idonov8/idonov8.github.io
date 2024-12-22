@@ -4,8 +4,10 @@ sections:
     links:
       - url: "https://github.com/idonov8"
         title: "GitHub"
+        icon: "github-logo.png"
       - url: "https://www.linkedin.com/in/ido-nov-83a216149/"
         title: "LinkedIn"
+        icon: "linkedin-logo.png"
       - url: "https://idonov8.github.io/assets/cv-2024.pdf"
         title: "CV"
       - url: "https://dagshub.com/blog/github-copilot-not-code/"

@@ -21,6 +21,8 @@ $( () => {
                     section => section.title === link.relatedSkill
                 ).icon;
                 $anchor.append(`<img src="assets/${relatedIcon}">`);
+            } else if (link.icon) {
+                $anchor.append(`<img src="assets/${link.icon}">`);
             }
             $sectionDiv.append($anchor);
         }
