@@ -65,7 +65,8 @@ body .header img:focus {
 @media (max-width: 768px) {
   body .header {
     flex-direction: column;
-    padding-top: 10%;
+    padding-top: 15%;
+    gap: 40px;
   }
   body .header h1 {
     text-align: center;

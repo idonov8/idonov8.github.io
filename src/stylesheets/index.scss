@@ -67,7 +67,7 @@ body {
 		}
 		@media (max-width: 768px) {
 			flex-direction: column;
-			padding-top: 10%;
+			padding-top: 15%;
 			h1 {
 				text-align: center;
 			}
@@ -76,6 +76,7 @@ body {
 				width: 100px;
 				margin: -50px 0;
 			}
+			gap: 40px;
 		}
 	}
 	.reach-out {
