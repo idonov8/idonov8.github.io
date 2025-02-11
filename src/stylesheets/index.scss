@@ -1,8 +1,19 @@
+// Color variables (fallback values)
+:root {
+    --color-primary: rgb(73, 248, 122);
+    --color-text: rgb(146, 10, 10);
+    --color-background: rgba(34, 119, 130, 0.364);
+    --color-shadow: rgb(240, 3, 212);
+    --color-border: white;
+    --color-hover: #aa1391cc;
+    --color-divider: #ccc;
+}
+
 .arrow {
-	border: solid black;
-	border-width: 0 3px 3px 0;
-	display: inline-block;
-	padding: 3px;
+    border: solid var(--color-text);
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
 }
 
 .up {
@@ -18,7 +29,9 @@
 }
 
 body {
-	background-image: url("/assets/002-Watercolor-Paper.png");
+    background-image: url("/assets/002-Watercolor-Paper.png");
+    background-color: var(--color-background);
+	background-blend-mode: multiply;
 	font-family: "Jersey 25", sans-serif;
 	font-size: 20px;
 	display: flex;
@@ -49,19 +62,19 @@ body {
 			width: 80%;
 			object-fit: cover;
 			border-radius: 25%;
-			border: 2px solid white;
-			box-shadow: -4px 4px 0 black;
-			-webkit-filter: grayscale(80%);
+			border: 2px solid var(--color-border);
+			box-shadow: -4px 4px 0 var(--color-shadow);
+			// -webkit-filter: grayscale(80%);
 			transition: transform 0.2s ease, box-shadow 0.2s ease; ;
 			&:hover {
 				cursor: pointer;
-				background-color: #cccc;
-				box-shadow: -8px 8px 0 black;
+				background-color: var(--color-hover);
+				box-shadow: -8px 8px 0 var(--color-shadow);
 				transform: translate(2px, -2px);
 			}
 			&:focus {
 				transition: transform 0.2s ease, box-shadow 0.2s ease; ;
-				box-shadow: -1px 1px 0 black;;
+				box-shadow: -1px 1px 0 var(--color-shadow);
 				transform: translate(-2px, 2px);
 			}
 		}
@@ -118,7 +131,7 @@ body {
 	display: inline-block;
 	width: 1px;
 	height: 60vh;
-	background-color: #ccc; 
+	background-color: var(--color-divider); 
 	@media (max-width: 768px) {
 		width: 90%;
 		height: 2px;
@@ -158,9 +171,9 @@ body {
 		font-family: "Jersey 10", sans-serif;
 		padding: 5px;
 		margin: 10px 0;
-		box-shadow: 1px 1px 0 black;
-		color: black;
-		background-color: white;
+		box-shadow: 1px 1px 0 var(--color-shadow);
+		color: var(--color-text);
+		background-color: var(--color-primary);
 		border: 1px solid;
 		border-radius: 5px;
 		transition: transform 0.2s ease, box-shadow 0.2s ease; ;
@@ -177,8 +190,8 @@ body {
 			width: 20px;
 		}
 		&:hover {
-			background-color: #cccc;
-			box-shadow: 4px 4px 0 black;
+			background-color: var(--color-hover);
+			box-shadow: 4px 4px 0 var(--color-shadow);
 			transform: translate(-2px, -2px);
 		}
 		&:focus, &--clicked{

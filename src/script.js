@@ -1,3 +1,24 @@
+function generateHarmonousColors() {
+    // Generate a random base hue (0-360)
+    const baseHue = Math.random() * 360;
+    
+    // Create a harmonious color palette using analogous colors
+    const colors = {
+        primary: `hsl(${baseHue}, 80%, 65%)`,
+        text: `hsl(${(baseHue + 180) % 360}, 85%, 30%)`,    // Complementary color for text
+        background: `hsla(${(baseHue + 30) % 360}, 60%, 30%, 0.1)`,
+        shadow: `hsl(${(baseHue + 150) % 360}, 80%, 45%)`,
+        border: 'white',
+        hover: `hsla(${(baseHue + 200) % 360}, 80%, 35%, 0.8)`,
+        divider: `hsl(${baseHue}, 20%, 80%)`
+    };
+
+    // Inject CSS variables into the root element
+    const root = document.documentElement;
+    Object.entries(colors).forEach(([key, value]) => {
+        root.style.setProperty(`--color-${key}`, value);
+    });
+}
 $( () => {
     $.get('links.yaml', function(yamlText) {
         const data = jsyaml.load(yamlText);
@@ -115,4 +136,5 @@ $( () => {
     if (!isMobile) {
         $("#cat").load("/src/cat.html"); 
     }
+    generateHarmonousColors();
 });
