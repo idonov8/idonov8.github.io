@@ -3,7 +3,7 @@
   --color-text: rgb(146, 10, 10);
   --color-background: rgba(34, 119, 130, 0.364);
   --color-shadow: rgb(240, 3, 212);
-  --color-border: white;
+  --color-border: var(--color-primary);
   --color-hover: #aa1391cc;
   --color-divider: #ccc;
 }
@@ -33,6 +33,7 @@ body {
   background-blend-mode: multiply;
   font-family: "Jersey 25", sans-serif;
   font-size: 20px;
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
 }
