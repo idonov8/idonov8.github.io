@@ -5,10 +5,12 @@ function generateHarmonousColors() {
     // Create a harmonious color palette using analogous colors
     const colors = {
         primary: `hsl(${baseHue}, 80%, 65%)`,
-        text: `hsl(${(baseHue + 180) % 360}, 85%, 30%)`,    // Complementary color for text
+        border: `white`,
+        // Ensure text color has sufficient contrast with primary color
+        // Using a split complementary color with adjusted lightness
+        text: `hsl(${(baseHue + 180) % 360}, 85%, 15%)`,    // Complementary color for text with darker lightness
+        shadow: `hsl(${(baseHue + 150) % 360}, 80%, 25%)`,
         background: `hsla(${(baseHue + 30) % 360}, 60%, 30%, 0.1)`,
-        shadow: `hsl(${(baseHue + 150) % 360}, 80%, 45%)`,
-        border: 'white',
         hover: `hsla(${(baseHue + 200) % 360}, 80%, 35%, 0.8)`,
         divider: `hsl(${baseHue}, 20%, 80%)`
     };
