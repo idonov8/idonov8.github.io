@@ -1,24 +1,23 @@
-function generateHarmonousColors() {
-    // Generate a random base hue (0-360)
+function generateHarmoniousColors() {
     const baseHue = Math.random() * 360;
-    
-    // Create a harmonious color palette using analogous colors
+
+    // Define main colors
     const colors = {
-        primary: `hsl(${baseHue}, 80%, 65%)`,
-        text: `hsl(${(baseHue + 180) % 360}, 80%, 65%)`,    // Complementary color for text
-        background: `hsla(${(baseHue + 30) % 360}, 60%, 30%, 0.1)`,
-        shadow: `hsl(${(baseHue + 30) % 360}, 80%, 45%)`,
-        border: 'white',
-        hover: `hsla(${(baseHue + 200) % 360}, 80%, 35%, 0.8)`,
-        divider: `hsl(${baseHue}, 20%, 80%)`
+        primary: `hsl(${baseHue}, 80%, 55%)`, // Button background
+        background: `hsl(${(baseHue + 30) % 360}, 50%, 90%)`, // Page background
+        shadow: `hsl(${(baseHue + 30) % 360}, 60%, 40%)`, 
+        border: `hsl(${baseHue}, 20%, 50%)`, 
+        hover: `hsl(${(baseHue + 200) % 360}, 80%, 45%)`, 
+        divider: `hsl(${baseHue}, 10%, 70%)`
     };
 
-    // Inject CSS variables into the root element
+    // Apply colors as CSS variables
     const root = document.documentElement;
     Object.entries(colors).forEach(([key, value]) => {
         root.style.setProperty(`--color-${key}`, value);
     });
 }
+
 $( () => {
     $.get('links.yaml', function(yamlText) {
         const data = jsyaml.load(yamlText);
@@ -123,7 +122,7 @@ $( () => {
     let profilePicURL = `assets/profile${picIndex}.jpg`;
     $('.profile-pic').find('img').attr('src', profilePicURL);
     $('.profile-pic').on('mouseup', function(e) {
-        generateHarmonousColors();
+        generateHarmoniousColors();
         setTimeout(() => {
             let $pic = $(this).find("img");
             picIndex = (picIndex + 1) % NumOfProfilePics
@@ -137,5 +136,5 @@ $( () => {
     if (!isMobile) {
         $("#cat").load("/src/cat.html"); 
     }
-    generateHarmonousColors();
+    generateHarmoniousColors();
 });

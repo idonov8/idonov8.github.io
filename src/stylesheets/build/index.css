@@ -1,6 +1,7 @@
 :root {
   --color-primary: rgb(73, 248, 122);
   --color-text: rgb(146, 10, 10);
+  --color-buttonText: #fff;
   --color-background: rgba(34, 119, 130, 0.364);
   --color-shadow: rgb(240, 3, 212);
   --color-border: var(--color-primary);
@@ -178,8 +179,7 @@ body .reach-out img {
   padding: 5px;
   margin: 10px 0;
   box-shadow: 1px 1px 0 var(--color-shadow);
-  color: var(--color-text);
-  text-shadow: -0.5px -0.5px 0 var(--color-shadow), 0.5px -0.5px 0 var(--color-shadow), -0.5px 0.5px 0 var(--color-shadow), 0.5px 0.5px 0 var(--color-shadow);
+  color: var(--color-buttonText);
   background-color: var(--color-primary);
   border: 1px solid;
   border-radius: 5px;
