@@ -5,9 +5,9 @@ function generateHarmonousColors() {
     // Create a harmonious color palette using analogous colors
     const colors = {
         primary: `hsl(${baseHue}, 80%, 65%)`,
-        text: `hsl(${(baseHue + 180) % 360}, 85%, 30%)`,    // Complementary color for text
+        text: `hsl(${(baseHue + 180) % 360}, 80%, 65%)`,    // Complementary color for text
         background: `hsla(${(baseHue + 30) % 360}, 60%, 30%, 0.1)`,
-        shadow: `hsl(${(baseHue + 150) % 360}, 80%, 45%)`,
+        shadow: `hsl(${(baseHue + 30) % 360}, 80%, 45%)`,
         border: 'white',
         hover: `hsla(${(baseHue + 200) % 360}, 80%, 35%, 0.8)`,
         divider: `hsl(${baseHue}, 20%, 80%)`
@@ -123,6 +123,7 @@ $( () => {
     let profilePicURL = `assets/profile${picIndex}.jpg`;
     $('.profile-pic').find('img').attr('src', profilePicURL);
     $('.profile-pic').on('mouseup', function(e) {
+        generateHarmonousColors();
         setTimeout(() => {
             let $pic = $(this).find("img");
             picIndex = (picIndex + 1) % NumOfProfilePics

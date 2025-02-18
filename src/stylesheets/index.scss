@@ -178,6 +178,10 @@ body {
 		margin: 10px 0;
 		box-shadow: 1px 1px 0 var(--color-shadow);
 		color: var(--color-text);
+  		text-shadow: -.5px -.5px 0 var(--color-shadow), 
+		.5px -.5px 0 var(--color-shadow), 
+		-.5px .5px 0 var(--color-shadow), 
+		.5px .5px 0 var(--color-shadow);
 		background-color: var(--color-primary);
 		border: 1px solid;
 		border-radius: 5px;
