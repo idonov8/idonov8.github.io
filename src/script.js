@@ -10,6 +10,8 @@ function generateHarmoniousColors() {
         hover: `hsl(${(baseHue + 200) % 360}, 80%, 45%)`, 
         divider: `hsl(${baseHue}, 10%, 70%)`
     };
+    // Make text color darker than primary by reducing lightness by 15%
+    colors.text = `hsl(${baseHue}, 80%, 20%)`; // 40% lightness instead of 55% from primary
 
     // Apply colors as CSS variables
     const root = document.documentElement;
