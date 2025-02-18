@@ -41,9 +41,9 @@ $( () => {
                 const relatedIcon = data.sections.find(
                     section => section.title === link.relatedSkill
                 ).icon;
-                $anchor.append(`<img src="assets/${relatedIcon}">`);
+                $anchor.append(`<img class="icon" src="assets/${relatedIcon}">`);
             } else if (link.icon) {
-                $anchor.append(`<img src="assets/${link.icon}">`);
+                $anchor.append(`<img class="icon" src="assets/${link.icon}">`);
             }
             $sectionDiv.append($anchor);
         }
@@ -51,7 +51,7 @@ $( () => {
             const $sectionDiv = $('<div>', { class: 'links-col' });
             const $header = $('<h1>');
             if (section.icon) {
-                $header.append(`<img src="assets/${section.icon}" />`);
+                $header.append(`<img class="icon" src="assets/${section.icon}" />`);
             }
             $header.append(section.title);
             $sectionDiv.append($header);

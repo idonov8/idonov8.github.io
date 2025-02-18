@@ -28,6 +28,11 @@
 	-webkit-transform: rotate(45deg);
 }
 
+.icon {
+	// TODO: this still doesn't work
+    fill: var(--color-text);
+}
+
 body {
     background-image: url("/assets/002-Watercolor-Paper.png");
     background-color: var(--color-background);

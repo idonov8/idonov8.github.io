@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-github" viewBox="0 0 24 24" fill="currentColor">
+        <image href="github-logo.svg" width="24" height="24" />
+    </symbol>
+    <symbol id="icon-gmail" viewBox="0 0 24 24" fill="currentColor">
+        <image href="gmail-logo.svg" width="24" height="24" />
+    </symbol>
+    <symbol id="icon-laptop" viewBox="0 0 24 24" fill="currentColor">
+        <image href="laptop-icon.svg"/>
+    </symbol>
+    <symbol id="icon-video" viewBox="0 0 24 24" fill="currentColor">
+        <image href="video-icon.svg" width="24" height="24" />
+    </symbol>
+    <symbol id="icon-wa" viewBox="0 0 24 24" fill="currentColor">
+        <image href="wa-logo.svg" width="24" height="24" />
+    </symbol>
+</svg>

@@ -1,13 +1,13 @@
 sections:
   - title: Developer
-    icon: "laptop-icon.png"
+    icon: "laptop-icon.svg"
     links:
       - url: "https://github.com/idonov8"
         title: "GitHub"
-        icon: "github-logo.png"
+        icon: "github-logo.svg"
       - url: "https://www.linkedin.com/in/ido-nov-83a216149/"
         title: "LinkedIn"
-        icon: "linkedin-logo.png"
+        icon: "linkedin-logo.svg"
       - url: "https://idonov8.github.io/assets/cv-2024.pdf"
         title: "CV"
       - url: "https://dagshub.com/blog/github-copilot-not-code/"
@@ -24,7 +24,7 @@ sections:
         title: "RasarBot (2020)"
 
   - title: Filmmaker
-    icon: "video-icon.png"
+    icon: "video-icon.svg"
     links:
       - title: "Professional"
       - url: "https://www.youtube.com/playlist?list=PLlW1sxGDs8lWMqt3qy6HJDuAvXDnxleW8"
@@ -43,7 +43,7 @@ sections:
         title: "Europe Yeah (2020)"
 
   - title: Photographer
-    icon: "camera-icon.png"
+    icon: "camera-icon.svg"
     links:
       - url: "https://www.instagram.com/idonov/"
         title: "Instagram"
