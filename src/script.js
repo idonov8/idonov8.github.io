@@ -3,7 +3,7 @@ function generateHarmoniousColors() {
 
     // Define main colors
     const colors = {
-        primary: `hsl(${baseHue}, 80%, 55%)`, // Button background
+        primary: `hsl(${baseHue}, 80%, 45%)`, // Button background
         background: `hsl(${(baseHue + 30) % 360}, 50%, 90%)`, // Page background
         shadow: `hsl(${(baseHue + 30) % 360}, 60%, 40%)`, 
         border: `hsl(${baseHue}, 20%, 50%)`, 

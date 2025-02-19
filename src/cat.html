@@ -335,7 +335,7 @@
         }
 
         .food {
-            position: absolute;
+            position: fixed;
             width: 5px;
             height: 5px;
             background: var(--color-text);
@@ -553,12 +553,15 @@
             function createFood(x, y) {
                 const food = document.createElement('div');
                 food.classList.add('food');
-                food.style.left = `${x - 5}px`; 
-                food.style.top = `${y - 5}px`;
-                document.body.appendChild(food);
+                // Calculate position relative to viewport
+                const viewportX = x;
+                const viewportY = y;
+                food.style.left = `${viewportX - 5}px`; 
+                food.style.top = `${viewportY - 5}px`;
+                wrapper.appendChild(food);
 
-                const foodObj = { el: food, x: x, y: y, falling: true };
-				
+                const foodObj = { el: food, x: viewportX, y: viewportY, falling: true };
+                
                 foodItems.push(foodObj);
                 catBusy = true;
                 legs.forEach(leg => leg.classList.add('walk')); 

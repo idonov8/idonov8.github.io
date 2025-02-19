@@ -94,6 +94,9 @@ body .header img:focus {
     margin: -50px 0;
   }
 }
+body #reach-out-scroll-placeholder {
+  height: 108px;
+}
 body .reach-out {
   display: flex;
   align-items: center;
@@ -132,7 +135,7 @@ body .reach-out img {
 .vertical-divider {
   display: inline-block;
   width: 1px;
-  height: 60vh;
+  height: 65vh;
   background-color: var(--color-divider);
 }
 @media (max-width: 768px) {

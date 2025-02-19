@@ -99,6 +99,9 @@ body {
 			gap: 40px;
 		}
 	}
+	#reach-out-scroll-placeholder{
+		height: 108px;
+	}
 	.reach-out {
 		display: flex;
 		align-items: center;
@@ -137,7 +140,7 @@ body {
 .vertical-divider {
 	display: inline-block;
 	width: 1px;
-	height: 60vh;
+	height: 65vh;
 	background-color: var(--color-divider); 
 	@media (max-width: 768px) {
 		width: 90%;
