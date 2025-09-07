@@ -1,53 +1,60 @@
 sections:
-  - title: Developer
-    icon: "laptop-icon.svg"
-    links:
-      - url: "https://github.com/idonov8"
-        title: "GitHub"
-        icon: "github-logo.svg"
-      - url: "https://www.linkedin.com/in/ido-nov-83a216149/"
-        title: "LinkedIn"
-        icon: "linkedin-logo.svg"
+  - title: Software Engineer
+    icon: "assets/icons/SVG/solid/code-solid.svg"
+    type: "developer"
+    projects:
       - url: "https://idonov8.github.io/assets/cv-2024.pdf"
         title: "CV"
+        description: "My current resume"
+      - url: "https://ivory-kookaburra-2de.notion.site/ebd/13e460dbb2a180c9909de47ee507db9e"
+        title: "This website (ongoing)"
+        description: "My personal website built with vanilla HTML/CSS/JS"
+      - url: "https://ivory-kookaburra-2de.notion.site/ebd/45c476e150a24d1684a352a47439ccf2"
+        title: "Screen Time Killer (2024)"
+        description: "30 day project. App to help reduce screen time"
+      - url: "https://ivory-kookaburra-2de.notion.site/ebd/14f460dbb2a180b0bccbd32625b18324"
+        title: "HospiTrack (2020)"
+        description: "System for indoor tracking of hospital staff and reduction of quarantines during COVID-19."
+        relatedSkill: Filmmaker
+      - url: "https://ivory-kookaburra-2de.notion.site/ebd/14f460dbb2a180a89e5bcb77ba4243c5"
+        title: "RasarBot (2020)"
+        description: "A bot that helps find the Rasar in an army base."
       - url: "https://dagshub.com/blog/github-copilot-not-code/"
         title: "How I broke GitHub Copilot (blog - 2022)"
-    projects:
-      - url: "https://ivory-kookaburra-2de.notion.site/Personal-Website-13e460dbb2a180c9909de47ee507db9e?pvs=4"
-        title: "This website (ongoing)"
-      - url: "https://ivory-kookaburra-2de.notion.site/Screen-Time-Killer-45c476e150a24d1684a352a47439ccf2?pvs=4"
-        title: "Screen Time Killer (2024)"
-      - url: "https://ivory-kookaburra-2de.notion.site/HospiTrack-2020-14f460dbb2a180b0bccbd32625b18324?pvs=4"
-        title: "HospiTrack (2020)"
-        relatedSkill: Filmmaker
-      - url: "https://ivory-kookaburra-2de.notion.site/RasarBot-2020-14f460dbb2a180a89e5bcb77ba4243c5?pvs=4"
-        title: "RasarBot (2020)"
+        description: "Blog about how not to use GitHub Copilot. Got to the front page of Hacker News."
 
   - title: Filmmaker
-    icon: "video-icon.svg"
-    links:
-      - title: "Professional"
+    icon: "assets/video-icon.svg"
+    type: "filmmaker"
+    personalVideos:
+      - url: "https://youtu.be/qzPzlahrzTo?si=fFtGxLQExwc8uj6x"
+        title: "Brain Fog (2025)"
+        embedId: "qzPzlahrzTo"
+      - url: "https://youtu.be/A2M7MZpSt8s?si=KW9usTY-IDHnXKnI"
+        title: "Walking (2022)"
+        embedId: "A2M7MZpSt8s"
+      - url: "https://youtu.be/m_U3CAksRXA?si=uEtQGDL5gCvDYnjT"
+        title: "The Procrastination Cycle (2022)"
+        embedId: "m_U3CAksRXA"
+      - url: "https://youtu.be/fuBaZ95Fi18?si=135aN-_m92svFONv"
+        title: "Europe Yeah (2020)"
+        embedId: "fuBaZ95Fi18"
+    professionalProjects:
       - url: "https://www.youtube.com/playlist?list=PLlW1sxGDs8lWMqt3qy6HJDuAvXDnxleW8"
         title: "Short form content"
       - url: "https://youtube.com/playlist?list=PLlW1sxGDs8lUEXobbvBBCYFU6LziS1VI-&si=3tAMS95ZsEMGk3ZI"
-        title: "Musicians"
+        title: "Videos for musicians"
       - url: "https://youtube.com/playlist?list=PLlW1sxGDs8lUzNCSd-GHL_y8m3hkPhaJU&si=aOZSA0Qg84KRDAa_"
         title: "Technical videos"
         relatedSkill: Developer
-      - title: "Personal"
-      - url: "https://youtu.be/qzPzlahrzTo?si=fFtGxLQExwc8uj6x"
-        title: "Brain Fog (2025)"
-      - url: "https://youtu.be/A2M7MZpSt8s?si=KW9usTY-IDHnXKnI"
-        title: "Walking (2022)"
-      - url: "https://youtu.be/m_U3CAksRXA?si=uEtQGDL5gCvDYnjT"
-        title: "The Procrastination Cycle (2022)"
-      - url: "https://youtu.be/fuBaZ95Fi18?si=135aN-_m92svFONv"
-        title: "Europe Yeah (2020)"
 
   - title: Photographer
-    icon: "camera-icon.svg"
+    icon: "assets/camera-icon.svg"
+    type: "photographer"
     links:
       - url: "https://www.instagram.com/idonov/"
         title: "Instagram"
+        description: "My photography work and visual stories"
       - url: "https://docs.google.com/presentation/d/1IRKbbRvlzbb0t4snB6wP6bau3jTZoYHAB1SqKL9LIoA/edit?usp=sharing"
         title: "Portfolio for art school (Hebrew)"
+        description: "Selected works from my photography studies"

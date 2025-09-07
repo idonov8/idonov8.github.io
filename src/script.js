@@ -23,85 +23,108 @@ function generateHarmoniousColors() {
 $( () => {
     $.get('links.yaml', function(yamlText) {
         const data = jsyaml.load(yamlText);
-        const $linksSection = $('#links-section');
+        const $mainContent = $('#main-content');
 
-        function addLink($sectionDiv, link) {
-            if (link.url == null) {
-                const $anchor = $('<h2>', {
-                    text: link.title
-                });
-                $sectionDiv.append($anchor);
-                return;
-            }
-            const $anchor = $('<a>', {
-                href: link.url,
-                target: '_blank',
-                text: link.title
-            });
-            if (link.relatedSkill) {
-                const relatedIcon = data.sections.find(
-                    section => section.title === link.relatedSkill
-                ).icon;
-                $anchor.append(`<img class="icon" src="assets/${relatedIcon}">`);
-            } else if (link.icon) {
-                $anchor.append(`<img class="icon" src="assets/${link.icon}">`);
-            }
-            $sectionDiv.append($anchor);
-        }
-        data.sections.forEach((section, index) => {
-            const $sectionDiv = $('<div>', { class: 'links-col' });
-            const $header = $('<h1>');
+        // Create sections based on the new structure
+        data.sections.forEach(section => {
+            const $section = $('<div>', { class: 'section' });
+            
+            // Section header
+            const $header = $('<div>', { class: 'section-header' });
+            const $title = $('<h1>');
             if (section.icon) {
-                $header.append(`<img class="icon" src="assets/${section.icon}" />`);
+                $title.append(`<img src="${section.icon}" alt="${section.title}" />`);
             }
-            $header.append(section.title);
-            $sectionDiv.append($header);
+            $title.append(section.title);
+            $header.append($title);
+            $section.append($header);
 
-            section.links.forEach(link => addLink($sectionDiv, link));
+            // Handle different section types
+            if (section.type === 'developer') {
+                // All projects in one grid
+                if (section.projects && section.projects.length > 0) {
+                    const $grid = $('<div>', { class: 'projects-grid' });
+                    section.projects.forEach(project => {
+                        const $card = $('<div>', { 
+                            class: 'project-card',
+                            'data-url': project.url
+                        });
+                        $card.append(`<h3>${project.title}</h3>`);
+                        if (project.description) {
+                            $card.append(`<p>${project.description}</p>`);
+                        }
+                        $grid.append($card);
+                    });
+                    $section.append($grid);
+                }
+            } else if (section.type === 'filmmaker') {
+                // Personal videos with embeds
+                if (section.personalVideos && section.personalVideos.length > 0) {
+                    const $videoGrid = $('<div>', { class: 'video-grid' });
+                    section.personalVideos.forEach(video => {
+                        const $videoItem = $('<div>', { class: 'video-item' });
+                        $videoItem.append(`<div class="video-title">${video.title}</div>`);
+                        const $embed = $('<div>', { class: 'video-embed' });
+                        $embed.append(`<iframe src="https://www.youtube.com/embed/${video.embedId}" allowfullscreen></iframe>`);
+                        $videoItem.append($embed);
+                        $videoGrid.append($videoItem);
+                    });
+                    $section.append($videoGrid);
+                }
 
-            // Add projects dropdown
-            if (section.projects && section.projects.length > 0) {
-                const $dropdown = $('<div>', { class: 'projects' });
-                const $dropdownButton = $('<div>', { class: 'projects-button', text: 'Projects', tabIndex: 0 });
-                $dropdownButton.append(`<i class="arrow down"></i>`)
-                const $dropdownContent = $('<div>', { class: 'projects-content' });
-                
-                section.projects.forEach(project => addLink($dropdownContent, project));
-
-                $dropdown.append($dropdownButton);
-                $dropdown.append($dropdownContent);
-                $sectionDiv.append($dropdown);
+                // Professional projects
+                if (section.professionalProjects && section.professionalProjects.length > 0) {
+                    const $professional = $('<div>', { class: 'professional-projects' });
+                    $professional.append('<h3>Professionally, I also made:</h3>');
+                    const $links = $('<div>', { class: 'professional-links' });
+                    section.professionalProjects.forEach(project => {
+                        const $link = $('<a>', {
+                            href: project.url,
+                            target: '_blank',
+                            text: project.title
+                        });
+                        $links.append($link);
+                    });
+                    $professional.append($links);
+                    $section.append($professional);
+                }
+            } else if (section.type === 'photographer') {
+                // Photography links as project cards
+                if (section.links && section.links.length > 0) {
+                    const $grid = $('<div>', { class: 'projects-grid' });
+                    section.links.forEach(link => {
+                        const $card = $('<div>', { 
+                            class: 'project-card photography-card',
+                            'data-url': link.url
+                        });
+                        $card.append(`<h3>${link.title}</h3>`);
+                        if (link.description) {
+                            $card.append(`<p>${link.description}</p>`);
+                        }
+                        $grid.append($card);
+                    });
+                    $section.append($grid);
+                }
             }
-            $linksSection.append($sectionDiv);
 
-            if (index < data.sections.length - 1) {
-                const $divider = $('<span>', { class: 'vertical-divider' });
-                $linksSection.append($divider);
-            }
+            $mainContent.append($section);
         });
     }).fail(function(error) {
         console.error(error);
     }).then(function() {
-        $('a').click(function(e) {
+        // Handle project card clicks for iframe modal
+        $('.project-card').on('click', function() {
+            const url = $(this).data('url');
+            openIframeModal(url);
+        });
+
+        // Handle regular link clicks (with delay for sound effect)
+        $('a:not(.contact-btn)').click(function(e) {
             e.preventDefault();
             var linkUrl = $(this).attr('href');
             setTimeout(function(url) {
-                window.location = url;
-                window.target = "_blank";
-                $('a').trigger('blur');
+                window.open(url, '_blank');
             }, 500, linkUrl);
-        });
-
-        // Projects dropdown
-        $('.projects-button').on('click', function() {
-            $(this).toggleClass('clicked')
-            $(this).find('.arrow').toggleClass('down up');
-            mouseDown.play();
-            $(this).parent().find('.projects-content').toggle();
-            if (!$(this).hasClass('clicked')) {
-                $(this).blur();
-                mouseUp.play();
-            }
         });
 
         // Add click sound
@@ -110,7 +133,7 @@ $( () => {
         mouseDown.src = "/assets/mouse-down.mov";
         mouseUp.src = "/assets/mouse-up.mov";
 
-        const $clickable = $('a, .profile-pic');
+        const $clickable = $('a, .profile-pic, .project-card');
         $clickable.on('mousedown', function() {
             mouseDown.play();
         })
@@ -139,4 +162,57 @@ $( () => {
         $("#cat").load("/src/cat.html"); 
     }
     generateHarmoniousColors();
+});
+
+// Iframe modal functions
+function openIframeModal(url) {
+    const $modal = $('#iframe-modal');
+    const $iframe = $('#project-iframe');
+    
+    $iframe.attr('src', url);
+    $modal.show();
+    
+    // Prevent body scroll when modal is open
+    $('body').css('overflow', 'hidden');
+}
+
+function closeIframeModal() {
+    const $modal = $('#iframe-modal');
+    const $iframe = $('#project-iframe');
+    
+    $modal.hide();
+    $iframe.attr('src', '');
+    
+    // Restore body scroll
+    $('body').css('overflow', 'auto');
+}
+
+function openInNewTab(url) {
+    window.open(url, '_blank');
+    closeIframeModal();
+}
+
+// Modal event handlers
+$(document).ready(function() {
+    $('#close-modal').on('click', closeIframeModal);
+    $('#fullscreen-btn').on('click', function() {
+        const url = $('#project-iframe').attr('src');
+        if (url) {
+            openInNewTab(url);
+        }
+    });
+    
+    // Close modal when clicking outside
+    $('#iframe-modal').on('click', function(e) {
+        if (e.target === this) {
+            closeIframeModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#iframe-modal').is(':visible')) {
+            closeIframeModal();
+        }
+    });
 });

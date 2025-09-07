@@ -3,6 +3,10 @@
 <html lang="en">
 <head>
     <style>
+        :root {
+            --ground-height: 10px;
+        }
+
         .cat_wrapper * {
             box-sizing: border-box;
         }
@@ -21,7 +25,7 @@
 
         .wrapper {
             position: absolute;
-            height: calc(100vh - 100px);
+            height: 100vh;
             width: 100%;
             top: 0;
         }
@@ -30,8 +34,8 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 110px;
-            background-color: #ccc;
+            height: var(--ground-height);
+            background-color: var(--color-text);
         }
 
         .cat_wrapper {
@@ -410,7 +414,7 @@
             const cat = document.querySelector('.cat');
             const head = document.querySelector('.cat_head');
             const legs = document.querySelectorAll('.leg');
-            const groundLevel = window.innerHeight - 110;
+            const groundLevel = window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--ground-height'));
 
             const pos = {
                 x: null,
