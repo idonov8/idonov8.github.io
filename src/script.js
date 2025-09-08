@@ -33,7 +33,15 @@ $( () => {
             const $header = $('<div>', { class: 'section-header' });
             const $title = $('<h1>');
             if (section.icon) {
-                $title.append(`<img src="${section.icon}" alt="${section.title}" />`);
+                // Check if it's a custom icon (not in the icons/SVG directory)
+                if (section.icon.includes('assets/icons/SVG/')) {
+                    // Use <use> for standard icons
+                    const iconName = section.icon.split('/').pop().replace('.svg', '');
+                    $title.append(`<svg class="icon"><use href="${section.icon}#${iconName}"></use></svg>`);
+                } else {
+                    // For custom icons, use img tag for now
+                    $title.append(`<img src="${section.icon}" alt="${section.title}" class="icon" />`);
+                }
             }
             $title.append(section.title);
             $header.append($title);

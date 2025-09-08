@@ -34,8 +34,11 @@
 }
 
 .icon {
-	// TODO: this still doesn't work
     fill: var(--color-text);
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 body {
@@ -96,8 +99,15 @@ body {
 					img {
 						width: 24px;
 						height: 24px;
-						filter: brightness(0) invert(1); // Make icons white
+						filter: brightness(0) invert(1); // Keep contact button icons white
 						display: block; // Remove any inline spacing
+					}
+					
+					svg.icon {
+						width: 24px;
+						height: 24px;
+						fill: var(--color-buttonText);
+						display: block;
 					}
 					
 					&:hover {
@@ -150,6 +160,14 @@ body {
 			gap: 40px;
 		}
 	}
+	
+	.desc p svg.icon {
+		fill: var(--color-text);
+		width: 1em;
+		height: 1em;
+		vertical-align: middle;
+	}
+	
 	#reach-out-scroll-placeholder{
 		height: 108px;
 	}
@@ -222,6 +240,18 @@ body {
 			img {
 				height: 40px;
 				width: 40px;
+			}
+			
+			img.icon {
+				height: 40px;
+				width: 40px;
+				filter: none; // Remove any filters for custom icons
+			}
+			
+			svg.icon {
+				height: 40px;
+				width: 40px;
+				fill: var(--color-text) !important;
 			}
 		}
 		
