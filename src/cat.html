@@ -415,6 +415,8 @@
             const head = document.querySelector('.cat_head');
             const legs = document.querySelectorAll('.leg');
             const groundLevel = window.innerHeight - parseInt(getComputedStyle(document.documentElement).getPropertyValue('--ground-height'));
+            const isMobile = (window.matchMedia && window.matchMedia('(max-width: 768px)').matches);
+            let initialWalkUntil = null;
 
             const pos = {
                 x: null,
@@ -427,6 +429,45 @@
             // Food array and state
             let foodItems = []; // {el, x, y, falling: boolean}
             let catBusy = false;
+
+            // Patrol (mobile) state
+            let patrolDirection = 1; // 1 = right, -1 = left
+            let actionCooldown = false;
+            let walkMicroIntervalId = null;
+
+            function setHeadPose(pose) {
+                // pose: 'up' | 'down' | 'neutral' | 'tiltRandom'
+                if (pose === 'up') {
+                    head.style.top = '-45px';
+                    head.style.transform = 'rotate(-3deg)';
+                } else if (pose === 'down') {
+                    head.style.top = '-10px';
+                    head.style.transform = 'rotate(6deg)';
+                } else if (pose === 'tiltRandom') {
+                    const angles = [-4, -2, 0, 2, 4];
+                    const tops = ['-35px', '-30px', '-25px'];
+                    head.style.transform = `rotate(${angles[Math.floor(Math.random()*angles.length)]}deg)`;
+                    head.style.top = tops[Math.floor(Math.random()*tops.length)];
+                } else {
+                    head.style.top = '-30px';
+                    head.style.transform = '';
+                }
+            }
+
+            function startWalkMicroMotion() {
+                stopWalkMicroMotion();
+                walkMicroIntervalId = setInterval(() => {
+                    if (catWrapper.classList.contains('sit')) return;
+                    setHeadPose('tiltRandom');
+                }, 1200 + Math.random()*600);
+            }
+
+            function stopWalkMicroMotion() {
+                if (walkMicroIntervalId) {
+                    clearInterval(walkMicroIntervalId);
+                    walkMicroIntervalId = null;
+                }
+            }
 
             const walk = () => {
                 cat.classList.remove('first_pose');
@@ -592,6 +633,129 @@
                 createFood(e.clientX, e.clientY);
             }
 
+            function hasArrivedAtTarget() {
+                if (!pos.x) return false;
+                const expectedLeft = cat.classList.contains('face_right') ? (pos.x - 90) : (pos.x + 10);
+                return Math.abs(cat.offsetLeft - expectedLeft) < 3;
+            }
+
+            function setPatrolTarget() {
+                // Keep the head slightly down (near ground)
+                pos.y = wrapper.clientHeight - 50;
+                if (patrolDirection === 1) {
+                    pos.x = window.innerWidth - 10;
+                } else {
+                    pos.x = 10;
+                }
+                walk();
+                catWrapper.classList.remove('sit');
+                startWalkMicroMotion();
+            }
+
+            function maybeDoRandomAction() {
+                if (actionCooldown || catBusy || catWrapper.classList.contains('jump')) return;
+                const r = Math.random();
+                if (r < 0.6) {
+                    // Sit for a short while
+                    actionCooldown = true;
+                    legs.forEach(leg => leg.classList.remove('walk'));
+                    catWrapper.classList.add('sit');
+                    setTimeout(() => {
+                        catWrapper.classList.remove('sit');
+                        setPatrolTarget();
+                        actionCooldown = false;
+                    }, 2000 + Math.random()*1500);
+                    return true;
+                } else if (r < 0.65) {
+                    // Jump once
+                    actionCooldown = true;
+                    pos.y = wrapper.clientHeight - 300;
+                    jump();
+                    setTimeout(() => {
+                        pos.y = wrapper.clientHeight - 50;
+                        actionCooldown = false;
+                    }, 1200);
+                    return true;
+                }
+                return false;
+            }
+
+            function scheduleSitMicroMoves(duration) {
+                const events = 2 + Math.floor(Math.random()*2);
+                for (let i = 0; i < events; i++) {
+                    const t = Math.floor(Math.random() * Math.max(500, duration - 500));
+                    setTimeout(() => {
+                        if (!catWrapper.classList.contains('sit')) return;
+                        // randomly look down/up/neutral
+                        const r = Math.random();
+                        if (r < 0.5) setHeadPose('down');
+                        else if (r < 0.7) setHeadPose('up');
+                        else setHeadPose('neutral');
+                    }, t);
+                }
+            }
+
+            function startSitCycle(minMs = 4000, maxMs = 8000) {
+                actionCooldown = true;
+                legs.forEach(leg => leg.classList.remove('walk'));
+                catWrapper.classList.add('sit');
+                pos.x = null;
+                const duration = Math.floor(minMs + Math.random() * (maxMs - minMs));
+                stopWalkMicroMotion();
+                scheduleSitMicroMoves(duration);
+                setTimeout(() => {
+                    catWrapper.classList.remove('sit');
+                    actionCooldown = false;
+                    // Before walking, look up briefly
+                    const goWalk = Math.random() < 0.5; // more likely to keep sitting overall
+                    if (goWalk) {
+                        if (Math.random() < 0.5) { patrolDirection *= -1; }
+                        setHeadPose('up');
+                        setTimeout(() => {
+                            setPatrolTarget();
+                            // Maybe jump only after walking a bit
+                            if (Math.random() < 0.25) {
+                                const jumpDelay = 1200 + Math.random()*1800;
+                                setTimeout(() => {
+                                    if (catBusy || catWrapper.classList.contains('sit')) return;
+                                    setHeadPose('up');
+                                    pos.y = wrapper.clientHeight - 300;
+                                    jump();
+                                    setTimeout(() => { pos.y = wrapper.clientHeight - 50; }, 1200);
+                                }, jumpDelay);
+                            }
+                        }, 350);
+                    } else {
+                        // Look down softly and continue sitting
+                        setHeadPose('down');
+                        startSitCycle(minMs, maxMs);
+                    }
+                }, duration);
+            }
+
+            function startMobilePatrol() {
+                // Initialize near left edge
+                patrolDirection = 1;
+                // Walk for the first 5 seconds
+                initialWalkUntil = Date.now() + 5000;
+                setPatrolTarget();
+                // Drive autonomous behavior
+                setInterval(() => {
+                    if (catBusy || actionCooldown) return;
+                    // On edge arrival, look down before sitting
+                    if (hasArrivedAtTarget()) {
+                        if (initialWalkUntil && Date.now() < initialWalkUntil) {
+                            // keep walking during initial phase
+                            patrolDirection = patrolDirection * -1;
+                            setPatrolTarget();
+                            return;
+                        }
+                        setHeadPose('down');
+                        setTimeout(() => startSitCycle(), 250);
+                    }
+                }, 300);
+            }
+
             function moveCatTowardsFood() {
                 const target = getNearestFood();
                 if (!target) {
@@ -659,9 +823,14 @@
                 }
             }, 10000);
 
-            document.addEventListener('mousemove', handleMouseMotion);
-            document.addEventListener('touchmove', handleTouchMotion);
-            document.addEventListener('click', handleClick);
+            if (!isMobile) {
+                document.addEventListener('mousemove', handleMouseMotion);
+                document.addEventListener('touchmove', handleTouchMotion);
+                document.addEventListener('click', handleClick);
+            } else {
+                // Start autonomous patrol mode on mobile
+                startMobilePatrol();
+            }
         }
 
         window.addEventListener('DOMContentLoaded', init);
