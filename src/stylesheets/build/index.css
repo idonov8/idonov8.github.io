@@ -34,6 +34,10 @@
 
 .icon {
   fill: var(--color-text);
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 body {
@@ -94,6 +98,12 @@ body .header .desc .contact-buttons .contact-btn img {
   filter: brightness(0) invert(1);
   display: block;
 }
+body .header .desc .contact-buttons .contact-btn svg.icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-buttonText);
+  display: block;
+}
 body .header .desc .contact-buttons .contact-btn:hover {
   background-color: var(--color-hover);
   box-shadow: 4px 4px 0 var(--color-shadow);
@@ -139,6 +149,12 @@ body .header .profile-pic img:focus {
     width: 120px;
     margin: 0;
   }
+}
+body .desc p svg.icon {
+  fill: var(--color-text);
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
 }
 body #reach-out-scroll-placeholder {
   height: 108px;
@@ -209,6 +225,16 @@ body .reach-out img {
 .main-content .section .section-header img {
   height: 40px;
   width: 40px;
+}
+.main-content .section .section-header img.icon {
+  height: 40px;
+  width: 40px;
+  filter: none;
+}
+.main-content .section .section-header svg.icon {
+  height: 40px;
+  width: 40px;
+  fill: var(--color-text) !important;
 }
 .main-content .section .projects-grid {
   display: flex;
