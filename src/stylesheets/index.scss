@@ -309,6 +309,11 @@ body {
 			gap: 30px;
 			margin-bottom: 30px;
 			
+			@media (max-width: 768px) {
+				grid-template-columns: 1fr;
+				gap: 20px;
+			}
+			
 			.video-item {
 				.video-title {
 					font-size: 1.1rem;

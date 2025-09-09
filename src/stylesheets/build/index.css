@@ -283,6 +283,12 @@ body .reach-out img {
   gap: 30px;
   margin-bottom: 30px;
 }
+@media (max-width: 768px) {
+  .main-content .section .video-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
 .main-content .section .video-grid .video-item .video-title {
   font-size: 1.1rem;
   margin-bottom: 15px;
