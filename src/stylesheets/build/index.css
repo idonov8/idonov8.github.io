@@ -430,10 +430,5 @@ body .reach-out img {
 #cat .ground {
   z-index: -1;
 }
-@media (max-width: 768px) {
-  #cat {
-    display: none;
-  }
-}
 
 /*# sourceMappingURL=index.css.map */
