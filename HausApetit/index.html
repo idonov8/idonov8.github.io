@@ -221,14 +221,35 @@
 							</a>
 						</p>
 						<br>
-						<h3><font face="Comic Sans MS, Arial" color="#ff0000">LOCATION:</font></h3>
-						<p><font size="+1" color="#ff00ff"><b>~ Haus Apetit ~</b></font></p>
-						<p>Wartenbergstraße 22 - First floor</p>
-						<p> <b>RSVP:</b> Join our <a href="https://t.me/+wWD8DZgSXABiY2E0">Telegram Group</a> or text us privately.</p>
-						<!--
-						<font>Ask a friend for the exact address or </font>
-						<a href="https://t.me/joinchat/example" target="_blank"><font color="#ff00ff"><b>Join our Telegram Group</b></font></a>
-						-->
+						<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+							<div class="location-rsvp-sidebyside" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+								<div style="width: 100%;">
+									<h3><font face="Comic Sans MS, Arial" color="#ff0000">LOCATION:</font></h3>
+									<p><font size="+1" color="#ff00ff"><b>~ Haus Apetit ~</b></font></p>
+									<p>Wartenbergstraße 22 - First floor</p>
+								</div>
+								<div style="width: 100%;">
+									<h3><font face="Comic Sans MS, Arial" color="#ff0000">RSVP:</font></h3>
+									<p>Join our <a href="https://t.me/+wWD8DZgSXABiY2E0">Telegram Group</a> <br> or text us privately</p>
+								</div>
+							</div>
+						</div>
+						<style>
+							@media (min-width: 768px) {
+								.location-rsvp-sidebyside {
+									flex-direction: row !important;
+									justify-content: center !important;
+									align-items: flex-start !important;
+									gap: 40px;
+									width: 90%;
+									margin: 0 auto;
+								}
+								.location-rsvp-sidebyside > div {
+									width: 50%;
+									max-width: 350px;
+								}
+							}
+						</style>
 					</center>
 				</td>
 			</tr>
