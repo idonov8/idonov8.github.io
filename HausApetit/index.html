@@ -3,252 +3,156 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HausApetit</title>
+    <title>Haus Apetit</title>
     <link rel="icon" type="image/png" href="/assets/Haus Apetit/hummus-favicon.png">
     <link rel="shortcut icon" type="image/png" href="/assets/Haus Apetit/hummus-favicon.png">
     
     <!-- Open Graph meta tags for social media previews -->
-    <meta property="og:title" content="This is an invitation! (click me)">
-    <meta property="og:description" content="Join us for Hummus & Jam at Haus Apetit! October 18 at 17:00. Bring instruments and swag.">
-    <meta property="og:image" content="https://idonov.com/assets/Haus%20Apetit/hummus-preview.png">
+    <meta property="og:title" content="Haus Apetit - This Saturday">
+    <meta property="og:description" content="Join us for events at Haus Apetit! This Saturday and more to come.">
+    <meta property="og:image" content="https://idonov.com/assets/Haus%20Apetit/sounds-visuals-2025-10-25.jpg">
     <meta property="og:url" content="https://idonov.com/HausApetit">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="HausApetit">
+    <meta property="og:site_name" content="Haus Apetit">
 
     <!-- Additional meta tags for better previews -->
-    <meta name="description" content="Join us for Hummus & Jam at Haus Apetit! October 18, 2025 at 17:00. Bring instruments and swag.">
-    <meta name="keywords" content="hummus, jam, music, event, Berlin, invitation, Haus Apetit">
+    <meta name="description" content="Haus Apetit - This Saturday and more events. Join our community for food, music, and fun!">
+    <meta name="keywords" content="Haus Apetit, events, Berlin, community, food, music">
     <style>
     body {
-      background-color: #f5ead6;
-      background-image: 
-        radial-gradient(circle at 10px 10px, #d4b896 8px, transparent 8px),
-        radial-gradient(circle at 30px 30px, #c4a77d 6px, transparent 6px),
-        radial-gradient(circle at 25px 15px, #e0d0b0 5px, transparent 5px);
-      background-size: 40px 40px;
-      background-repeat: repeat;
-      background-position: top center;
-      max-width: 100vw;
-      position: relative;
-      animation: chickpeaMove 10s linear infinite;
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
     }
     
-    @keyframes chickpeaMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 40px 40px; }
+    a {
+      color: #0645AD;
+      text-decoration: none;
     }
     
-    body::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1;
-      background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg1.picmix.com%2Foutput%2Fstamp%2Fnormal%2F1%2F3%2F1%2F1%2F2621131_adae0.gif&f=1&nofb=1&ipt=f0e501ad6d63a6d8e677bbe302662eb29c1d0bb06373649317bae68768e59abf');
-      background-repeat: repeat;
-      background-size: 512px 512px;
-      background-position: 0 0;
+    a:visited {
+      color: #0B0080;
     }
     
-    /* Responsive container */
+    a:hover {
+      text-decoration: underline;
+    }
+    
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 20px;
     }
     
-    /* Mobile-first responsive design */
+    .main-content {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      margin: 30px 0;
+    }
+    
+    .poster-section {
+      flex: 1;
+    }
+    
+    .info-section {
+      flex: 1;
+    }
+    
+    .poster {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid black;
+    }
+    
+    .host-info {
+      margin: 20px 0;
+    }
+    
+    .host-info img {
+      width: 120px;
+      height: 120px;
+      border: 1px solid black;
+      object-fit: cover;
+    }
+    
+    .address-info {
+      margin: 20px 0;
+    }
+    
+    .telegram-info {
+      margin: 20px 0;
+    }
+    
+    .past-events {
+      margin: 40px 0;
+    }
+    
+    .past-events ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .past-events li {
+      margin: 10px 0;
+    }
+    
     @media (max-width: 768px) {
-      body {
-        font-size: 14px;
-        padding: 0 10px;
+      .main-content {
+        flex-direction: column;
+        gap: 20px;
       }
       
-      .container {
-        padding: 0 10px;
-      }
-      
-      /* Marquee adjustments */
-      .marquee span {
-        font-size: 1.2em !important;
-      }
-      
-      /* Main heading */
-      h1 {
-        font-size: 2.8em !important;
-        letter-spacing: 1px !important;
-        margin: 0.3em 0 !important;
-      }
-      
-      /* Tables responsive */
-      table {
-        width: 100% !important;
-        margin: 10px 0 !important;
-      }
-      
-      /* Event details table */
-      .event-details {
-        width: 95% !important;
-      }
-      
-      /* Hosted by section */
-      .hosted-by-table {
-        display: block;
-        width: 95% !important;
-      }
-      
-      .hosted-by-table tr {
-        display: block;
-        width: 100%;
-      }
-      
-      .hosted-by-table td {
-        display: block;
-        width: 100% !important;
-        margin-bottom: 20px;
-        text-align: center;
-        box-sizing: border-box;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      body {
-        padding: 0 5px;
-      }
-      
-      .marquee span {
-        font-size: 1em !important;
-      }
-      
-      h1 {
-        font-size: 2.0em !important;
-      }
-      
-      .event-details {
-        width: 98% !important;
-      }
-      
-      .hosted-by-table {
-        width: 98% !important;
+      .poster-section,
+      .info-section {
+        flex: none;
       }
     }
   </style>
 </head>
-<body bgcolor="#f5ead6" text="#4a3b28" link="#8b6f47" vlink="#6b5639" alink="#9c8659">
-	<marquee behavior="alternate" scrollamount="6" style="position: relative; z-index: 2;">
-		<span style="font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif; font-size: 1.7em; color: #d4691a; font-weight: bold; text-shadow: 2px 2px 0 #fff, 4px 4px 0 #7a9b5f;">
-			HAUS APETIT PRESENTS • HUMMUS & JAM!!
-		</span>
-	</marquee>
-	<hr color="#8b6f47" size="5" style="position: relative; z-index: 2;">
-	<div class="container" style="position: relative; z-index: 2;">
-	<center>
-		<h1 style="
-			font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;
-			font-size: 2.5em;
-			color: #c47d3a;
-			text-shadow: 4px 4px 0 #7a9b5f, 8px 8px 0 #fff;
-			margin: 0.5em 0;
-			letter-spacing: 2px;
-		">
-			HUMMUS & JAM
-		</h1>
+<body>
+	<div class="container">
+		<center>
+			<h1 style="font-family: 'Comic Sans MS', cursive; font-size: 3em; margin: 20px 0;">HAUS APETIT</h1>
+			<h2 style="font-family: 'Comic Sans MS', cursive; font-size: 1.5em; margin: 10px 0;">This Saturday</h2>
+		</center>
 		
-		<table border="0" cellpadding="15" cellspacing="0" width="90%" class="event-details">
-			<tr>
-				<td bgcolor="#ffffff" style="border: 3px solid #8b6f47;">
-					<center>
-						<h2><font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#d4691a">EVENT DETAILS:</font></h2>
-						<p><font size="+1"><b>What?:</b> Eating hummus & playing music</font></p>
-						<p><font size="+1"><b>When?:</b> This Saturday, October 18 at 17:00</font></p>
-						<p><font size="+1"><b>What to bring?:</b> Instruments and swag ✨</font></p>
-						<p>also 5 euros for the hummus</p>
-						<p>
-							<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Hummus%20%26%20Jam%20%40%20Haus%20Apetit&dates=20251018T150000Z/20251018T200000Z&details=For%20more%20details%20check%20the%20website%3A%20https%3A%2F%2Fidonov.com%2FHausApetit%20or%20the%20Telegram%20group%3A%20https%3A%2F%2Ft.me%2F%2BwWD8DZgSXABiY2E0&location=Wartenbergstra%C3%9Fe%2022%2C%2010365%20Berlin" target="_blank">
-								<font color="#8b6f47" size="+1"><b>Add to Calendar</b></font>
-							</a>
-						</p>
-						<br>
-						<div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-							<div class="location-rsvp-sidebyside" style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-								<div style="width: 100%;">
-									<h3><font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#d4691a">LOCATION:</font></h3>
-									<p><font size="+1" color="#8b6f47"><b>~ Haus Apetit ~</b></font></p>
-									<p>Wartenbergstraße 22 - First floor</p>
-								</div>
-								<div style="width: 100%;">
-									<h3><font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#d4691a">RULES:</font></h3>
-									<p>The space (my room) is kids friendly. We kindly ask to refrain from heavy drinking or drug use.</p>
-								</div>
-							</div>
-						</div>
-						<style>
-							@media (min-width: 768px) {
-								.location-rsvp-sidebyside {
-									flex-direction: row !important;
-									justify-content: center !important;
-									align-items: flex-start !important;
-									gap: 40px;
-									width: 90%;
-									margin: 0 auto;
-								}
-								.location-rsvp-sidebyside > div {
-									width: 50%;
-									max-width: 350px;
-								}
-							}
-						</style>
-					</center>
-				</td>
-			</tr>
-		</table>
+		<div class="main-content">
+			<div class="poster-section">
+				<img src="/assets/Haus Apetit/Poster.png" alt="SOUNDS N' VISUALS Event Poster" class="poster">
+			</div>
+			
+			<div class="info-section">
+        <h3>Address:</h3>
+        <p><strong>Haus Apetit</strong></p>
+        <p>Wartenbergstraße 22 - First floor</p>
+        <p>10365 Berlin</p>
+      
+        <h3>Telegram:</h3>
+        <p><a href="https://t.me/+wWD8DZgSXABiY2E0">Join our group!</a></p>
+        <p><em>For updates and event details</em></p>
+      
+        <h2>Important Update:</h2>
+        <p> The doors open at 18:00, music starts at 19:30</p>
+			</div>
+		</div>
 		
-		<br>
+		<div class="past-events">
+			<center>
+				<h2 style="font-family: 'Comic Sans MS', cursive;">Past Events:</h2>
+				<ul>
+					<li><a href="hummus-jam.html">Hummus & Jam — October 18, 2025</a></li>
+					<li><a href="sabich-jam.html">Sabich & Jam — September 24, 2025</a></li>
+				</ul>
+			</center>
+		</div>
 		
-		<!-- Hosted by section -->
-		<table border="3" cellpadding="15" cellspacing="0" bgcolor="#ffffff" width="90%" style="position: relative; z-index: 2;">
-			<tr>
-				<td align="center">
-					<h2><font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#d4691a">HOSTED BY:</font></h2>
-					<br>
-					<table border="0" cellpadding="10" cellspacing="20" class="hosted-by-table">
-						<tr>
-							<td align="center">
-								<img src="/assets/Haus Apetit/Ido-hummus.jpg" width="150" height="150" style="border: 4px solid #8b6f47; object-fit: cover;">
-								<br><br>
-								<font size="+2" color="#8b6f47"><b>Ido</b></font>
-								<br>
-								<font size="-1" color="#666666"><i>Ido with the first hummus he made</i></font>
-							</td>
-							<td align="center">
-								<img src="/assets/Haus Apetit/Jude.jpeg" width="150" height="150" style="border: 4px solid #c47d3a; object-fit: cover;">
-								<br><br>
-								<font size="+2" color="#c47d3a"><b>Jude</b></font>
-								<br>
-								<font size="-1" color="#666666"><i>Jude at 13 playing his favorite sport</i></font>
-							</td>
-						</tr>
-					</table>
-					<p><font size="+1" color="#4a3b28">
-						For updates on future events, join our <a href="https://t.me/+wWD8DZgSXABiY2E0" style="color: #8b6f47;"><b>Telegram group</b></a> or refresh this page
-					</font></p>
-				</td>
-			</tr>
-		</table>
-		
-		<br>
-	</center>
-	</div>
-	<hr color="#9c8659" size="5" style="position: relative; z-index: 2;">
-	
-	<!-- Copyright section -->
-	<div style="text-align: center; padding: 20px; position: relative; z-index: 2;">
-		<span style="font-size:1.5em; color:#d4691a; font-weight:bold; font-family:'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;">
-		בית הפתיתים @ ברלין · 2025
-		</span>
+		<center>
+			<p style="margin-top: 40px; font-size: 1.2em;">
+				<strong>בית הפתיתים @ ברלין · 2025</strong>
+			</p>
+		</center>
 	</div>
 </body>
 </html>
