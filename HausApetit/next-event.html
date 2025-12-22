@@ -1,0 +1,99 @@
+<section class="next-event-window" aria-label="Next event">
+  <!-- Self-contained styling for the Next Event "window".
+       Scoped to `.next-event-window` to avoid clashing with the main page. -->
+  <style>
+    .next-event-window {
+      background-color: #efe2c8;
+      color: #2a241d;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      line-height: 1.4;
+      border: 2px solid #6a5a4e;
+      border-radius: 10px;
+      padding: 18px;
+      max-width: 900px;
+      margin: 14px auto 22px auto;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12);
+    }
+
+    .next-event-window a {
+      color: #0645AD;
+      text-decoration: none;
+    }
+    .next-event-window a:visited { color: #0B0080; }
+    .next-event-window a:hover { text-decoration: underline; }
+
+    .next-event-window .next-event-title {
+      margin: 0 0 4px 0;
+      font-size: 1.7em;
+	  text-align: center;
+    }
+    .next-event-window .next-event-when {
+      margin: 0 0 10px 0;
+      color: #5c4d42;
+	  text-align: center;
+    }
+
+    .next-event-window .next-event-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 12px;
+      align-items: center;
+    }
+    .next-event-window .next-event-btn {
+      display: inline-block;
+      padding: 11px 14px;
+      border: 2px solid #6a5a4e;
+      background: rgba(255, 255, 255, 0.55);
+      color: #2a241d;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 999px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.10);
+      text-decoration: none;
+      min-width: 220px;
+    }
+    .next-event-window .next-event-btn:hover {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.80);
+    }
+    .next-event-window .next-event-link {
+      color: #0645AD;
+      font-weight: 600;
+    }
+	.next-event-window .poster {
+		width: 100%;
+		max-width: 500px;
+		margin: 10px auto 20px auto;
+		display: block;
+	}
+
+    @media (min-width: 720px) {
+      .next-event-window .next-event-actions {
+        flex-direction: row;
+        justify-content: center;
+      }
+      .next-event-window .next-event-btn { min-width: 240px; }
+    }
+  </style>
+  <header class="next-event-header">
+    <h2 class="next-event-title">Next Event: Bedroom Jams</h2>
+    <p class="next-event-when">Wed 24.12 + Tue 30.12 · starting 18:00</p>
+  </header>
+
+  <div class="next-event-body">
+
+	<img src="/assets/Haus Apetit/Bedroom-jams.png" alt="Bedroom Jams Event Poster" class="poster">
+    
+	<div class="next-event-actions">
+      <a
+        class="next-event-btn"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdjP9qDqeltOowI-pxJKPGnleieGswJna-igbAhoD0L013FXg/viewform"
+        target="_blank"
+        rel="noreferrer"
+      >Sign up (free)</a>
+    </div>
+  </div>
+</section>
+
+

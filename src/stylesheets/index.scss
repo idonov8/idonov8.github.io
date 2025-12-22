@@ -77,6 +77,17 @@ body {
 		.desc {
 			flex-basis: 80%;
 			
+			// Make inline links in the intro/Now paragraph readable (avoid default light/white link colors)
+			p a, p a:visited {
+				color: var(--color-primary);
+				text-decoration: underline;
+				text-decoration-thickness: 2px;
+				text-underline-offset: 2px;
+			}
+			p a:hover, p a:focus {
+				color: var(--color-hover);
+			}
+
 			.contact-buttons {
 				display: flex;
 				gap: 10px;

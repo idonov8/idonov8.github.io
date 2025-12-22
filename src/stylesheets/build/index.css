@@ -73,6 +73,15 @@ body .header .profile-pic {
 body .header .desc {
   flex-basis: 80%;
 }
+body .header .desc p a, body .header .desc p a:visited {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+body .header .desc p a:hover, body .header .desc p a:focus {
+  color: var(--color-hover);
+}
 body .header .desc .contact-buttons {
   display: flex;
   gap: 10px;

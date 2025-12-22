@@ -3,232 +3,699 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bedroom Jams @ Haus Apetit</title>
+    <title>Haus Apetit</title>
     <link rel="icon" type="image/png" href="/assets/Haus Apetit/hummus-favicon.png">
     <link rel="shortcut icon" type="image/png" href="/assets/Haus Apetit/hummus-favicon.png">
     
     <!-- Open Graph meta tags for social media previews -->
-    <meta property="og:title" content="Bedroom Jams @ Haus Apetit">
-    <meta property="og:description" content="Bedroom Jams @ Haus Apetit. Wed 24.12 + Tue 30.12, starting 18:00. Sign up to get the location.">
-    <meta property="og:image" content="https://idonov.com/assets/Haus%20Apetit/Bedroom-jams.png">
+    <meta property="og:title" content="Haus Apetit">
+    <meta property="og:description" content="Haus Apetit in Berlin. Next: Bedroom Jams — Wed 24.12 + Tue 30.12 · 18:00. Free of charge. Sign up for the neighborhood + exact location.">
+    <meta property="og:image" content="https://idonov.com/assets/Haus%20Apetit/Gallery/Sabich%26Jam_B68269C8031D-1.jpeg">
     <meta property="og:url" content="https://idonov.com/HausApetit">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Haus Apetit">
 
     <!-- Additional meta tags for better previews -->
-    <meta name="description" content="Bedroom Jams @ Haus Apetit. Wed 24.12 + Tue 30.12, starting 18:00. Sign up to get the location.">
+    <meta name="description" content="Haus Apetit in Berlin. Next: Bedroom Jams — Wed 24.12 + Tue 30.12 · 18:00. Free of charge. Sign up for the neighborhood + exact location.">
     <meta name="keywords" content="Haus Apetit, events, Berlin, community, food, music">
     <style>
     body {
-      background-color: #efe2c8;
-      color: #2a241d;
-      font-family: Georgia, "Times New Roman", Times, serif;
+      background-image: url('/assets/Haus Apetit/retro-pixel-art-purple-eggplant-with-green-leaves_1292377-12994-609912531.png');
+      background-size: 40px auto;
+      background-repeat: repeat;
+      background-position: top center;
+      max-width: 100vw;
+      position: relative;
+      animation: eggplantMove 10s linear infinite;
       margin: 0;
-      padding: 24px;
-      line-height: 1.4;
     }
-    
-    a {
-      color: #0645AD;
-      text-decoration: none;
+
+    @keyframes eggplantMove {
+      0% { background-position: 0 0; }
+      100% { background-position: 40px 40px; }
     }
-    
-    a:visited {
-      color: #0B0080;
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimg1.picmix.com%2Foutput%2Fstamp%2Fnormal%2F1%2F3%2F1%2F1%2F2621131_adae0.gif&f=1&nofb=1');
+      background-repeat: repeat;
+      background-size: 512px 512px;
+      background-position: 0 0;
+      opacity: 0.9;
     }
-    
-    a:hover {
-      text-decoration: underline;
-    }
-    
+
+    /* Links (retro defaults) */
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Responsive container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      background: rgba(255, 255, 255, 0.28);
-      border: 2px solid #6a5a4e;
-      padding: 22px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.12);
-      border-radius: 10px;
-    }
-    
-    .main-content {
-      display: flex;
-      gap: 30px;
-      align-items: flex-start;
-      margin: 30px 0;
-    }
-    
-    .poster-section {
-      flex: 1;
-      width: 50%;
-      max-width: 50%;
-      /* Center the poster */
-      margin: 0 auto;
-    }
-    
-    .info-section {
-      flex: 1;
-    }
-    
-    .poster {
-      max-width: 100%;
-      height: auto;
-      border: 2px solid #6a5a4e;
-      border-radius: 10px;
-    }
-    
-    .host-info {
-      margin: 20px 0;
-    }
-    
-    .host-info img {
-      width: 120px;
-      height: 120px;
-      border: 1px solid black;
-      object-fit: cover;
-    }
-    
-    .address-info {
-      margin: 20px 0;
-    }
-    
-    .telegram-info {
-      margin: 20px 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
     }
 
-    .cta-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin: 12px auto 6px auto;
-      max-width: 50%;
+    /* Intro card for readable copy (high contrast) */
+    .intro-card {
+      width: 95%;
+      max-width: 900px;
+      margin: 10px auto 14px auto;
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 11px 14px;
-      border: 2px solid #6a5a4e;
-      background: rgba(255, 255, 255, 0.55);
-      color: #2a241d;
-      font-family: Georgia, "Times New Roman", Times, serif;
-      font-weight: 600;
-      text-align: center;
-      border-radius: 999px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.10);
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 10px;
     }
-
-    .cta-button:hover {
-      text-decoration: none;
-      background: rgba(255, 255, 255, 0.80);
+    .gallery-section-label {
+      grid-column: 1 / -1;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;
+      font-size: 0.8em;
+      font-weight: bold;
+      color: #003366;
+      background: linear-gradient(90deg, #ffff99 0%, #ffffff 100%);
+      /* border: 2px solid #ff00ff; */
+      border-radius: 8px;
+      padding: 8px 14px;
+      margin-top: 10px;
+      text-align: left;
     }
-
-    .cta-subtext {
-      margin: 0;
-      font-size: 0.98em;
-      color: #5c4d42;
+    .gallery-section-label:first-child { margin-top: 0; }
+    .gallery-item {
+      background: rgba(255, 255, 255, 0.85);
+      border: 3px solid #ff00ff;
+      border-radius: 12px;
+      overflow: hidden;
     }
-
-    .signup {
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(106, 90, 78, 0.45);
-    }
-
-    .signup h3 {
-      margin: 0 0 10px 0;
-    }
-
-    .form-embed {
+    .gallery-item a { display: block; }
+    .gallery-item img,
+    .gallery-item video {
       width: 100%;
-      height: 980px;
-      border: 0;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.6);
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: #000;
     }
-    
-    .past-events {
-      margin: 40px 0;
+    /* No per-item captions (intentionally) */
+
+    /* Make videos clearly look like videos */
+    .gallery-item.is-video {
+      position: relative;
+      cursor: pointer;
     }
-    
-    .past-events ul {
-      list-style: none;
-      padding: 0;
+    .gallery-item.is-video::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(to top, rgba(0,0,0,0.35), rgba(0,0,0,0.05) 55%, rgba(0,0,0,0.0));
+      z-index: 1;
     }
-    
-    .past-events li {
-      margin: 10px 0;
+    .gallery-item.is-video::after {
+      content: '▶';
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      border: 3px solid #00ffff;
+      background: rgba(255, 255, 255, 0.92);
+      color: #003366;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;
+      font-weight: 900;
+      line-height: 1;
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: 4px 4px 0 #1fc024;
     }
-    
-    @media (max-width: 768px) {
-      .main-content {
-        flex-direction: column;
-        gap: 20px;
+
+    /* Lightbox (photo viewer) */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+    }
+    .lightbox.is-open { display: block; }
+    .lightbox-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      cursor: pointer;
+    }
+    .lightbox-dialog {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 10px;
+      padding: 14px;
+      box-sizing: border-box;
+    }
+    .lightbox-topbar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      z-index: 1;
+    }
+    .lightbox-btn {
+      border: 3px solid #00ffff;
+      background: rgba(255, 255, 255, 0.95);
+      color: #003366;
+      font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;
+      font-weight: 700;
+      padding: 8px 10px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .lightbox-btn:hover { filter: brightness(1.03); }
+    .lightbox-main {
+      display: grid;
+      place-items: center;
+      position: relative;
+      z-index: 1;
+      min-height: 0;
+      cursor: pointer;
+    }
+    .lightbox-media {
+      cursor: default;
+    }
+    .lightbox-media {
+      max-width: min(1200px, 96vw);
+      max-height: 78vh;
+      width: auto;
+      height: auto;
+      border-radius: 12px;
+      border: 4px solid #ff00ff;
+      box-shadow: 10px 10px 0 #1fc024;
+      background: #000;
+    }
+    .lightbox-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      z-index: 1;
+    }
+    .lightbox-nav .lightbox-btn {
+      border-color: #ff00ff;
+      min-width: 110px;
+    }
+    .lightbox-hint {
+      color: rgba(255,255,255,0.85);
+      font-family: Georgia, "Times New Roman", Times, serif;
+      text-align: center;
+      margin: 0;
+      font-size: 0.95em;
+    }
+    @media (max-width: 520px) {
+      .lightbox-media {
+        max-height: 70vh;
+        box-shadow: 6px 6px 0 #1fc024;
       }
-      
-      .poster-section,
-      .info-section {
-        flex: none;
-      }
-      
-      .poster-section {
-        width: 100%;
-        max-width: 100%;
-      }
-      
-      .cta-stack {
-        max-width: 100%;
-      }
+      .lightbox-nav .lightbox-btn { min-width: 92px; }
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .gallery-item img, .gallery-item video { height: 210px; }
+    }
+    @media (max-width: 520px) {
+      .container { padding: 0 10px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item img, .gallery-item video { height: 240px; }
     }
   </style>
 </head>
-<body>
+<body bgcolor="#ffccff" text="#0000cc" link="#ff00ff" vlink="#9900ff" alink="#00ffff">
+  <marquee behavior="alternate" scrollamount="6" style="position: relative; z-index: 2;">
+    <span style="font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif; font-size: 1.7em; color: #ff0000; font-weight: bold; text-shadow: 2px 2px 0 #fff, 4px 4px 0 #1fc024;">
+      HAUS APETIT • FOOD • MUSIC • COMMUNITY
+    </span>
+  </marquee>
+  <hr color="#ff00ff" size="5" style="position: relative; z-index: 2;">
+
 	<div class="container">
 		<center>
-			<h1 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 3.0em; margin: 10px 0 2px 0;">Bedroom Jams</h1>
-			<h2 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1.4em; font-weight: 500; margin: 0 0 16px 0;">@ Haus Apetit</h2>
-      <p style="margin: 0 0 10px 0; color: #5c4d42;">Wednesday 24.12 and Tuesday 30.12 · starting 18:00</p>
+      <h1 style="
+        font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;
+        font-size: 2.8em;
+        color: #ff35de;
+        text-shadow: 4px 4px 0 #1fc024, 8px 8px 0 #fff;
+        margin: 0.5em 0 0.2em 0;
+        letter-spacing: 2px;
+      ">
+        HAUS APETIT
+      </h1>
+    </center>
+
+    <center>
+      <table class="intro-card" border="0" cellpadding="14" cellspacing="0">
+        <tr>
+          <td bgcolor="#ffffff" style="border: 3px solid #ff00ff;">
+            <font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#003366" size="+1">
+              Haus Apetit is my room, where I host all sort of stuff.
+            </font>
+            <font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#003366" size="+1">
+              For updates, join the
+              <a href="https://t.me/+wWD8DZgSXABiY2E0" target="_blank" rel="noreferrer"><b>Telegram group</b></a>.
+            </font>
+          </td>
+        </tr>
+      </table>
 		</center>
-		
-		<div class="main-content">
-      
-      <div class="info-section">
-        <div class="poster-section">
-          <img src="/assets/Haus Apetit/Bedroom-jams.png" alt="Bedroom Jams Event Poster" class="poster">
-        </div>
-        <div class="cta-stack">
-          <a class="cta-button" href="https://t.me/+wWD8DZgSXABiY2E0" target="_blank" rel="noreferrer">Join the Telegram group</a>
-        </div>
 
-
-        <div id="signup" class="signup">
-          <h3>Sign up</h3>
-          <iframe
-            class="form-embed"
-            src="https://docs.google.com/forms/d/e/1FAIpQLSdjP9qDqeltOowI-pxJKPGnleieGswJna-igbAhoD0L013FXg/viewform?embedded=true"
-            title="Bedroom Jams sign up form"
-            loading="lazy"
-            referrerpolicy="no-referrer"
-          ></iframe>
-        </div>
-			</div>
-		</div>
+    <!-- Next event (injected from next-event.html) -->
+    <div id="next-event-slot" aria-live="polite"></div>
 		
-		<div class="past-events">
-			<center>
-				<h2 style="font-family: 'Comic Sans MS', cursive;">Past Events:</h2>
-				<ul>
-					<li><a href="/assets/Haus Apetit/Poster.png">Sounds N' Visuals — Oct 25, 2025</a></li>
-					<li><a href="hummus-jam.html">Hummus & Jam — October 18, 2025</a></li>
-					<li><a href="sabich-jam.html">Sabich & Jam — September 24, 2025</a></li>
-				</ul>
+    <br>
+
+    <!-- Past events gallery -->
+    <center>
+      <table border="3" cellpadding="15" cellspacing="0" bgcolor="#ffffff" width="95%" style="position: relative; z-index: 2;">
+        <tr>
+          <td align="center">
+            <h2>
+              <font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#ff0000">
+                PAST EVENTS GALLERY
+              </font>
+            </h2>
+
+            <div class="gallery-grid" aria-label="Past events media gallery">
+              <!-- Sound & Visuals — Oct 25, 2025 -->
+              <div class="gallery-section-label">Sound &amp; Visuals concert - oct 25, 2025</div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-7.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-7.jpeg" alt="Sound & Visuals photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-8.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-8.jpeg" alt="Sound & Visuals photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-9.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-9.jpeg" alt="Sound & Visuals photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-10.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sound&Visuals_B68269C8031D-10.jpeg" alt="Sound & Visuals photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sound&Visuals_0369.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sound&Visuals_0380.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sound&Visuals_0381.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sound&Visuals_0383.mp4" type="video/mp4">
+                </video>
+              </div>
+
+              <!-- Sabich & Jam — Sep 24, 2025 -->
+              <div class="gallery-section-label">Sabich &amp; Jam - sep 24, 2025</div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-1.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-1.jpeg" alt="Sabich & Jam photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-2.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-2.jpeg" alt="Sabich & Jam photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-3.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-3.jpeg" alt="Sabich & Jam photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-4.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-4.jpeg" alt="Sabich & Jam photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-5.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-5.jpeg" alt="Sabich & Jam photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <a href="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-6.jpeg">
+                  <img src="/assets/Haus Apetit/Gallery/Sabich&Jam_B68269C8031D-6.jpeg" alt="Sabich & Jam photo">
+                </a>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sabich&Jam_video.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sabich&Jam_video 2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sabich&Jam_video 3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sabich&Jam_video 4.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="gallery-item">
+                <video preload="auto">
+                  <source src="/assets/Haus Apetit/Gallery/Sabich&Jam_7249 2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+		
+            <div style="margin-top: 16px;">
+              <h3>
+                <font face="Comic Sans MS, Chalkboard SE, Comic Neue, Marker Felt, Bradley Hand, cursive, sans-serif" color="#003366">
+                  Past event pages
+                </font>
+              </h3>
+              <p style="margin: 6px 0 0 0;">
+                <a href="/assets/Haus Apetit/Poster.png" target="_blank" rel="noreferrer"><b>Sounds N' Visuals</b> — Oct 25, 2025</a>
+                <br>
+                <a href="hummus-jam.html"><b>Hummus & Jam</b> — Oct 18, 2025</a>
+                <br>
+                <a href="sabich-jam.html"><b>Sabich & Jam</b> — Sep 24, 2025</a>
+              </p>
+            </div>
+          </td>
+        </tr>
+      </table>
 			</center>
+
+    <hr color="#00ffff" size="5" style="position: relative; z-index: 2; margin-top: 18px;">
+
+    <div style="text-align: center; padding: 20px; position: relative; z-index: 2;">
+      <span style="font-size:1.5em; color:#ff0000; font-weight:bold; font-family:'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', 'Marker Felt', 'Bradley Hand', cursive, sans-serif;">
+        בית הפתיתים @ ברלין · 2025
+      </span>
+    </div>
 		</div>
 		
-		<center>
-			<p style="margin-top: 40px; font-size: 1.2em;">
-				<strong>בית הפתיתים @ ברלין · 2025</strong>
-			</p>
-		</center>
+  <script>
+    (function () {
+      function injectNextEvent() {
+        var slot = document.getElementById('next-event-slot');
+        if (!slot) return;
+
+        fetch('next-event.html', { cache: 'no-store' })
+          .then(function (res) {
+            if (!res.ok) throw new Error('Failed to load next-event.html');
+            return res.text();
+          })
+          .then(function (html) {
+            slot.innerHTML = html;
+          })
+          .catch(function () {
+            slot.innerHTML = '' +
+              '<div style="background-color:#efe2c8;color:#2a241d;font-family:Georgia,Times,serif;line-height:1.4;border:2px solid #6a5a4e;border-radius:10px;padding:18px;max-width:900px;margin:14px auto 22px auto;box-shadow:0 1px 0 rgba(0,0,0,0.12);">' +
+              '<p><b>Next event:</b> check back soon (or join Telegram for updates).</p>' +
+              '<p><a href="https://t.me/+wWD8DZgSXABiY2E0" target="_blank" rel="noreferrer">Join Telegram</a></p>' +
+              '</div>';
+          });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectNextEvent);
+      } else {
+        injectNextEvent();
+      }
+    })();
+  </script>
+
+  <!-- Lightbox (photo viewer) -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Media viewer">
+    <div class="lightbox-backdrop" data-lightbox-close="true"></div>
+    <div class="lightbox-dialog">
+      <div class="lightbox-topbar">
+        <button type="button" class="lightbox-btn" id="lightbox-close" aria-label="Close">Close</button>
+      </div>
+      <div class="lightbox-main">
+        <div id="lightbox-media-slot"></div>
+      </div>
+      <div class="lightbox-nav">
+        <button type="button" class="lightbox-btn" id="lightbox-prev" aria-label="Previous photo">Prev</button>
+        <p class="lightbox-hint">Use ←/→ to browse · Esc to close</p>
+        <button type="button" class="lightbox-btn" id="lightbox-next" aria-label="Next photo">Next</button>
+      </div>
+    </div>
 	</div>
+
+  <script>
+    (function () {
+      function initGalleryLightbox() {
+        var gallery = document.querySelector('.gallery-grid');
+        if (!gallery) return;
+
+        // Build a single ordered list of gallery media (images + videos) from DOM order.
+        var media = [];
+        var galleryItems = Array.prototype.slice.call(gallery.querySelectorAll('.gallery-item'));
+        galleryItems.forEach(function (itemEl) {
+          var a = itemEl.querySelector('a[href]');
+          var href = a ? (a.getAttribute('href') || '') : '';
+          if (href && href.match(/\.(jpe?g|png|gif|webp)$/i)) {
+            media.push({ type: 'image', src: href });
+            return;
+          }
+
+          var v = itemEl.querySelector('video');
+          if (v) {
+            var source = v.querySelector('source');
+            var src = source ? (source.getAttribute('src') || '') : (v.getAttribute('src') || '');
+            var mime = source ? (source.getAttribute('type') || '') : '';
+            if (src) media.push({ type: 'video', src: src, mime: mime });
+          }
+        });
+
+        if (!media.length) return;
+
+        var lb = document.getElementById('lightbox');
+        var mediaSlot = document.getElementById('lightbox-media-slot');
+        var btnPrev = document.getElementById('lightbox-prev');
+        var btnNext = document.getElementById('lightbox-next');
+        var btnClose = document.getElementById('lightbox-close');
+
+        var index = 0;
+        var lastActive = null;
+        var currentEl = null;
+
+        function clearCurrent() {
+          if (currentEl && currentEl.tagName && currentEl.tagName.toLowerCase() === 'video') {
+            try { currentEl.pause(); } catch (e) {}
+          }
+          if (mediaSlot) mediaSlot.innerHTML = '';
+          currentEl = null;
+        }
+
+        function setMedia(i) {
+          index = (i + media.length) % media.length;
+          var m = media[index];
+
+          clearCurrent();
+
+          if (!m) return;
+          if (m.type === 'image') {
+            var img = document.createElement('img');
+            img.className = 'lightbox-media';
+            img.src = m.src;
+            img.alt = 'Gallery item ' + (index + 1) + ' of ' + media.length;
+            mediaSlot.appendChild(img);
+            currentEl = img;
+            return;
+          }
+
+          if (m.type === 'video') {
+            var vid = document.createElement('video');
+            vid.className = 'lightbox-media';
+            vid.controls = true;
+            vid.preload = 'auto';
+            vid.playsInline = true;
+            vid.autoplay = true;
+            var srcEl = document.createElement('source');
+            srcEl.src = m.src;
+            if (m.mime) srcEl.type = m.mime;
+            vid.appendChild(srcEl);
+            mediaSlot.appendChild(vid);
+            currentEl = vid;
+            // Autoplay when opened
+            try {
+              var playPromise = vid.play();
+              if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(function () {});
+              }
+            } catch (e) {}
+          }
+        }
+
+        function open(i, triggerEl) {
+          lastActive = triggerEl || document.activeElement;
+          setMedia(i);
+          lb.classList.add('is-open');
+          document.body.style.overflow = 'hidden';
+          btnClose.focus();
+        }
+
+        function close() {
+          lb.classList.remove('is-open');
+          document.body.style.overflow = '';
+          clearCurrent();
+          if (lastActive && lastActive.focus) lastActive.focus();
+        }
+
+        function isOpen() {
+          return lb.classList.contains('is-open');
+        }
+
+        function next() { setMedia(index + 1); }
+        function prev() { setMedia(index - 1); }
+
+        // Thumbnails: preload and make videos clearly "video-y"
+        Array.prototype.slice.call(gallery.querySelectorAll('video')).forEach(function (v) {
+          var itemEl = v.closest ? v.closest('.gallery-item') : null;
+          if (itemEl) itemEl.classList.add('is-video');
+
+          // No inline playback controls; clicking opens the viewer.
+          v.removeAttribute('controls');
+
+          var s = v.querySelector('source');
+          var src = s ? (s.getAttribute('src') || '') : (v.getAttribute('src') || '');
+
+          // Preload: mp4 can be heavier but tends to render thumbnails; MOV may not render in some browsers.
+          if (src && src.match(/\.mp4$/i)) {
+            v.preload = 'auto';
+          } else {
+            v.preload = 'metadata';
+          }
+
+          v.muted = true;
+          v.loop = true;
+          v.autoplay = true;
+          v.playsInline = true;
+
+          // Try to get a frame showing ASAP (or play silently). Some browsers require an explicit play().
+          try { v.load(); } catch (e) {}
+          try {
+            var p = v.play();
+            if (p && typeof p.catch === 'function') p.catch(function () {});
+          } catch (e2) {}
+
+          // Nudge to show a frame without user interaction
+          v.addEventListener('loadeddata', function () {
+            try { if (v.currentTime < 0.01) v.currentTime = 0.01; } catch (e3) {}
+          }, { once: true });
+        });
+
+        // Delegate clicks from gallery
+        gallery.addEventListener('click', function (e) {
+          var itemEl = e.target && e.target.closest ? e.target.closest('.gallery-item') : null;
+          if (!itemEl) return;
+
+          var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+          var v = e.target && e.target.closest ? e.target.closest('video') : null;
+
+          // Image click (anchor)
+          if (a) {
+            var href = a.getAttribute('href') || '';
+            if (!href.match(/\.(jpe?g|png|gif|webp)$/i)) return;
+            e.preventDefault();
+
+            var iImg = media.findIndex(function (m) { return m.type === 'image' && m.src === href; });
+            if (iImg < 0) iImg = 0;
+            open(iImg, a);
+            return;
+          }
+
+          // Video click (thumbnail)
+          if (v || itemEl.querySelector('video')) {
+            var vv = v || itemEl.querySelector('video');
+            if (vv) {
+              e.preventDefault();
+              e.stopPropagation();
+              try { vv.pause(); } catch (err) {}
+
+              var s = vv.querySelector('source');
+              var src = s ? (s.getAttribute('src') || '') : (vv.getAttribute('src') || '');
+              var iVid = media.findIndex(function (m) { return m.type === 'video' && m.src === src; });
+              if (iVid < 0) iVid = 0;
+              open(iVid, vv);
+            }
+          }
+        });
+
+        // Controls
+        btnNext.addEventListener('click', next);
+        btnPrev.addEventListener('click', prev);
+        btnClose.addEventListener('click', close);
+
+        lb.addEventListener('click', function (e) {
+          // Close on backdrop click
+          if (e.target && e.target.getAttribute && e.target.getAttribute('data-lightbox-close') === 'true') {
+            close();
+            return;
+          }
+          // Close on click in the negative space (lightbox-main area but not on the media itself)
+          if (e.target && e.target.classList) {
+            if (e.target.classList.contains('lightbox-main') || e.target.id === 'lightbox-media-slot') {
+              close();
+            }
+          }
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (!isOpen()) return;
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            close();
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            next();
+          } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            prev();
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initGalleryLightbox);
+      } else {
+        initGalleryLightbox();
+      }
+    })();
+  </script>
 </body>
 </html>
