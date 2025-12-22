@@ -88,6 +88,40 @@ body {
 				color: var(--color-hover);
 			}
 
+			.now-section {
+				margin-top: 1.5em;
+				display: flex;
+				flex-direction: column;
+				gap: 0.75em;
+
+				u {
+					display: block;
+					margin-bottom: 0.35em;
+				}
+
+				.now-item {
+					display: flex;
+					align-items: flex-start;
+					gap: 0.5em;
+					line-height: 1.4;
+
+					svg.icon {
+						flex-shrink: 0;
+						margin-top: 0.15em;
+					}
+				}
+
+				a, a:visited {
+					color: var(--color-primary);
+					text-decoration: underline;
+					text-decoration-thickness: 2px;
+					text-underline-offset: 2px;
+				}
+				a:hover, a:focus {
+					color: var(--color-hover);
+				}
+			}
+
 			.contact-buttons {
 				display: flex;
 				gap: 10px;
