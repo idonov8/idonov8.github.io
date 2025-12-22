@@ -154,3 +154,7 @@ if __name__ == "__main__":
     print("2. Update the og:image meta tag for social media preview")
     print("3. Test the images in a browser")
 
+
+
+
+

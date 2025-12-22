@@ -3,28 +3,29 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haus Apetit</title>
+    <title>Bedroom Jams @ Haus Apetit</title>
     <link rel="icon" type="image/png" href="/assets/Haus Apetit/hummus-favicon.png">
     <link rel="shortcut icon" type="image/png" href="/assets/Haus Apetit/hummus-favicon.png">
     
     <!-- Open Graph meta tags for social media previews -->
-    <meta property="og:title" content="Haus Apetit - This Saturday">
-    <meta property="og:description" content="Join us for events at Haus Apetit! This Saturday and more to come.">
-    <meta property="og:image" content="https://idonov.com/assets/Haus%20Apetit/Poster.png">
+    <meta property="og:title" content="Bedroom Jams @ Haus Apetit">
+    <meta property="og:description" content="Bedroom Jams @ Haus Apetit. Wed 24.12 + Tue 30.12, starting 18:00. Sign up to get the location.">
+    <meta property="og:image" content="https://idonov.com/assets/Haus%20Apetit/Bedroom-jams.png">
     <meta property="og:url" content="https://idonov.com/HausApetit">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Haus Apetit">
 
     <!-- Additional meta tags for better previews -->
-    <meta name="description" content="Haus Apetit - This Saturday and more events. Join our community for food, music, and fun!">
+    <meta name="description" content="Bedroom Jams @ Haus Apetit. Wed 24.12 + Tue 30.12, starting 18:00. Sign up to get the location.">
     <meta name="keywords" content="Haus Apetit, events, Berlin, community, food, music">
     <style>
     body {
-      background-color: white;
-      color: black;
-      font-family: Arial, sans-serif;
+      background-color: #efe2c8;
+      color: #2a241d;
+      font-family: Georgia, "Times New Roman", Times, serif;
       margin: 0;
-      padding: 20px;
+      padding: 24px;
+      line-height: 1.4;
     }
     
     a {
@@ -43,6 +44,11 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
+      background: rgba(255, 255, 255, 0.28);
+      border: 2px solid #6a5a4e;
+      padding: 22px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.12);
+      border-radius: 10px;
     }
     
     .main-content {
@@ -54,6 +60,10 @@
     
     .poster-section {
       flex: 1;
+      width: 50%;
+      max-width: 50%;
+      /* Center the poster */
+      margin: 0 auto;
     }
     
     .info-section {
@@ -63,7 +73,8 @@
     .poster {
       max-width: 100%;
       height: auto;
-      border: 1px solid black;
+      border: 2px solid #6a5a4e;
+      border-radius: 10px;
     }
     
     .host-info {
@@ -83,6 +94,56 @@
     
     .telegram-info {
       margin: 20px 0;
+    }
+
+    .cta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 12px auto 6px auto;
+      max-width: 50%;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 11px 14px;
+      border: 2px solid #6a5a4e;
+      background: rgba(255, 255, 255, 0.55);
+      color: #2a241d;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 999px;
+      box-shadow: 0 1px 0 rgba(0,0,0,0.10);
+    }
+
+    .cta-button:hover {
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.80);
+    }
+
+    .cta-subtext {
+      margin: 0;
+      font-size: 0.98em;
+      color: #5c4d42;
+    }
+
+    .signup {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(106, 90, 78, 0.45);
+    }
+
+    .signup h3 {
+      margin: 0 0 10px 0;
+    }
+
+    .form-embed {
+      width: 100%;
+      height: 980px;
+      border: 0;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.6);
     }
     
     .past-events {
@@ -108,33 +169,47 @@
       .info-section {
         flex: none;
       }
+      
+      .poster-section {
+        width: 100%;
+        max-width: 100%;
+      }
+      
+      .cta-stack {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
 	<div class="container">
 		<center>
-			<h1 style="font-family: 'Comic Sans MS', cursive; font-size: 3em; margin: 20px 0;">HAUS APETIT</h1>
-			<h2 style="font-family: 'Comic Sans MS', cursive; font-size: 1.5em; margin: 10px 0;">This Saturday</h2>
+			<h1 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 3.0em; margin: 10px 0 2px 0;">Bedroom Jams</h1>
+			<h2 style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: 1.4em; font-weight: 500; margin: 0 0 16px 0;">@ Haus Apetit</h2>
+      <p style="margin: 0 0 10px 0; color: #5c4d42;">Wednesday 24.12 and Tuesday 30.12 · starting 18:00</p>
 		</center>
 		
 		<div class="main-content">
-			<div class="poster-section">
-				<img src="/assets/Haus Apetit/Poster.png" alt="SOUNDS N' VISUALS Event Poster" class="poster">
-			</div>
-			
-			<div class="info-section">
-        <h3>Address:</h3>
-        <p><strong>Haus Apetit</strong></p>
-        <p>Wartenbergstraße 22 - First floor</p>
-        <p>10365 Berlin</p>
       
-        <h3>Telegram:</h3>
-        <p><a href="https://t.me/+wWD8DZgSXABiY2E0">Join our group!</a></p>
-        <p><em>For updates and event details</em></p>
-      
-        <h2>Important Update:</h2>
-        <p> The doors open at 18:00, music starts at 19:30</p>
+      <div class="info-section">
+        <div class="poster-section">
+          <img src="/assets/Haus Apetit/Bedroom-jams.png" alt="Bedroom Jams Event Poster" class="poster">
+        </div>
+        <div class="cta-stack">
+          <a class="cta-button" href="https://t.me/+wWD8DZgSXABiY2E0" target="_blank" rel="noreferrer">Join the Telegram group</a>
+        </div>
+
+
+        <div id="signup" class="signup">
+          <h3>Sign up</h3>
+          <iframe
+            class="form-embed"
+            src="https://docs.google.com/forms/d/e/1FAIpQLSdjP9qDqeltOowI-pxJKPGnleieGswJna-igbAhoD0L013FXg/viewform?embedded=true"
+            title="Bedroom Jams sign up form"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
 			</div>
 		</div>
 		
@@ -142,6 +217,7 @@
 			<center>
 				<h2 style="font-family: 'Comic Sans MS', cursive;">Past Events:</h2>
 				<ul>
+					<li><a href="/assets/Haus Apetit/Poster.png">Sounds N' Visuals — Oct 25, 2025</a></li>
 					<li><a href="hummus-jam.html">Hummus & Jam — October 18, 2025</a></li>
 					<li><a href="sabich-jam.html">Sabich & Jam — September 24, 2025</a></li>
 				</ul>
