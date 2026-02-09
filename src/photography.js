@@ -16,6 +16,12 @@
   var lbImgIdx = 0;          // index within current post's images (on desktop)
 
   var mouseDownSound = new Audio('/assets/mouse-down.mov');
+  mouseDownSound.preload = 'auto';
+  mouseDownSound.load();
+
+  var mouseUpSound = new Audio('/assets/mouse-up.mov');
+  mouseUpSound.preload = 'auto';
+  mouseUpSound.load();
 
   // --- Sanity image URL builder (no dependency needed) ---
   // Asset _ref format: "image-{hash}-{W}x{H}-{ext}"
@@ -81,13 +87,35 @@
     card.addEventListener('click', function () {
       openLightbox(post);
     });
+    card.addEventListener('mousedown', playMouseDown);
+    card.addEventListener('mouseup', playMouseUp);
 
     return card;
   }
 
   // --- Click sound (reuse site's existing audio) ---
-  function playClick() {
-    try { mouseDownSound.currentTime = 0; mouseDownSound.play(); } catch (e) { }
+  function playMouseDown() {
+    try {
+      mouseDownSound.currentTime = 0;
+      var p = mouseDownSound.play();
+      if (p !== undefined) {
+        p.catch(function (e) { console.error('MouseDown Play Error:', e); });
+      }
+    } catch (e) {
+      console.error('MouseDown Error:', e);
+    }
+  }
+
+  function playMouseUp() {
+    try {
+      mouseUpSound.currentTime = 0;
+      var p = mouseUpSound.play();
+      if (p !== undefined) {
+        p.catch(function (e) { console.error('MouseUp Play Error:', e); });
+      }
+    } catch (e) {
+      console.error('MouseUp Error:', e);
+    }
   }
 
   // --- Custom lightbox ---
@@ -146,22 +174,32 @@
     postPrev.addEventListener('click', function (e) { e.stopPropagation(); navigatePost(-1); });
     postNext.addEventListener('click', function (e) { e.stopPropagation(); navigatePost(1); });
 
+    // Click sounds for lightbox controls
+    var buttons = [prev, next, postPrev, postNext];
+    buttons.forEach(function (btn) {
+      btn.addEventListener('mousedown', function (e) { e.stopPropagation(); playMouseDown(); });
+      btn.addEventListener('mouseup', function (e) { e.stopPropagation(); playMouseUp(); });
+    });
+
+    overlay.addEventListener('mousedown', function (e) {
+      if (e.target === overlay) playMouseDown();
+    });
+    overlay.addEventListener('mouseup', function (e) {
+      if (e.target === overlay) playMouseUp();
+    });
+
     // Keyboard: left/right = images (if multi) else posts, up/down = posts
     document.addEventListener('keydown', function (e) {
       if (!overlay.classList.contains('active')) return;
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') {
-        var p = postsCache[lbPostIdx];
-        if (p && p.images.length > 1) navigateImage(-1);
-        else navigatePost(-1);
+        navigatePost(-1, true);
       }
       if (e.key === 'ArrowRight') {
-        var p2 = postsCache[lbPostIdx];
-        if (p2 && p2.images.length > 1) navigateImage(1);
-        else navigatePost(1);
+        navigatePost(1, true);
       }
-      if (e.key === 'ArrowUp') { e.preventDefault(); navigatePost(-1); }
-      if (e.key === 'ArrowDown') { e.preventDefault(); navigatePost(1); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); navigatePost(-1, true); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); navigatePost(1, true); }
     });
 
     // Mouse wheel: scroll between posts
@@ -236,8 +274,13 @@
     var total = post.images.length;
 
     // Hide if no prev/next text
-    lightbox.prev.style.display = lbImgIdx > 0 ? '' : 'none';
-    lightbox.next.style.display = lbImgIdx < total - 1 ? '' : 'none';
+    if (window.innerWidth <= 768) {
+      lightbox.prev.style.display = 'none';
+      lightbox.next.style.display = 'none';
+    } else {
+      lightbox.prev.style.display = lbImgIdx > 0 ? '' : 'none';
+      lightbox.next.style.display = lbImgIdx < total - 1 ? '' : 'none';
+    }
 
     // If single image, always hide (redundant check but safe)
     if (total <= 1) {
@@ -317,11 +360,14 @@
         imgEl.onload = function () {
           spinner.style.display = 'none';
         };
+        // If browser already has this image cached, hide spinner immediately
+        if (imgEl.complete) {
+          spinner.style.display = 'none';
+        }
       }
       lightbox.stage.appendChild(imgEl); // just append, order matters
     });
 
-    // If images are cached/fast, hide spinner immediately
     if (images.length === 0) spinner.style.display = 'none';
 
     // Dots (rebuild when post changes)
@@ -343,8 +389,15 @@
     lightbox.caption.style.display = post.title ? '' : 'none';
 
     // nav visibility (Post arrows)
-    lightbox.postPrev.style.opacity = lbPostIdx > 0 ? '1' : '0.3';
-    lightbox.postNext.style.opacity = lbPostIdx < postsCache.length - 1 ? '1' : '0.3';
+    if (window.innerWidth <= 768) {
+      lightbox.postPrev.style.display = 'none';
+      lightbox.postNext.style.display = 'none';
+    } else {
+      lightbox.postPrev.style.display = '';
+      lightbox.postNext.style.display = '';
+      lightbox.postPrev.style.opacity = lbPostIdx > 0 ? '1' : '0.3';
+      lightbox.postNext.style.opacity = lbPostIdx < postsCache.length - 1 ? '1' : '0.3';
+    }
 
     // Vertical Scroll Hint (Mobile)
     var hint = lightbox.overlay.querySelector('.ig-lightbox-scroll-hint');
@@ -359,13 +412,16 @@
   }
 
 
-  function navigateImage(dir) {
+  function navigateImage(dir, sound) {
     var post = postsCache[lbPostIdx];
     if (!post || post.images.length <= 1) return;
     var next = lbImgIdx + dir;
     if (next >= 0 && next < post.images.length) {
       lbImgIdx = next;
-      playClick();
+      if (sound) {
+        playMouseDown();
+        setTimeout(playMouseUp, 150);
+      }
       // Update view (switches active image on desktop)
       // On mobile, this logic might be weird if user scrolled. 
       // But preserving desktop arrow logic is fine.
@@ -373,8 +429,20 @@
     }
   }
 
-  function navigatePost(dir) {
+  function navigatePost(dir, sound) {
     var next = lbPostIdx + dir;
+
+    // If we are trying to go to the next post but we are at the end, load more
+    if (dir === 1 && next >= postsCache.length && !allLoaded && !loading) {
+      loadMore().then(function () {
+        // After loading, postsCache should have new items
+        if (next < postsCache.length) {
+          navigatePost(dir, sound);
+        }
+      });
+      return;
+    }
+
     if (next >= 0 && next < postsCache.length) {
       // Hide scroll hint
       var hint = lightbox.overlay.querySelector('.ig-lightbox-scroll-hint');
@@ -382,7 +450,13 @@
 
       lbPostIdx = next;
       lbImgIdx = 0;
-      playClick();
+      if (sound) {
+        // The logic below works!
+        // but it's commented out since the style of the button isn't physical enough.
+        // TODO: Bring back after button feels more physical.
+        // playMouseDown();
+        // setTimeout(playMouseUp, 150);
+      }
       updateLightbox();
     }
   }
@@ -406,13 +480,13 @@
 
   // --- Load next batch ---
   function loadMore() {
-    if (loading || allLoaded) return;
+    if (loading || allLoaded) return Promise.resolve();
     loading = true;
 
     var sentinel = document.getElementById('photo-sentinel');
     sentinel.classList.add('active');
 
-    fetchPosts(currentOffset, currentOffset + BATCH_SIZE).then(function (posts) {
+    return fetchPosts(currentOffset, currentOffset + BATCH_SIZE).then(function (posts) {
       if (posts.length < BATCH_SIZE) allLoaded = true;
       if (posts.length === 0) {
         sentinel.classList.remove('active');
