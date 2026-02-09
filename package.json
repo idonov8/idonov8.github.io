@@ -6,7 +6,9 @@
   "scripts": {
     "style-build": "sass src/stylesheets/index.scss:src/stylesheets/build/index.css",
     "style-dev": "sass src/stylesheets/index.scss:src/stylesheets/build/index.css -w",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "studio-dev": "cd sanity-studio && npm run dev",
+    "studio-build": "cd sanity-studio && npm run build:pages",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
