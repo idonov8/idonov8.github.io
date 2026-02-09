@@ -15,14 +15,6 @@
   var lbPostIdx = -1;        // index into postsCache
   var lbImgIdx = 0;          // index within current post's images (on desktop)
 
-  var mouseDownSound = new Audio('/assets/mouse-down.mov');
-  mouseDownSound.preload = 'auto';
-  mouseDownSound.load();
-
-  var mouseUpSound = new Audio('/assets/mouse-up.mov');
-  mouseUpSound.preload = 'auto';
-  mouseUpSound.load();
-
   // --- Sanity image URL builder (no dependency needed) ---
   // Asset _ref format: "image-{hash}-{W}x{H}-{ext}"
   function imageUrl(ref, width) {
@@ -93,30 +85,12 @@
     return card;
   }
 
-  // --- Click sound (reuse site's existing audio) ---
-  function playMouseDown() {
-    try {
-      mouseDownSound.currentTime = 0;
-      var p = mouseDownSound.play();
-      if (p !== undefined) {
-        p.catch(function (e) { console.error('MouseDown Play Error:', e); });
-      }
-    } catch (e) {
-      console.error('MouseDown Error:', e);
-    }
-  }
-
-  function playMouseUp() {
-    try {
-      mouseUpSound.currentTime = 0;
-      var p = mouseUpSound.play();
-      if (p !== undefined) {
-        p.catch(function (e) { console.error('MouseUp Play Error:', e); });
-      }
-    } catch (e) {
-      console.error('MouseUp Error:', e);
-    }
-  }
+  // --- Click sound (shared via click-sound.js) ---
+  // TODO: Uncomment after button feels more physical.
+  // var playMouseDown = window.clickSound.down;
+  // var playMouseUp = window.clickSound.up;
+  var playMouseDown = function () { };
+  var playMouseUp = function () { };
 
   // --- Custom lightbox ---
   function buildLightbox() {
@@ -451,11 +425,8 @@
       lbPostIdx = next;
       lbImgIdx = 0;
       if (sound) {
-        // The logic below works!
-        // but it's commented out since the style of the button isn't physical enough.
-        // TODO: Bring back after button feels more physical.
-        // playMouseDown();
-        // setTimeout(playMouseUp, 150);
+        playMouseDown();
+        setTimeout(playMouseUp, 150);
       }
       updateLightbox();
     }
