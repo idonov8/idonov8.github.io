@@ -13,7 +13,27 @@
 	<title>Ido Nov</title>
 </head>
 <body>
-	<div class="header">
+	<nav id="site-nav" class="site-nav">
+		<a href="#me" class="nav-link" title="Me">
+			Me
+		</a>
+		<a href="#tech" class="nav-link" title="Tech">
+			<svg class="nav-icon">
+				<use href="assets/icons/SVG/solid/code-solid.svg#code-solid"></use>
+			</svg>
+		</a>
+		<a href="#film" class="nav-link" title="Film">
+			<svg class="nav-icon">
+				<use href="assets/video-icon.svg#video-icon"></use>
+			</svg>
+		</a>
+		<a href="#photography" class="nav-link" title="Photography">
+			<svg class="nav-icon">
+				<use href="assets/camera-icon.svg#camera-icon"></use>
+			</svg>
+		</a>
+	</nav>
+	<div class="header" id="me">
 		<div class="profile-pic">
 			<img src="" tabindex="1">
 		</div>
@@ -69,11 +89,11 @@
 						<use href="assets/icons/SVG/brands/linkedin.svg#linkedin"></use>
 					</svg>
 				</a>
-				<a target="_blank" href="https://www.instagram.com/idonov/" class="contact-btn" title="Instagram">
+				<!-- <a target="_blank" href="https://www.instagram.com/idonov/" class="contact-btn" title="Instagram">
 					<svg class="icon">
 						<use href="assets/icons/SVG/brands/instagram.svg#instagram"></use>
 					</svg>
-				</a>
+				</a> -->
 				<a target="_blank" href="https://www.youtube.com/@idonov8" class="contact-btn" title="YouTube">
 					<svg class="icon">
 						<use href="assets/icons/SVG/brands/youtube.svg#youtube"></use>
@@ -95,7 +115,9 @@
 		<section id="photography" class="section photography-section">
 			<div class="section-header">
 				<h1>
-					<img src="assets/camera-icon.svg" alt="Photographer" class="icon" />
+					<svg class="icon" style="height:40px;width:40px;vertical-align:middle;">
+						<use href="assets/camera-icon.svg#camera-icon"></use>
+					</svg>
 					Photographer
 				</h1>
 			</div>

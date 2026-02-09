@@ -40,6 +40,59 @@
   vertical-align: middle;
 }
 
+.site-nav {
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px 24px;
+  background: var(--color-background);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: max-content;
+  max-width: 90vw;
+}
+.site-nav a.nav-link {
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 200ms ease, background 200ms ease, transform 150ms ease;
+}
+.site-nav a.nav-link.active, .site-nav a.nav-link:hover {
+  color: var(--color-primary);
+  background: rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+.site-nav a.nav-link:active {
+  transform: translateY(0);
+}
+.site-nav a.nav-link svg.nav-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+  transition: fill 200ms ease;
+}
+@media (max-width: 768px) {
+  .site-nav {
+    gap: 16px;
+    font-size: 0.82rem;
+    padding: 8px 12px;
+    top: 20px;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
 body {
   background-image: url("/assets/002-Watercolor-Paper.png");
   background-color: var(--color-background);
@@ -50,7 +103,7 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
-  padding: 0;
+  padding: 48px 0 0 0;
   width: 100%;
   box-sizing: border-box;
 }
@@ -66,6 +119,11 @@ body .header {
   padding: 3% 10%;
   width: 100%;
   box-sizing: border-box;
+}
+@media (max-width: 768px) {
+  body .header {
+    gap: 5px;
+  }
 }
 body .header .profile-pic {
   flex-basis: 20%;
@@ -180,8 +238,7 @@ body .header .profile-pic img:focus {
 @media (max-width: 768px) {
   body .header {
     flex-direction: column;
-    padding-top: 15%;
-    gap: 40px;
+    margin-top: 70px;
   }
   body .header h1 {
     text-align: center;
@@ -269,11 +326,6 @@ body .reach-out img {
 .main-content .section .section-header img {
   height: 40px;
   width: 40px;
-}
-.main-content .section .section-header img.icon {
-  height: 40px;
-  width: 40px;
-  filter: none;
 }
 .main-content .section .section-header svg.icon {
   height: 40px;
@@ -646,7 +698,7 @@ body.photo-mode .photography-section .section-header h1 {
     font-size: 2.5rem;
   }
 }
-body.photo-mode .photography-section .section-header img.icon {
+body.photo-mode .photography-section .section-header svg.icon {
   filter: invert(0.9);
   opacity: 0;
   height: 28px;
@@ -674,6 +726,20 @@ body.photo-mode #cat path,
 body.photo-mode #cat .ground {
   fill: #e8e8e8;
 }
+body.photo-mode .site-nav {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+  transition: background 1800ms ease, border-color 1800ms ease, transform 0.3s ease;
+}
+body.photo-mode .site-nav a.nav-link {
+  color: #e8e8e8;
+}
+body.photo-mode .site-nav a.nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
 
 .header,
 .section:not(.photography-section),
@@ -683,10 +749,6 @@ body.photo-mode #cat .ground {
 
 .photography-section .section-header h1 {
   transition: color 1800ms ease;
-}
-
-.photography-section .section-header img.icon {
-  transition: filter 1800ms ease, opacity 1800ms ease;
 }
 
 .ig-lightbox {

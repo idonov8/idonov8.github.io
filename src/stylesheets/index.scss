@@ -41,6 +41,66 @@
 	vertical-align: middle;
 }
 
+// ============================================
+// Fixed Navbar
+// ============================================
+.site-nav {
+	position: fixed;
+	bottom: 20px;
+	right: 50px;
+	z-index: 500;
+	display: flex;
+	justify-content: center;
+	gap: 24px;
+	padding: 10px 24px;
+	background: var(--color-background);
+	backdrop-filter: blur(5px);
+	border: 1px solid rgba(0, 0, 0, 0.08);
+	border-radius: 6px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+	width: max-content;
+	max-width: 90vw;
+
+	a.nav-link {
+		color: var(--color-text);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 6px 10px;
+		border-radius: 6px;
+		transition: color 200ms ease, background 200ms ease, transform 150ms ease;
+
+		&.active,
+		&:hover {
+			color: var(--color-primary);
+			background: rgba(0, 0, 0, 0.06);
+			transform: translateY(-1px);
+		}
+
+		&:active {
+			transform: translateY(0);
+		}
+
+		svg.nav-icon {
+			width: 22px;
+			height: 22px;
+			fill: currentColor;
+			transition: fill 200ms ease;
+		}
+	}
+
+	@media (max-width: 768px) {
+		gap: 16px;
+		font-size: 0.82rem;
+		padding: 8px 12px;
+		top: 20px;
+		bottom: auto;
+		left: 50%;
+		right: auto;
+		transform: translateX(-50%);
+	}
+}
+
 body {
 	background-image: url("/assets/002-Watercolor-Paper.png");
 	background-color: var(--color-background);
@@ -51,7 +111,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	margin: 0;
-	padding: 0;
+	padding: 48px 0 0 0;
 	width: 100%;
 	box-sizing: border-box;
 
@@ -73,6 +133,10 @@ body {
 		padding: 3% 10%;
 		width: 100%;
 		box-sizing: border-box;
+
+		@media (max-width: 768px) {
+			gap: 5px;
+		}
 
 		.profile-pic {
 			flex-basis: 20%;
@@ -210,7 +274,7 @@ body {
 
 		@media (max-width: 768px) {
 			flex-direction: column;
-			padding-top: 15%;
+			margin-top: 70px;
 
 			h1 {
 				text-align: center;
@@ -221,8 +285,6 @@ body {
 				width: 120px;
 				margin: 0;
 			}
-
-			gap: 40px;
 		}
 	}
 
@@ -319,11 +381,6 @@ body {
 				width: 40px;
 			}
 
-			img.icon {
-				height: 40px;
-				width: 40px;
-				filter: none; // Remove any filters for custom icons
-			}
 
 			svg.icon {
 				height: 40px;
@@ -772,7 +829,7 @@ body.photo-mode {
 			}
 		}
 
-		.section-header img.icon {
+		.section-header svg.icon {
 			filter: invert(0.9);
 			opacity: 0;
 			height: 28px;
@@ -811,6 +868,29 @@ body.photo-mode {
 
 		transition: opacity 1800ms ease;
 	}
+
+	// Navbar adapts to dark gallery
+	.site-nav {
+		background: rgba(10, 10, 10, 0.6);
+		backdrop-filter: blur(4px);
+		-webkit-backdrop-filter: blur(4px);
+		border-bottom-color: rgba(255, 255, 255, 0.06);
+		transition:
+			background 1800ms ease,
+			border-color 1800ms ease,
+			transform 0.3s ease;
+
+		a.nav-link {
+			color: #e8e8e8;
+
+			&:hover {
+				color: #fff;
+				background: rgba(255, 255, 255, 0.08);
+			}
+
+
+		}
+	}
 }
 
 // Restore transitions for elements leaving photo-mode
@@ -824,9 +904,7 @@ body.photo-mode {
 	transition: color 1800ms ease;
 }
 
-.photography-section .section-header img.icon {
-	transition: filter 1800ms ease, opacity 1800ms ease;
-}
+
 
 // ============================================
 // Custom Instagram-style Lightbox
