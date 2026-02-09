@@ -73,13 +73,15 @@ body .header .profile-pic {
 body .header .desc {
   flex-basis: 80%;
 }
-body .header .desc p a, body .header .desc p a:visited {
+body .header .desc p a,
+body .header .desc p a:visited {
   color: var(--color-primary);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
-body .header .desc p a:hover, body .header .desc p a:focus {
+body .header .desc p a:hover,
+body .header .desc p a:focus {
   color: var(--color-hover);
 }
 body .header .desc .now-section {
@@ -102,13 +104,15 @@ body .header .desc .now-section .now-item svg.icon {
   flex-shrink: 0;
   margin-top: 0.15em;
 }
-body .header .desc .now-section a, body .header .desc .now-section a:visited {
+body .header .desc .now-section a,
+body .header .desc .now-section a:visited {
   color: var(--color-primary);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 2px;
 }
-body .header .desc .now-section a:hover, body .header .desc .now-section a:focus {
+body .header .desc .now-section a:hover,
+body .header .desc .now-section a:focus {
   color: var(--color-hover);
 }
 body .header .desc .contact-buttons {
@@ -252,6 +256,7 @@ body .reach-out img {
   align-items: center;
   gap: 15px;
   margin-bottom: 30px;
+  transition: justify-content 500ms ease;
 }
 .main-content .section .section-header h1 {
   font-size: 2.5rem;
@@ -259,6 +264,7 @@ body .reach-out img {
   display: flex;
   align-items: center;
   gap: 15px;
+  transition: font-size 500ms ease, font-weight 500ms ease, letter-spacing 500ms ease, text-transform 500ms ease;
 }
 .main-content .section .section-header img {
   height: 40px;
@@ -467,6 +473,619 @@ body .reach-out img {
 }
 #cat .ground {
   z-index: -1;
+}
+
+.photography-section {
+  min-height: 100vh;
+  padding-top: 40px;
+}
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 6px;
+}
+@media (max-width: 768px) {
+  .photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+}
+
+.photo-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  background: rgba(0, 0, 0, 0.05);
+  animation: photoFadeIn 0.5s ease both;
+}
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+}
+.photo-card:hover img {
+  transform: scale(1.04);
+}
+.photo-card .carousel-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  padding: 3px 9px;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+.photo-card .photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px 14px 12px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.65) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.8rem;
+  font-family: "Instrument Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.35;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.photo-card:hover .photo-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes photoFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.photo-sentinel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 0;
+  min-height: 40px;
+}
+.photo-sentinel .sentinel-loader {
+  display: flex;
+  gap: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.photo-sentinel .sentinel-loader span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.35;
+  animation: sentinelPulse 1.2s ease-in-out infinite;
+}
+.photo-sentinel .sentinel-loader span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.photo-sentinel .sentinel-loader span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.photo-sentinel.active .sentinel-loader {
+  opacity: 1;
+}
+
+@keyframes sentinelPulse {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.85);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.15);
+  }
+}
+body {
+  transition: background-color 1800ms cubic-bezier(0.4, 0, 0.2, 1), background-image 1800ms cubic-bezier(0.4, 0, 0.2, 1), color 1800ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.photo-mode {
+  background-color: #0a0a0a !important;
+  background-image: none !important;
+  color: #e8e8e8;
+  --color-text: #e8e8e8;
+  --color-divider: #1e1e1e;
+}
+body.photo-mode .header {
+  opacity: 0.15;
+  transition: opacity 1800ms ease;
+}
+body.photo-mode .header:hover {
+  opacity: 0.8;
+}
+body.photo-mode .section:not(.photography-section) {
+  opacity: 0.08;
+  transition: opacity 1800ms ease;
+  pointer-events: none;
+}
+body.photo-mode .photography-section {
+  border-bottom: none;
+  padding-top: 80px;
+}
+body.photo-mode .photography-section .section-header {
+  justify-content: center;
+  transition: justify-content 1800ms ease;
+}
+body.photo-mode .photography-section .section-header h1 {
+  color: #e8e8e8;
+  font-family: "Instrument Serif", serif;
+  font-weight: 500;
+  font-size: 5rem;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  transition: color 1800ms ease, font-family 1800ms ease, font-size 1800ms ease, font-weight 1800ms ease, letter-spacing 1800ms ease, text-transform 1800ms ease;
+}
+@media (max-width: 768px) {
+  body.photo-mode .photography-section .section-header h1 {
+    font-size: 2.5rem;
+  }
+}
+body.photo-mode .photography-section .section-header img.icon {
+  filter: invert(0.9);
+  opacity: 0;
+  height: 28px;
+  width: 28px;
+  transition: filter 100ms ease, opacity 100ms ease;
+}
+body.photo-mode .photo-card {
+  background: #111;
+}
+body.photo-mode .photo-card:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.04);
+}
+body.photo-mode .photo-sentinel .sentinel-loader span {
+  background: #888;
+}
+body.photo-mode #cat {
+  opacity: 0.5;
+  transition: opacity 1800ms ease;
+}
+body.photo-mode #cat polygon.eyes {
+  fill: #111;
+}
+body.photo-mode #cat polygon,
+body.photo-mode #cat path,
+body.photo-mode #cat .ground {
+  fill: #e8e8e8;
+}
+
+.header,
+.section:not(.photography-section),
+#cat {
+  transition: opacity 1800ms ease;
+}
+
+.photography-section .section-header h1 {
+  transition: color 1800ms ease;
+}
+
+.photography-section .section-header img.icon {
+  transition: filter 1800ms ease, opacity 1800ms ease;
+}
+
+.ig-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+}
+.ig-lightbox.active {
+  display: flex;
+}
+
+.ig-lightbox-container {
+  position: relative;
+  width: min(500px, 90vw);
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #1a1a1a;
+  box-shadow: 0px 0px 50px 8px rgba(173, 173, 173, 0.83);
+  animation: lbFadeIn 0.2s ease;
+}
+@media (max-width: 768px) {
+  .ig-lightbox-container {
+    width: 95vw;
+    /* Revert to card-like width */
+    height: auto;
+    /* Let content dictate height */
+    max-height: 85vh;
+    /* Cap height */
+    border-radius: 4px;
+    /* Restore radius */
+    overflow: hidden;
+    /* Internal scroll handled by stage */
+    background: #1a1a1a;
+    transform: translateY(0);
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0.2, 1), opacity 0.3s ease;
+  }
+  .ig-lightbox-container.slide-up-out {
+    transform: translateY(-100vh);
+    opacity: 0.5;
+  }
+  .ig-lightbox-container.slide-down-out {
+    transform: translateY(100vh);
+    opacity: 0.5;
+  }
+  .ig-lightbox-container.slide-up-in {
+    animation: slideUpIn 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  }
+  .ig-lightbox-container.slide-down-in {
+    animation: slideDownIn 0.4s cubic-bezier(0.2, 0, 0.2, 1);
+  }
+}
+
+@keyframes slideUpIn {
+  from {
+    transform: translateY(100vh);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideDownIn {
+  from {
+    transform: translateY(-100vh);
+    opacity: 0.5;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes lbFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.ig-lightbox-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1c1c1c;
+  min-height: 200px;
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+  flex-direction: column;
+  /* On desktop, keep horizontal flow or handle via JS showing one at a time? 
+     Actually, let's make it vertical scroll on mobile only, but the implementation plan said:
+     "Refactor lightbox to support vertical scrolling on mobile... Desktop will remain as a single-image view with arrows."
+
+     To support this divergence, we can use a media query.
+  */
+  /* On desktop, keep horizontal flow or handle via JS showing one at a time? 
+     Actually, let's make it vertical scroll on mobile only, but the implementation plan said:
+     "Refactor lightbox to support vertical scrolling on mobile... Desktop will remain as a single-image view with arrows."
+
+     To support this divergence, we can use a media query.
+  */
+}
+@media (max-width: 768px) {
+  .ig-lightbox-stage {
+    height: auto;
+    display: flex;
+    /* Flex row for horizontal scrolling */
+    flex-direction: row;
+    overflow-x: scroll;
+    /* Horizontal scroll for images */
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start;
+    /* Align start */
+    min-height: 50vh;
+    /* Minimum height for photos */
+  }
+}
+
+.ig-lightbox-img {
+  display: block;
+  max-width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  /* Desktop: Show only the active image (start hidden) */
+}
+@media (min-width: 769px) {
+  .ig-lightbox-img {
+    display: none;
+  }
+  .ig-lightbox-img.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+}
+@media (max-width: 768px) {
+  .ig-lightbox-img {
+    display: block !important;
+    /* Always show all images on mobile */
+    width: 100%;
+    /* Full width of container */
+    min-width: 100%;
+    /* Ensure it takes full width in flex */
+    height: auto;
+    max-height: 75vh;
+    /* Limit height */
+    object-fit: contain;
+    margin-bottom: 0;
+    scroll-snap-align: center;
+    /* Center snap */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ig-lightbox-spinner {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.ig-lightbox-spinner span {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: lbSpin 0.7s linear infinite;
+}
+
+@keyframes lbSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ig-lightbox-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  line-height: 1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  transition: background 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+.ig-lightbox-arrow:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+@media (max-width: 768px) {
+  .ig-lightbox-arrow {
+    display: none;
+    /* Default hidden on mobile, JS can override or we rely on swipe */
+    /* But user asked for arrows to work and be smart. If we want arrows on mobile, we should show them.
+       However, usually arrows are small on mobile or overlap. 
+       Let's enable them but ensure they don't cover content too much.
+    */
+    background: transparent;
+    /* Cleaner look */
+    font-size: 1.5rem;
+    width: 40px;
+    height: 100%;
+    /* Full height hit area */
+    top: 0;
+    transform: none;
+    border-radius: 0;
+    margin: 0;
+    display: flex;
+    /* Show them! */
+  }
+}
+
+.ig-lightbox-prev {
+  left: 8px;
+}
+.ig-lightbox-prev span {
+  margin-right: 2px;
+  margin-top: -1px;
+}
+
+.ig-lightbox-next {
+  right: 8px;
+}
+.ig-lightbox-next span {
+  margin-left: 2px;
+  margin-top: -1px;
+}
+
+.ig-lightbox-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .ig-lightbox-dots {
+    bottom: 15px;
+    /* Adjust for mobile */
+  }
+}
+
+.ig-lightbox-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: background 0.2s ease;
+}
+.ig-lightbox-dot.active {
+  background: #fff;
+}
+
+.ig-lightbox-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #000;
+  /* On mobile, footer is part of the scroll flow, so it's fine. */
+}
+
+.ig-lightbox-scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  /* Further down since it's relative to overlay now */
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 3rem;
+  /* Much bigger */
+  animation: bounceHint 2s infinite;
+  pointer-events: none;
+  z-index: 15;
+  display: none;
+  transition: opacity 0.5s ease;
+  /* Hidden by default, shown via JS on mobile */
+}
+.ig-lightbox-scroll-hint.hidden {
+  opacity: 0;
+}
+@media (max-width: 768px) {
+  .ig-lightbox-scroll-hint {
+    display: block;
+  }
+}
+
+@keyframes bounceHint {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+.ig-lightbox-caption {
+  padding: 6px 16px 4px;
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #bbb;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.ig-lightbox-post-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 0 10px;
+}
+.ig-lightbox-post-nav button {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 0.7rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+.ig-lightbox-post-nav button:hover {
+  color: #fff;
+}
+
+.ig-lightbox-post-counter {
+  font-family: "Instrument Sans", sans-serif;
+  font-size: 0.7rem;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+/* Enhanced Post Navigation Arrows (Outside) */
+.ig-lightbox-post-prev,
+.ig-lightbox-post-next {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 0 20px;
+  transition: color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  height: 100%;
+  /* Clickable area spans full height */
+  /* On mobile, usually tap/swipe is preferred, or smaller arrows */
+}
+.ig-lightbox-post-prev:hover,
+.ig-lightbox-post-next:hover {
+  color: #fff;
+  transform: scale(1.1);
+}
+.ig-lightbox-post-prev:active,
+.ig-lightbox-post-next:active {
+  transform: scale(0.95);
+}
+@media (max-width: 768px) {
+  .ig-lightbox-post-prev,
+  .ig-lightbox-post-next {
+    display: none;
+    /* Hide on mobile, use swipe */
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

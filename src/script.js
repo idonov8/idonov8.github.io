@@ -73,7 +73,7 @@ $( () => {
                         const $videoItem = $('<div>', { class: 'video-item' });
                         $videoItem.append(`<div class="video-title">${video.title}</div>`);
                         const $embed = $('<div>', { class: 'video-embed' });
-                        $embed.append(`<iframe src="https://www.youtube.com/embed/${video.embedId}" allowfullscreen></iframe>`);
+                        $embed.append(`<iframe src="https://www.youtube-nocookie.com/embed/${video.embedId}" title="${video.title}" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`);
                         $videoItem.append($embed);
                         $videoGrid.append($videoItem);
                     });
@@ -115,7 +115,13 @@ $( () => {
                 }
             }
 
-            $mainContent.append($section);
+            // Insert YAML sections before the photography gallery
+            var $photography = $('#photography');
+            if ($photography.length) {
+                $photography.before($section);
+            } else {
+                $mainContent.append($section);
+            }
         });
     }).fail(function(error) {
         console.error(error);
