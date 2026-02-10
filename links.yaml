@@ -48,13 +48,3 @@ sections:
         title: "Technical videos"
         relatedSkill: Developer
 
-  - title: Photographer
-    icon: "assets/camera-icon.svg"
-    type: "photographer"
-    links:
-      - url: "https://www.instagram.com/idonov/"
-        title: "Instagram"
-        description: "My current portfolio."
-      - url: "https://docs.google.com/presentation/d/1IRKbbRvlzbb0t4snB6wP6bau3jTZoYHAB1SqKL9LIoA/edit?usp=sharing"
-        title: "Portfolio for art school (Hebrew)"
-        description: "Got me accepted to art school, but I ended up traveling instead."

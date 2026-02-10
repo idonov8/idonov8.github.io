@@ -6,11 +6,16 @@
   "scripts": {
     "style-build": "sass src/stylesheets/index.scss:src/stylesheets/build/index.css",
     "style-dev": "sass src/stylesheets/index.scss:src/stylesheets/build/index.css -w",
+    "studio-dev": "cd sanity-studio && npm run dev",
+    "studio-build": "cd sanity-studio && npm run build:pages",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "sass": "^1.81.0"
+  },
+  "devDependencies": {
+    "@sanity/client": "^6.0.0"
   }
 }
