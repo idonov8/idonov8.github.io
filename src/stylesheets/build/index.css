@@ -56,6 +56,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: max-content;
   max-width: 90vw;
+  transition: background 1800ms ease, border-color 1800ms ease, transform 0.3s ease;
 }
 .site-nav a.nav-link {
   color: var(--color-text);
@@ -731,7 +732,6 @@ body.photo-mode .site-nav {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-bottom-color: rgba(255, 255, 255, 0.06);
-  transition: background 1800ms ease, border-color 1800ms ease, transform 0.3s ease;
 }
 body.photo-mode .site-nav a.nav-link {
   color: #e8e8e8;
