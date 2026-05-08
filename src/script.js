@@ -69,6 +69,21 @@ $(() => {
                     });
                     $section.append($grid);
                 }
+
+                if (section.moreProjects && section.moreProjects.length > 0) {
+                    const $more = $('<div>', { class: 'more-projects' });
+                    $more.append('<span>More Projects: </span>');
+                    section.moreProjects.forEach(project => {
+                        const $link = $('<a>', {
+                            href: project.url,
+                            target: '_blank',
+                            text: `[ ${project.title} ]`
+                        });
+                        $more.append($link);
+                        $more.append(' ');
+                    });
+                    $section.append($more);
+                }
             } else if (section.type === 'filmmaker') {
                 // Personal videos with embeds
                 if (section.personalVideos && section.personalVideos.length > 0) {

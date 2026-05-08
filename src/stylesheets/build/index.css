@@ -374,6 +374,21 @@ body .reach-out img {
   max-width: 350px;
   max-height: 300px;
 }
+.main-content .section .more-projects {
+  margin-top: 16px;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+.main-content .section .more-projects a {
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.main-content .section .more-projects a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
 .main-content .section .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
