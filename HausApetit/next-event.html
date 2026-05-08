@@ -164,7 +164,7 @@
       </div>
 
       <div class="next-event-actions">
-        <button type="button" class="next-event-btn" id="add-to-cal-btn">Add to Calendar</button>
+        <a class="next-event-btn" href="https://www.google.com/calendar/render?action=TEMPLATE&text=Currents+%E2%80%94+Berlin+%C3%97+Leipzig&dates=20260511T193000/20260511T220000&details=New.+Indie.+Jazz.%0AQUALM+(Leipzig)+%2B+Bulletz+Trio+(Berlin)%0AOn+donation+(12%E2%80%9315+EUR+recommended)&location=Historischer+Hafen%2C+M%C3%A4rkisches+Ufer+10-12%2C+Berlin" target="_blank" rel="noreferrer">Add to Calendar</a>
         <a class="next-event-btn" href="https://t.me/+wWD8DZgSXABiY2E0" target="_blank" rel="noreferrer">Join Telegram for updates</a>
       </div>
     </div>
@@ -179,36 +179,5 @@
 
   </div>
 
-  <script>
-    (function () {
-      var btn = document.getElementById('add-to-cal-btn');
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var ics = [
-          'BEGIN:VCALENDAR',
-          'VERSION:2.0',
-          'PRODID:-//HausApetit//HausApetit//EN',
-          'BEGIN:VEVENT',
-          'DTSTART:20260511T193000',
-          'DTEND:20260511T220000',
-          'SUMMARY:Currents — Berlin × Leipzig',
-          'DESCRIPTION:New. Indie. Jazz.\\nQUALM (Leipzig) + Bulletz Trio (Berlin)\\nOn donation (12–15 EUR recommended)',
-          'LOCATION:Historischer Hafen\\, Märkisches Ufer 10-12\\, Berlin',
-          'END:VEVENT',
-          'END:VCALENDAR'
-        ].join('\r\n');
-
-        var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'currents-berlin-leipzig.ics';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
-    })();
-  </script>
 
 </section>
