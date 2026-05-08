@@ -386,13 +386,12 @@ body .reach-out img {
 .main-content .section .more-projects a {
   background-color: var(--color-primary);
   color: var(--color-buttonText);
-  padding: 5px 10px;
+  padding: 10px 15px;
   border-radius: 5px;
   text-decoration: none;
   border: 1px solid var(--color-border);
   box-shadow: 1px 1px 0 var(--color-shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  font-size: 0.85rem;
 }
 .main-content .section .more-projects a:hover {
   background-color: var(--color-hover);

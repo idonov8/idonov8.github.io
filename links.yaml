@@ -8,7 +8,7 @@ sections:
         description: "My current resume"
       - url: "https://www.notion.so/Lidar-visualizer-33a460dbb2a180949841de7054308fdb?pvs=18"
         title: "LiDAR Visualizer"
-        description: "LiDAR measurement visualization tool built for MetronX."
+        description: "LiDAR measurement visualization tool, freelance project."
       - url: "https://ivory-kookaburra-2de.notion.site/ebd/13e460dbb2a180c9909de47ee507db9e"
         title: "This website (ongoing)"
         description: "My personal website built with vanilla HTML/CSS/JS"
@@ -24,7 +24,7 @@ sections:
         description: "Blog about how not to use GitHub Copilot. Got to the front page of Hacker News."
     moreProjects:
       - url: "https://ivory-kookaburra-2de.notion.site/ebd/14f460dbb2a180a89e5bcb77ba4243c5"
-        title: "RasarBot"
+        title: "RasarBot (2020)"
 
   - title: Filmmaker
     icon: "assets/video-icon.svg"
