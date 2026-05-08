@@ -25,12 +25,12 @@
     .next-event-window .next-event-title {
       margin: 0 0 4px 0;
       font-size: 1.7em;
-	  text-align: center;
+      text-align: center;
     }
     .next-event-window .next-event-when {
       margin: 0 0 10px 0;
       color: #5c4d42;
-	  text-align: center;
+      text-align: center;
     }
 
     .next-event-window .next-event-actions {
@@ -57,16 +57,13 @@
       text-decoration: none;
       background: rgba(255, 255, 255, 0.80);
     }
-    .next-event-window .next-event-link {
-      color: #0645AD;
-      font-weight: 600;
+    .next-event-window .poster {
+      width: 100%;
+      max-width: 420px;
+      margin: 10px auto 20px auto;
+      display: block;
+      border-radius: 8px;
     }
-	.next-event-window .poster {
-		width: 100%;
-		max-width: 500px;
-		margin: 10px auto 20px auto;
-		display: block;
-	}
 
     .next-event-window .event-details {
       text-align: center;
@@ -83,6 +80,38 @@
       color: #8a7060;
     }
 
+    .next-event-window .artists {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+      margin: 16px 0 10px 0;
+    }
+    .next-event-window .artist-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid #c4b09a;
+      border-radius: 8px;
+      padding: 12px 18px;
+      min-width: 180px;
+      text-align: center;
+    }
+    .next-event-window .artist-name {
+      font-weight: bold;
+      font-size: 1.05em;
+      margin: 0 0 4px 0;
+    }
+    .next-event-window .artist-origin {
+      font-size: 0.85em;
+      color: #7a6a5a;
+      margin: 0 0 8px 0;
+    }
+    .next-event-window .artist-links {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      font-size: 0.9em;
+    }
+
     @media (min-width: 720px) {
       .next-event-window .next-event-actions {
         flex-direction: row;
@@ -91,23 +120,47 @@
       .next-event-window .next-event-btn { min-width: 240px; }
     }
   </style>
+
   <header class="next-event-header">
     <h2 class="next-event-title">Next Event: Currents — Berlin × Leipzig</h2>
     <p class="next-event-when">Monday, 11 May 2026</p>
   </header>
 
   <div class="next-event-body">
+
+    <img
+      class="poster"
+      src="/assets/Haus Apetit/Currents-poster.jpg"
+      alt="Currents Berlin x Leipzig poster — Monday 11 May, Historischer Hafen Berlin"
+    >
+
     <div class="event-details">
       <p><em>New. Indie. Jazz.</em></p>
-      <p><strong>QUALM</strong> (Leipzig) &nbsp;·&nbsp; <strong>Bulletz Trio</strong> (Berlin)</p>
       <p style="margin-top: 10px;">
         <span class="event-label">Open Doors</span> 7:00 PM &nbsp;&nbsp;
         <span class="event-label">Start</span> 7:30 PM
       </p>
-      <p style="margin-top: 6px;">
-        Historischer Hafen · Märkisches Ufer 10–12, Berlin
-      </p>
+      <p style="margin-top: 6px;">Historischer Hafen · Märkisches Ufer 10–12, Berlin</p>
       <p><em>On donation (12–15 EUR recommended)</em></p>
+    </div>
+
+    <div class="artists">
+      <div class="artist-card">
+        <p class="artist-name">QUALM</p>
+        <p class="artist-origin">Leipzig</p>
+        <div class="artist-links">
+          <a href="https://qualmlpz.bandcamp.com/album/i-i-i-i-i-i" target="_blank" rel="noreferrer">Music</a>
+          <a href="https://www.instagram.com/qualm_leipzig/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+      <div class="artist-card">
+        <p class="artist-name">Bulletz Trio</p>
+        <p class="artist-origin">Berlin</p>
+        <div class="artist-links">
+          <a href="https://youtu.be/ZHzKVanjwn0?si=wU72R2-8qnbUJiLW" target="_blank" rel="noreferrer">Music</a>
+          <a href="https://www.instagram.com/bulletz_trio/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
     </div>
 
     <div class="next-event-actions">
@@ -118,6 +171,6 @@
         rel="noreferrer"
       >Join Telegram for updates</a>
     </div>
+
   </div>
 </section>
-
