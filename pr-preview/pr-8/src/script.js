@@ -77,10 +77,9 @@ $(() => {
                         const $link = $('<a>', {
                             href: project.url,
                             target: '_blank',
-                            text: `[ ${project.title} ]`
+                            text: project.title
                         });
                         $more.append($link);
-                        $more.append(' ');
                     });
                     $section.append($more);
                 }

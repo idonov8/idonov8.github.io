@@ -376,18 +376,32 @@ body .reach-out img {
 }
 .main-content .section .more-projects {
   margin-top: 16px;
-  font-size: 0.95rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
   color: var(--color-text);
 }
 .main-content .section .more-projects a {
-  color: var(--color-text);
+  background-color: var(--color-primary);
+  color: var(--color-buttonText);
+  padding: 5px 10px;
+  border-radius: 5px;
   text-decoration: none;
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  border: 1px solid var(--color-border);
+  box-shadow: 1px 1px 0 var(--color-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.85rem;
 }
 .main-content .section .more-projects a:hover {
-  opacity: 1;
-  text-decoration: underline;
+  background-color: var(--color-hover);
+  box-shadow: 4px 4px 0 var(--color-shadow);
+  transform: translate(-2px, -2px);
+}
+.main-content .section .more-projects a:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
 }
 .main-content .section .video-grid {
   display: grid;
