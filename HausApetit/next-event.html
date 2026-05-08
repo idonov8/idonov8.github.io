@@ -68,6 +68,21 @@
 		display: block;
 	}
 
+    .next-event-window .event-details {
+      text-align: center;
+      margin: 10px 0 14px 0;
+    }
+    .next-event-window .event-details p {
+      margin: 4px 0;
+    }
+    .next-event-window .event-label {
+      font-size: 0.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #8a7060;
+    }
+
     @media (min-width: 720px) {
       .next-event-window .next-event-actions {
         flex-direction: row;
@@ -77,12 +92,25 @@
     }
   </style>
   <header class="next-event-header">
-    <h2 class="next-event-title">Next Event</h2>
-    <p class="next-event-when">To be announced — stay tuned!</p>
+    <h2 class="next-event-title">Next Event: Currents — Berlin × Leipzig</h2>
+    <p class="next-event-when">Monday, 11 May 2026</p>
   </header>
 
   <div class="next-event-body">
-	<div class="next-event-actions">
+    <div class="event-details">
+      <p><em>New. Indie. Jazz.</em></p>
+      <p><strong>QUALM</strong> (Leipzig) &nbsp;·&nbsp; <strong>Bulletz Trio</strong> (Berlin)</p>
+      <p style="margin-top: 10px;">
+        <span class="event-label">Open Doors</span> 7:00 PM &nbsp;&nbsp;
+        <span class="event-label">Start</span> 7:30 PM
+      </p>
+      <p style="margin-top: 6px;">
+        Historischer Hafen · Märkisches Ufer 10–12, Berlin
+      </p>
+      <p><em>On donation (12–15 EUR recommended)</em></p>
+    </div>
+
+    <div class="next-event-actions">
       <a
         class="next-event-btn"
         href="https://t.me/+wWD8DZgSXABiY2E0"
@@ -92,5 +120,4 @@
     </div>
   </div>
 </section>
-
 
