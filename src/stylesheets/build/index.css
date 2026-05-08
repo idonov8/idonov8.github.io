@@ -374,6 +374,34 @@ body .reach-out img {
   max-width: 350px;
   max-height: 300px;
 }
+.main-content .section .more-projects {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+.main-content .section .more-projects a {
+  background-color: var(--color-primary);
+  color: var(--color-buttonText);
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  box-shadow: 1px 1px 0 var(--color-shadow);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.main-content .section .more-projects a:hover {
+  background-color: var(--color-hover);
+  box-shadow: 4px 4px 0 var(--color-shadow);
+  transform: translate(-2px, -2px);
+}
+.main-content .section .more-projects a:active {
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
 .main-content .section .video-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
