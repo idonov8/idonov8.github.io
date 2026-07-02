@@ -223,7 +223,7 @@ $(() => {
         setTimeout(updateActiveNav, 100);
     });
 
-    const NumOfProfilePics = 3;
+    const NumOfProfilePics = 7;
     let picIndex = Math.floor(Math.random() * NumOfProfilePics);
     let profilePicURL = `assets/profile${picIndex}.jpg`;
     $('.profile-pic').find('img').attr('src', profilePicURL);
