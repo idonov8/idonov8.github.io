@@ -8,6 +8,8 @@ on:
 permissions:
   contents: write
 
+concurrency: gh-pages-branch
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
