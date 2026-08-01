@@ -12,7 +12,7 @@ permissions:
   contents: write
   pull-requests: write
 
-concurrency: preview-${{ github.ref }}
+concurrency: gh-pages-branch
 
 jobs:
   deploy-preview:
