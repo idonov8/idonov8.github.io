@@ -319,6 +319,10 @@ body {
 		padding-bottom: 60px;
 		border-bottom: 2px solid var(--color-divider);
 
+		&:first-child {
+			margin-top: 20px;
+		}
+
 		&:last-child {
 			border-bottom: none;
 		}
