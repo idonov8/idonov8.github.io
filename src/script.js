@@ -180,7 +180,7 @@ $(() => {
             && !window.matchMedia('(pointer: coarse)').matches;
 
         if (tiltEnabled) {
-            const MAX_TILT = 11;
+            const MAX_TILT = 3.5;
             const $document = $(document);
 
             $document.on('mouseenter', '.misc-chip', function () {
@@ -189,12 +189,9 @@ $(() => {
 
             $document.on('mousemove', '.misc-chip', function (e) {
                 const rect = this.getBoundingClientRect();
-                if (!rect.width || !rect.height) return;
+                if (!rect.width) return;
                 const offsetX = Math.max(-1, Math.min(1, ((e.clientX - rect.left) / rect.width) * 2 - 1));
-                const offsetY = Math.max(-1, Math.min(1, ((e.clientY - rect.top) / rect.height) * 2 - 1));
-                const rotateX = (-offsetY * MAX_TILT).toFixed(2);
-                const rotateY = (offsetX * MAX_TILT).toFixed(2);
-                this.style.transform = `perspective(500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-3px)`;
+                this.style.transform = `rotate(${(offsetX * MAX_TILT).toFixed(2)}deg) translateY(-3px)`;
             });
 
             $document.on('mouseleave', '.misc-chip', function () {
