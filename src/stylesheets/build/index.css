@@ -275,6 +275,9 @@ body .reach-out img {
   padding-bottom: 60px;
   border-bottom: 2px solid var(--color-divider);
 }
+.main-content .section:first-child {
+  margin-top: 20px;
+}
 .main-content .section:last-child {
   border-bottom: none;
 }
