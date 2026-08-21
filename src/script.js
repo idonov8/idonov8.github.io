@@ -175,6 +175,31 @@ $(() => {
         $clickable.on('mousedown', clickSound.down);
         $clickable.on('mouseup', clickSound.up);
 
+        // Chips tilt toward the pointer
+        const tiltEnabled = !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            && !window.matchMedia('(pointer: coarse)').matches;
+
+        if (tiltEnabled) {
+            const MAX_TILT = 3.5;
+            const $document = $(document);
+
+            $document.on('mouseenter', '.misc-chip', function () {
+                this.classList.add('is-tilting');
+            });
+
+            $document.on('mousemove', '.misc-chip', function (e) {
+                const rect = this.getBoundingClientRect();
+                if (!rect.width) return;
+                const offsetX = Math.max(-1, Math.min(1, ((e.clientX - rect.left) / rect.width) * 2 - 1));
+                this.style.transform = `rotate(${(offsetX * MAX_TILT).toFixed(2)}deg) translateY(-3px)`;
+            });
+
+            $document.on('mouseleave', '.misc-chip', function () {
+                this.classList.remove('is-tilting');
+                this.style.transform = '';
+            });
+        }
+
         // Scroll Spy
         const $navLinks = $('.nav-link');
 
