@@ -702,13 +702,16 @@ body {
 }
 
 .active-projects-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	display: flex;
+	justify-content: space-around;
+
 	gap: 14px;
 	// Without a cap the 1fr tracks stretch the three cards across the full
 	// content width; this keeps them compact and left-aligned on desktop
-	max-width: 760px;
-
+	max-width: 860px;
+	@media screen and (max-width: 468px) {
+		flex-direction: column;
+	}
 	.active-project {
 		position: relative;
 		display: flex;
