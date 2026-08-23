@@ -18,6 +18,8 @@ function generateHarmoniousColors() {
     Object.entries(colors).forEach(([key, value]) => {
         root.style.setProperty(`--color-${key}`, value);
     });
+    // Raw hue lets stylesheets mix their own alpha-blended tints of the palette
+    root.style.setProperty('--base-hue', baseHue.toFixed(2));
 }
 
 $(() => {
