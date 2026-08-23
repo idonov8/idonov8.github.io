@@ -311,7 +311,10 @@ body {
 	width: 100%;
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 5%;
+	// Percentage padding resolves against the body, not this capped element, so
+	// a plain 5% keeps growing after max-width stops — the usable content area
+	// shrinks as the screen gets wider. Clamping holds it steady past ~1200px.
+	padding: 0 clamp(16px, 5%, 60px);
 	overflow-x: hidden;
 
 	.section {
@@ -700,10 +703,14 @@ body {
 
 .active-projects-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-	gap: 16px;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 14px;
+	// Without a cap the 1fr tracks stretch the three cards across the full
+	// content width; this keeps them compact and left-aligned on desktop
+	max-width: 760px;
 
 	.active-project {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		background-color: rgba(255, 255, 255, 0.45);
@@ -746,53 +753,48 @@ body {
 	}
 
 	.active-project-body {
-		// Fills the leftover card height so the tag can sit on the baseline,
-		// keeping tags aligned across cards with different blurb lengths
-		display: flex;
-		flex: 1;
-		flex-direction: column;
-		align-items: flex-start;
-		padding: 10px 12px 14px;
+		// Bottom padding reserves the strip the pinned tag sits in
+		padding: 8px 11px 26px;
 
 		h3 {
-			margin: 0 0 4px 0;
-			font-size: 1.1rem;
+			margin: 0 0 3px 0;
+			font-size: 1rem;
 		}
 
 		p {
-			// Bottom margin guarantees a gap even when the blurb fills the card
-			// and margin-top:auto on the tag has no slack left to distribute
-			margin: 0 0 10px 0;
-			font-size: 0.82rem;
+			margin: 0;
+			font-size: 0.78rem;
 			line-height: 1.3;
 			opacity: 0.8;
 		}
 	}
 
+	// Pinned to the card corner rather than sitting in the flow, so it costs
+	// one strip of padding instead of a full row under the blurb
 	.project-tag {
-		margin-top: auto;
-		padding: 3px 9px 2px;
+		position: absolute;
+		right: 9px;
+		bottom: 7px;
+		padding: 2px 8px 1px;
 		border-radius: 999px;
-		font-size: 0.75rem;
+		font-size: 0.72rem;
 		line-height: 1.2;
-		letter-spacing: 0.06em;
+		letter-spacing: 0.05em;
 		text-transform: uppercase;
 		white-space: nowrap;
 	}
 
-	// Paid work reads as the solid one; side projects stay outlined, echoing
-	// the dashed misc chips further down the page
-	.project-tag-freelance {
+	.project-tag-personal {
 		background-color: var(--color-primary);
 		border: 1px solid var(--color-border);
 		color: var(--color-buttonText);
 	}
 
-	.project-tag-personal {
+	// Opaque background so it stays readable where it overlaps the blurb
+	.project-tag-freelance {
 		border: 1px dashed var(--color-border);
-		background-color: rgba(255, 255, 255, 0.4);
+		background-color: rgba(255, 255, 255, 0.9);
 		color: var(--color-text);
-		opacity: 0.85;
 	}
 }
 
