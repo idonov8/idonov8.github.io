@@ -6,6 +6,7 @@ sections:
       - url: "https://idonov8.github.io/assets/cv-2026.pdf"
         title: "CV (2026)"
         description: "My current resume"
+        cv: true
       - url: "https://ivory-kookaburra-2de.notion.site/ebd/3c3460dbb2a180caa1cefaceee0efa0c"
         title: "MEET Case Studies (2026)"
         description: "A gamified website for an educational program's students and staff."

@@ -58,7 +58,7 @@ $(() => {
                     const $grid = $('<div>', { class: 'projects-grid' });
                     section.projects.forEach(project => {
                         const $card = $('<div>', {
-                            class: 'project-card',
+                            class: project.cv ? 'project-card cv-card' : 'project-card',
                             'data-url': project.url
                         });
                         $card.append(`<h3>${project.title}</h3>`);
