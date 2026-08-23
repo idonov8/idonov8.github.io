@@ -407,12 +407,69 @@ body {
 				}
 
 				&.cv-card {
+					--cv-hue: var(--base-hue, 210);
+					--cv-glow: 0.55;
 					position: relative;
-					z-index: 0;
-					animation: cvAuraPulse 2.4s ease-in-out infinite;
+					border-color: hsl(var(--cv-hue) 90% 74% / 0.9);
+					// Lit from the top-left, so it looks brighter than its flat siblings.
+					// Keyed to --cv-hue so it re-tints itself on hover for free.
+					background-image: linear-gradient(135deg,
+							hsl(var(--cv-hue) 92% 58%),
+							hsl(var(--cv-hue) 85% 41%));
+					// Drops the siblings' flat offset stamp: a crisp lit edge over three
+					// widening falloffs in the card's own hue reads as light coming off
+					// the card, so it floats instead of sitting on the page
+					box-shadow:
+						0 0 0 1px hsl(var(--cv-hue) 95% 74% / calc(var(--cv-glow) * 0.85)),
+						0 2px 4px hsl(var(--cv-hue) 60% 22% / 0.3),
+						0 0 18px -2px hsl(var(--cv-hue) 95% 60% / calc(var(--cv-glow) * 0.95)),
+						0 0 42px hsl(var(--cv-hue) 95% 62% / calc(var(--cv-glow) * 0.5)),
+						0 0 78px 6px hsl(var(--cv-hue) 95% 66% / calc(var(--cv-glow) * 0.26));
+					animation: cvGlowBreathe 3.6s ease-in-out infinite;
+
+					// Light sweeping across the face of the card
+					&::after {
+						content: "";
+						position: absolute;
+						inset: 0;
+						border-radius: inherit;
+						pointer-events: none;
+						background: linear-gradient(105deg,
+								transparent 38%,
+								hsl(0 0% 100% / 0.38) 50%,
+								transparent 62%);
+						background-size: 260% 100%;
+						background-repeat: no-repeat;
+						animation: cvSheen 5s ease-in-out infinite;
+					}
 
 					&:hover {
-						animation-play-state: paused;
+						// Follow the card's hover colour so the aura never clashes with it
+						--cv-hue: calc(var(--base-hue, 210) + 200);
+						box-shadow:
+							0 0 0 1px hsl(var(--cv-hue) 95% 74% / 0.9),
+							0 4px 8px hsl(var(--cv-hue) 60% 22% / 0.3),
+							0 0 22px -2px hsl(var(--cv-hue) 95% 60% / 1),
+							0 0 52px hsl(var(--cv-hue) 95% 62% / 0.6),
+							0 0 95px 8px hsl(var(--cv-hue) 95% 66% / 0.32);
+					}
+
+					&:active {
+						box-shadow:
+							0 0 0 1px hsl(var(--cv-hue) 95% 74% / 0.9),
+							0 0 16px -2px hsl(var(--cv-hue) 95% 60% / 0.9),
+							0 0 34px hsl(var(--cv-hue) 95% 62% / 0.45);
+					}
+
+					// Nested so these win on specificity — a top-level override would
+					// lose to this rule's selector and leave the animations running
+					@media (prefers-reduced-motion: reduce) {
+						--cv-glow: 0.85;
+						animation: none;
+
+						&::after {
+							animation: none;
+						}
 					}
 				}
 			}
@@ -641,33 +698,39 @@ body {
 // CV card glow
 // ============================================
 
-@keyframes cvAuraPulse {
+// Registering the property lets the glow strength animate on its own, keeping
+// box-shadow a plain declaration that :hover can still override
+@property --cv-glow {
+	syntax: "<number>";
+	inherits: false;
+	initial-value: 0.55;
+}
+
+@keyframes cvGlowBreathe {
 
 	0%,
 	100% {
-		box-shadow:
-			2px 2px 0 var(--color-shadow),
-			0 0 10px 2px var(--color-primary),
-			0 0 22px 6px var(--color-hover);
+		--cv-glow: 0.4;
 	}
 
 	50% {
-		box-shadow:
-			2px 2px 0 var(--color-shadow),
-			0 0 22px 6px var(--color-primary),
-			0 0 42px 14px var(--color-hover);
+		--cv-glow: 1;
 	}
 }
 
-@media (prefers-reduced-motion: reduce) {
-	.project-card.cv-card {
-		animation: none;
-		box-shadow:
-			2px 2px 0 var(--color-shadow),
-			0 0 16px 4px var(--color-primary),
-			0 0 30px 10px var(--color-hover);
+@keyframes cvSheen {
+
+	0%,
+	10% {
+		background-position: 100% 0;
+	}
+
+	45%,
+	100% {
+		background-position: 0% 0;
 	}
 }
+
 
 .active-projects-grid {
 	display: grid;
