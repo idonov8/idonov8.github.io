@@ -373,16 +373,22 @@ body {
 				background-color: var(--color-primary);
 				border: 1px solid var(--color-border);
 				border-radius: 8px;
-				padding: 20px;
+				overflow: hidden;
 				box-shadow: 2px 2px 0 var(--color-shadow);
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
 				cursor: pointer;
 				flex: 1 1 300px;
+				display: flex;
+				flex-direction: column;
 
 				&:hover {
 					background-color: var(--color-hover);
 					box-shadow: 4px 4px 0 var(--color-shadow);
 					transform: translate(-2px, -2px);
+
+					.project-card-shot img {
+						transform: scale(1.04);
+					}
 				}
 
 				&:active {
@@ -410,7 +416,7 @@ body {
 				}
 
 				&.cv-card {
-					--cv-hue: var(--base-hue, 210);
+					// --cv-hue: var(--base-hue, 210);
 					--cv-glow: 0.55;
 					position: relative;
 					border-color: hsl(var(--cv-hue) 90% 74% / 0.9);
@@ -455,6 +461,26 @@ body {
 						animation: none;
 					}
 				}
+			}
+
+			.project-card-shot {
+				aspect-ratio: 16 / 9;
+				overflow: hidden;
+				background-color: rgba(0, 0, 0, 0.05);
+				border-bottom: 1px solid var(--color-border);
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: top center;
+					display: block;
+					transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				}
+			}
+
+			.project-card-body {
+				padding: 16px 20px 20px;
 			}
 		}
 
@@ -684,9 +710,9 @@ body {
 // Registering the property lets the glow strength animate on its own, keeping
 // box-shadow a plain declaration that :hover can still override
 @property --cv-glow {
-	syntax: "<number>";
-	inherits: false;
-	initial-value: 0.55;
+	// syntax: "<number>";
+	// inherits: false;
+	// initial-value: 0.55;
 }
 
 @keyframes cvGlowBreathe {
