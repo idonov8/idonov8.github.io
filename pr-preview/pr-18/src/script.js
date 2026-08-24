@@ -63,10 +63,15 @@ $(() => {
                             class: project.cv ? 'project-card cv-card' : 'project-card',
                             'data-url': project.url
                         });
-                        $card.append(`<h3>${project.title}</h3>`);
-                        if (project.description) {
-                            $card.append(`<p>${project.description}</p>`);
+                        if (project.image) {
+                            $card.append(`<div class="project-card-shot"><img src="${project.image}" alt="${project.title}" loading="lazy" width="1200" height="675"></div>`);
                         }
+                        const $body = $('<div>', { class: 'project-card-body' });
+                        $body.append(`<h3>${project.title}</h3>`);
+                        if (project.description) {
+                            $body.append(`<p>${project.description}</p>`);
+                        }
+                        $card.append($body);
                         $grid.append($card);
                     });
                     $section.append($grid);
