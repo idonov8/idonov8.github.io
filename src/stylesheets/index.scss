@@ -311,7 +311,10 @@ body {
 	width: 100%;
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 0 5%;
+	// Percentage padding resolves against the body, not this capped element, so
+	// a plain 5% keeps growing after max-width stops — the usable content area
+	// shrinks as the screen gets wider. Clamping holds it steady past ~1200px.
+	padding: 0 clamp(16px, 5%, 60px);
 	overflow-x: hidden;
 
 	.section {
@@ -370,16 +373,22 @@ body {
 				background-color: var(--color-primary);
 				border: 1px solid var(--color-border);
 				border-radius: 8px;
-				padding: 20px;
+				overflow: hidden;
 				box-shadow: 2px 2px 0 var(--color-shadow);
 				transition: transform 0.2s ease, box-shadow 0.2s ease;
 				cursor: pointer;
 				flex: 1 1 300px;
+				display: flex;
+				flex-direction: column;
 
 				&:hover {
 					background-color: var(--color-hover);
 					box-shadow: 4px 4px 0 var(--color-shadow);
 					transform: translate(-2px, -2px);
+
+					.project-card-shot img {
+						transform: scale(1.04);
+					}
 				}
 
 				&:active {
@@ -405,6 +414,26 @@ body {
 					max-width: 350px;
 					max-height: 300px;
 				}
+			}
+
+			.project-card-shot {
+				aspect-ratio: 16 / 9;
+				overflow: hidden;
+				background-color: rgba(0, 0, 0, 0.05);
+				border-bottom: 1px solid var(--color-border);
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+					object-position: top center;
+					display: block;
+					transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+				}
+			}
+
+			.project-card-body {
+				padding: 16px 20px 20px;
 			}
 		}
 
@@ -628,11 +657,18 @@ body {
 }
 
 .active-projects-grid {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-	gap: 24px;
+	display: flex;
+	justify-content: space-around;
 
+	gap: 14px;
+	// Without a cap the 1fr tracks stretch the three cards across the full
+	// content width; this keeps them compact and left-aligned on desktop
+	max-width: 860px;
+	@media screen and (max-width: 468px) {
+		flex-direction: column;
+	}
 	.active-project {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		background-color: rgba(255, 255, 255, 0.45);
@@ -659,7 +695,7 @@ body {
 	}
 
 	.active-project-shot {
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 16 / 9;
 		overflow: hidden;
 		background-color: rgba(0, 0, 0, 0.05);
 		border-bottom: 1px solid var(--color-border);
@@ -675,19 +711,48 @@ body {
 	}
 
 	.active-project-body {
-		padding: 14px 16px 18px;
+		// Bottom padding reserves the strip the pinned tag sits in
+		padding: 8px 11px 26px;
 
 		h3 {
-			margin: 0 0 6px 0;
-			font-size: 1.4rem;
+			margin: 0 0 3px 0;
+			font-size: 1rem;
 		}
 
 		p {
 			margin: 0;
-			font-size: 0.95rem;
-			line-height: 1.35;
+			font-size: 0.78rem;
+			line-height: 1.3;
 			opacity: 0.8;
 		}
+	}
+
+	// Pinned to the card corner rather than sitting in the flow, so it costs
+	// one strip of padding instead of a full row under the blurb
+	.project-tag {
+		position: absolute;
+		right: 9px;
+		bottom: 7px;
+		padding: 2px 8px 1px;
+		border-radius: 999px;
+		font-size: 0.72rem;
+		line-height: 1.2;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.project-tag-personal {
+		background-color: var(--color-primary);
+		border: 1px solid var(--color-border);
+		color: var(--color-buttonText);
+	}
+
+	// Opaque background so it stays readable where it overlaps the blurb
+	.project-tag-freelance {
+		border: 1px dashed var(--color-border);
+		background-color: rgba(255, 255, 255, 0.9);
+		color: var(--color-text);
 	}
 }
 
