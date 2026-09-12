@@ -664,9 +664,6 @@ body {
 	// Without a cap the 1fr tracks stretch the three cards across the full
 	// content width; this keeps them compact and left-aligned on desktop
 	max-width: 860px;
-	@media screen and (max-width: 468px) {
-		flex-direction: column;
-	}
 	.active-project {
 		position: relative;
 		display: flex;
@@ -1637,5 +1634,41 @@ body.photo-mode {
 	@media (max-width: 768px) {
 		display: none;
 		/* Hide on mobile, use swipe */
+	}
+}
+
+
+// Mobile: card rows become a snap-scrolling rail instead of stacking. Cards are
+// capped under full width so the next one peeks in and the swipe is discoverable.
+@media (max-width: 768px) {
+	$rail-bleed: clamp(16px, 5vw, 60px);
+
+	.active-projects-grid,
+	.main-content .section .projects-grid,
+	.main-content .section .video-grid {
+		display: flex;
+		flex-flow: row nowrap;
+		overflow-x: auto;
+		overscroll-behavior-x: contain;
+		scroll-snap-type: x proximity;
+		scroll-padding-left: $rail-bleed;
+		gap: 14px;
+		// Bleed out through the section padding so the rail runs edge to edge
+		margin-inline: calc(-1 * #{$rail-bleed});
+		// Vertical padding keeps the cards' offset shadows from being clipped
+		padding: 4px $rail-bleed 14px;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+
+	.active-projects-grid > .active-project,
+	.main-content .section .projects-grid > .project-card,
+	.main-content .section .video-grid > .video-item {
+		flex: 0 0 78%;
+		min-width: 0;
+		scroll-snap-align: start;
 	}
 }
