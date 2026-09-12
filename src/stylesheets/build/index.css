@@ -552,11 +552,6 @@ body .reach-out img {
   gap: 14px;
   max-width: 860px;
 }
-@media screen and (max-width: 468px) {
-  .active-projects-grid {
-    flex-direction: column;
-  }
-}
 .active-projects-grid .active-project {
   position: relative;
   display: flex;
@@ -1399,6 +1394,35 @@ body.photo-mode .site-nav a.nav-link:hover {
   .ig-lightbox-post-next {
     display: none;
     /* Hide on mobile, use swipe */
+  }
+}
+
+@media (max-width: 768px) {
+  .active-projects-grid,
+  .main-content .section .projects-grid,
+  .main-content .section .video-grid {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scroll-padding-left: clamp(16px, 5vw, 60px);
+    gap: 14px;
+    margin-inline: calc(-1 * clamp(16px, 5vw, 60px));
+    padding: 4px clamp(16px, 5vw, 60px) 14px;
+    scrollbar-width: none;
+  }
+  .active-projects-grid::-webkit-scrollbar,
+  .main-content .section .projects-grid::-webkit-scrollbar,
+  .main-content .section .video-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .active-projects-grid > .active-project,
+  .main-content .section .projects-grid > .project-card,
+  .main-content .section .video-grid > .video-item {
+    flex: 0 0 78%;
+    min-width: 0;
+    scroll-snap-align: start;
   }
 }
 
