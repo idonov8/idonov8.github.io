@@ -768,12 +768,10 @@ body .reach-out img {
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
 }
 #cat .ground {
   z-index: -1;
-}
-#cat {
-  pointer-events: none;
 }
 
 .photography-section {
@@ -965,6 +963,7 @@ body.photo-mode .photo-sentinel .sentinel-loader span {
 }
 body.photo-mode #cat {
   opacity: 0.9;
+  transition: opacity 1800ms ease;
 }
 body.photo-mode #cat polygon.eyes {
   fill: #111;
@@ -973,9 +972,6 @@ body.photo-mode #cat polygon,
 body.photo-mode #cat path,
 body.photo-mode #cat .ground {
   fill: #e8e8e8;
-}
-body.photo-mode #cat {
-  transition: opacity 1800ms ease;
 }
 body.photo-mode .site-nav {
   background: rgba(10, 10, 10, 0.6);
@@ -1375,6 +1371,7 @@ body.photo-mode .site-nav a.nav-link:hover {
   z-index: 100;
   height: 100%;
   /* Clickable area spans full height */
+  /* On mobile, usually tap/swipe is preferred, or smaller arrows */
 }
 .ig-lightbox-post-prev:hover,
 .ig-lightbox-post-next:hover {
@@ -1384,10 +1381,6 @@ body.photo-mode .site-nav a.nav-link:hover {
 .ig-lightbox-post-prev:active,
 .ig-lightbox-post-next:active {
   transform: scale(0.95);
-}
-.ig-lightbox-post-prev,
-.ig-lightbox-post-next {
-  /* On mobile, usually tap/swipe is preferred, or smaller arrows */
 }
 @media (max-width: 768px) {
   .ig-lightbox-post-prev,
