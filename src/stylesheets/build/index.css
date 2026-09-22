@@ -121,6 +121,13 @@ body .header {
   width: 100%;
   box-sizing: border-box;
 }
+@media (min-width: 769px) {
+  body .header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-inline: clamp(16px, 5%, 60px);
+  }
+}
 @media (max-width: 768px) {
   body .header {
     gap: 5px;
@@ -186,8 +193,8 @@ body .header .desc .contact-buttons .contact-btn:focus, body .header .desc .cont
   text-decoration: none;
 }
 body .header .profile-pic img {
-  height: 80%;
-  width: 80%;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
   border-radius: 25%;
   border: 2px solid var(--color-border);
