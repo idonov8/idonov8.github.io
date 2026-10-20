@@ -637,6 +637,20 @@ body .reach-out img {
   color: var(--color-text);
 }
 
+.misc-block.idle-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+.misc-block.idle-block h3 {
+  margin: 0;
+}
+.misc-block.idle-block h3 small {
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
 .misc-block {
   margin-top: 45px;
   margin-bottom: 10px;
