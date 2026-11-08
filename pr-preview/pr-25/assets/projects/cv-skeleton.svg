@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Skeleton loading mock of a resume">
+	<rect width="1200" height="675" fill="#f4f4f2"/>
+
+	<!-- avatar -->
+	<circle cx="150" cy="140" r="52" fill="#dcdcda"/>
+
+	<!-- name + title -->
+	<rect x="234" y="106" width="260" height="26" rx="6" fill="#dcdcda"/>
+	<rect x="234" y="146" width="160" height="18" rx="6" fill="#e8e8e6"/>
+
+	<!-- contact chips -->
+	<rect x="234" y="182" width="90" height="16" rx="8" fill="#e8e8e6"/>
+	<rect x="334" y="182" width="90" height="16" rx="8" fill="#e8e8e6"/>
+	<rect x="434" y="182" width="90" height="16" rx="8" fill="#e8e8e6"/>
+
+	<!-- divider -->
+	<rect x="80" y="238" width="1040" height="2" fill="#e2e2e0"/>
+
+	<!-- section: experience -->
+	<rect x="80" y="270" width="150" height="20" rx="6" fill="#c9c9c6"/>
+	<rect x="80" y="304" width="440" height="16" rx="6" fill="#e2e2e0"/>
+	<rect x="80" y="328" width="380" height="16" rx="6" fill="#e2e2e0"/>
+	<rect x="80" y="352" width="410" height="16" rx="6" fill="#e2e2e0"/>
+	<rect x="80" y="376" width="260" height="16" rx="6" fill="#e2e2e0"/>
+
+	<!-- section: education -->
+	<rect x="80" y="424" width="150" height="20" rx="6" fill="#c9c9c6"/>
+	<rect x="80" y="458" width="440" height="16" rx="6" fill="#e2e2e0"/>
+	<rect x="80" y="482" width="320" height="16" rx="6" fill="#e2e2e0"/>
+
+	<!-- side column: skills -->
+	<rect x="620" y="270" width="120" height="20" rx="6" fill="#c9c9c6"/>
+	<rect x="620" y="304" width="500" height="16" rx="8" fill="#e2e2e0"/>
+	<rect x="620" y="328" width="440" height="16" rx="8" fill="#e2e2e0"/>
+	<rect x="620" y="352" width="470" height="16" rx="8" fill="#e2e2e0"/>
+
+	<!-- side column: skill pills -->
+	<rect x="620" y="400" width="90" height="26" rx="13" fill="#e8e8e6"/>
+	<rect x="720" y="400" width="110" height="26" rx="13" fill="#e8e8e6"/>
+	<rect x="840" y="400" width="80" height="26" rx="13" fill="#e8e8e6"/>
+	<rect x="620" y="436" width="100" height="26" rx="13" fill="#e8e8e6"/>
+	<rect x="730" y="436" width="90" height="26" rx="13" fill="#e8e8e6"/>
+
+	<!-- footer bar -->
+	<rect x="80" y="560" width="1040" height="16" rx="6" fill="#e8e8e6"/>
+	<rect x="80" y="584" width="700" height="16" rx="6" fill="#e8e8e6"/>
+</svg>
